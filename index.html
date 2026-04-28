@@ -1,7 +1,360 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta http-equiv="refresh" content="0; url=resume.pdf">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utkarsh Singh | Software Engineer</title>
+    <style>
+        :root {
+            --bg-color: #fbfbfd;
+            --card-bg: #ffffff;
+            --text-main: #1d1d1f;
+            --text-muted: #515154;
+            --text-light: #86868b;
+            --border-color: #e5e5ea;
+            --accent: #4f46e5;
+            --accent-hover: #4338ca;
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 12px 24px rgba(0, 0, 0, 0.06);
+        }
+        /* :root {
+            --bg-color: #000000;
+            --card-bg: #151516;
+            --text-main: #f5f5f7;
+            --text-muted: #a1a1a6;
+            --text-light: #86868b;
+            --border-color: #333336;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 12px 24px rgba(0, 0, 0, 0.5);
+        } */
+
+        /* body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        } */
+        body {
+            background-color: #fbfbfd;
+            background-image: 
+                radial-gradient(circle at 0% 0%, rgba(79, 70, 229, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 100% 0%, rgba(79, 70, 229, 0.04) 0%, transparent 40%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: 1040px; margin: 0 auto; padding: 0 2rem; }
+        
+        a { color: var(--accent); text-decoration: none; font-weight: 500; transition: color 0.2s;}
+        a:hover { color: var(--accent-hover); text-decoration: underline; }
+
+        /* Typography */
+        h1 { font-size: 4.5rem; letter-spacing: -0.05em; font-weight: 700; margin: 0; line-height: 1.2; padding-bottom: 0.1em; }
+        h2 { font-size: 2.5rem; letter-spacing: -0.03em; font-weight: 600; margin: 0 0 2rem 0; }
+        h3 { font-size: 1.25rem; font-weight: 600; margin: 0 0 0.5rem 0; color: var(--text-main); }
+        p { font-size: 1.05rem; color: var(--text-muted); margin-top: 0; }
+
+        /* Upgraded Two-Column Hero */
+        /* .hero { 
+            height: 75vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between;
+            gap: 4rem;
+        } */
+         .hero { 
+            padding: 8rem 0 4rem 0; /* Creates natural, consistent space instead of stretching */
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between;
+            gap: 4rem;
+        }
+        .hero-content { flex: 1; }
+        .hero .subtitle { 
+            font-size: 1.75rem; 
+            color: var(--text-light); 
+            margin-top: 0.5rem; 
+            font-weight: 500; 
+        }
+        
+        /* Gradient Accent */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--text-main) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Profile Image Anchor */
+        .hero-image-container {
+            flex-shrink: 0;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e5e5ea 0%, #f5f5f7 100%);
+            border: 4px solid #ffffff;
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-image-container img { width: 100%; height: 100%; object-fit: cover; }
+
+        .hero-links { margin-top: 2.5rem; display: flex; align-items: center; gap: 2rem; font-size: 1.1rem; }
+        
+        /* Resume Button */
+        /* .resume-btn {
+            background-color: var(--text-main);
+            color: #ffffff !important;
+            padding: 0.6rem 1.5rem;
+            border-radius: 999px;
+            font-weight: 600;
+            transition: all 0.2s;
+            box-shadow: var(--shadow-sm);
+        }
+        .resume-btn:hover { background-color: #333336; transform: translateY(-2px); box-shadow: var(--shadow-md); } */
+        .resume-btn {
+            background-color: var(--accent);
+            color: #ffffff !important;
+            padding: 0.6rem 1.5rem;
+            border-radius: 999px;
+            font-weight: 600;
+            transition: all 0.2s;
+            box-shadow: var(--shadow-sm);
+        }
+        .resume-btn:hover { 
+            background-color: var(--accent-hover); 
+            transform: translateY(-2px); 
+            box-shadow: var(--shadow-md); 
+            text-decoration: none;
+        }
+
+        /* Sections */
+        section { padding: 5rem 0; border-bottom: 1px solid var(--border-color); }
+        section:last-child { border-bottom: none; }
+
+        /* About Text */
+        .about-text { font-size: 1.4rem; color: var(--text-main); font-weight: 500; max-width: 850px; line-height: 1.5; }
+        .highlight { color: var(--accent); }
+
+        /* Experience Header */
+        .company-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+        .company-logo { width: 56px; height: 56px; background-color: #ffffff; border-radius: 12px; border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 4px; box-shadow: var(--shadow-sm);}
+        .company-logo img { width: 100%; height: 100%; object-fit: contain; }
+        .company-meta h3 { margin: 0; font-size: 1.5rem; }
+        .company-meta p { margin: 0; font-size: 1rem; color: var(--text-light); }
+
+        /* Upgraded Bento Grid */
+        .bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+        .bento-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-sm); /* Permanent depth */
+        }
+        .bento-card:hover {
+            border-color: #d2d2d7;
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+        
+        /* Card Icons */
+        .card-icon {
+            width: 32px;
+            height: 32px;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .project-link { margin-top: auto; padding-top: 1rem; }
+
+        /* Tags */
+        .tag-container { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+        .tag { background-color: var(--bg-color); color: var(--text-main); padding: 0.4rem 1rem; border-radius: 8px; font-size: 0.9rem; font-weight: 500; border: 1px solid var(--border-color); }
+
+        /* Honors List */
+        .honors-list { list-style: none; padding: 0; margin: 0; }
+        .honors-list li { padding: 1rem 0; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; }
+        .honors-list li:last-child { border-bottom: none; }
+        .honor-title { font-weight: 500; }
+        .honor-detail { color: var(--text-light); font-size: 0.95rem; }
+
+        /* Garden */
+        .garden-container { background-color: #ffffff; border: 1px solid #bbf7d0; border-radius: 24px; padding: 5rem 2rem; text-align: center; margin-top: 2rem; box-shadow: var(--shadow-sm); position: relative; overflow: hidden;}
+        /* Subtle green glow for the garden */
+        .garden-container::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(187,247,208,0.2) 0%, rgba(255,255,255,0) 70%); z-index: 0; pointer-events: none;}
+        .garden-content { position: relative; z-index: 1; }
+        .garden-container h3 { font-size: 2rem; color: #166534; margin-bottom: 0.5rem;}
+        .garden-container p { color: #15803d; }
+        .garden-button { background-color: #16a34a; color: #ffffff; border: none; padding: 1rem 2.5rem; font-size: 1.1rem; border-radius: 999px; margin-top: 1.5rem; cursor: pointer; font-weight: 600; transition: all 0.2s; box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);}
+        .garden-button:hover { background-color: #15803d; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(22, 163, 74, 0.4);}
+    </style>
 </head>
-<body></body>
+<body>
+
+    <div class="container">
+        <div class="hero">
+            <div class="hero-content">
+                <h1 class="gradient-text">Utkarsh Singh.</h1>
+                <div class="subtitle">Software Engineer.</div>
+                <div class="hero-links">
+                    <a href="https://linkedin.com/in/feynmath" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/feynma1h">GitHub</a>
+                    <a href="mailto:23singhutkarsh@gmail.com">Email</a>
+                    <a href="resume.pdf" class="resume-btn" target="_blank">View Resume</a>
+                </div>
+            </div>
+            <div class="hero-image-container">
+                <img src="profile.jpeg" alt="Utkarsh Singh" onerror="this.style.display='none'">
+            </div>
+        </div>
+
+        <section>
+            <div class="about-text">
+                I thrive on vague requirements and rapid learning. Following an <span class="highlight">intentional career break</span> to master cloud-native architecture, I am now actively exploring remote and flexible software engineering roles. I specialize in dropping into unfamiliar tech stacks and building scalable systems from the ground up.
+            </div>
+        </section>
+
+        <section>
+            <h2>Experience.</h2>
+            
+            <div class="company-header">
+                <div class="company-logo">
+                    <img src="jlr-logo.svg" alt="JLR Logo">
+                </div>
+                <div class="company-meta">
+                    <h3>Jaguar Land Rover</h3>
+                    <p>Software Engineer | Jul 2022 - Oct 2025</p>
+                </div>
+            </div>
+
+            <div class="bento-grid">
+                <div class="bento-card">
+                    <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                    <h3>ARMS: ECU Simulation & Testing Suite</h3>
+                    <p>Architected a unified Python engine powering four distinct PySide6 and Flask interfaces for complete SOME/IP and PDU workflows. Engineered a core desktop simulator parsing ARXML/proto networks, a headless automation API, touch-optimized CarPlay dashboards, and a drag-and-drop GUI builder. Replaced legacy third-party testing solutions, saving ~£500K in licensing costs.</p>
+                </div>
+                <div class="bento-card">
+                    <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
+                    <h3>Data Pipelines & Workflow Automation</h3>
+                    <p>Built robust Jira-to-BigQuery API pipelines, created Selenium utilities for XML data extraction, and engineered automation tools to process massive supplier datasets at scale.</p>
+                </div>
+                <div class="bento-card">
+                    <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    <h3>Enterprise Analytics Dashboards</h3>
+                    <p>Designed 40+ organization-wide Tableau dashboards driving critical engineering decisions, achieving Rank 1 among all creators across the enterprise.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Engineering Projects.</h2>
+            <div class="bento-grid">
+                <div class="bento-card">
+                    <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    <h3>GitHub AI Search Engine</h3>
+                    <p>A natural language search tool for GitHub. Type an English sentence to instantly find codebases using Python, vector databases, and AI embeddings.</p>
+                    <a href="#" class="project-link">View Architecture &rarr;</a>
+                </div>
+                <div class="bento-card">
+                    <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                    <h3>Crypto Fraud Tracker</h3>
+                    <p>An interactive visualization tool to trace illicit blockchain funds. Fetches heavy transaction data to map and expose complex money-laundering webs.</p>
+                    <a href="#" class="project-link">View Live Graph &rarr;</a>
+                </div>
+                <div class="bento-card">
+                    <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path></svg>
+                    <h3>AI Room Stager</h3>
+                    <p>Upload an empty room, get a furnished layout. Built on a cloud-native architecture that processes heavy AI image generation tasks asynchronously behind the scenes.</p>
+                    <a href="#" class="project-link">Try the Studio &rarr;</a>
+                </div>
+                <div class="bento-card">
+                    <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                    <h3>Procedural 3D Geometry</h3>
+                    <p>Automated packed bed geometry generation in Blender via Python and MATLAB. Reduced simulation preprocessing time from 48+ hours to under 2 hours.</p>
+                    <a href="#" class="project-link">View Render &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Foundation.</h2>
+            <div class="bento-grid">
+                <div class="bento-card">
+                    <div class="company-header">
+                        <div class="company-logo">
+                            <img src="iitd-logo.png" alt="IIT Delhi Logo">
+                        </div>
+                        <div class="company-meta">
+                            <h3>IIT Delhi</h3>
+                            <p>B.Tech + M.Tech, Chemical Engineering (CGPA: 8.6)</p>
+                        </div>
+                    </div>
+                    <br>
+                    <h3>Technical Arsenal</h3>
+                    <div class="tag-container">
+                        <span class="tag">Python</span>
+                        <span class="tag">Java</span>
+                        <span class="tag">C++</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">GCP</span>
+                        <span class="tag">Flask</span>
+                        <span class="tag">React</span>
+                        <span class="tag">PySide6</span>
+                        <span class="tag">System Design</span>
+                    </div>
+                </div>
+                
+                <div class="bento-card">
+                    <h3>Accolades</h3>
+                    <ul class="honors-list">
+                        <li>
+                            <span class="honor-title">Exceptional Creator Award</span>
+                            <span class="honor-detail">Jaguar Land Rover (2025)</span>
+                        </li>
+                        <li>
+                            <span class="honor-title">Department Rank 1</span>
+                            <span class="honor-detail">Chemical Engineering, IIT Delhi</span>
+                        </li>
+                        <li>
+                            <span class="honor-title">JEE Advanced</span>
+                            <span class="honor-detail">AIR 2525 (Top 1.14%)</span>
+                        </li>
+                        <li>
+                            <span class="honor-title">JEE Main</span>
+                            <span class="honor-detail">AIR 742 (Top 0.06%)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="garden-container">
+                <div class="garden-content">
+                    <h3>Leave a trace.</h3>
+                    <p>A digital guestbook. Plant a seed, name it, and watch it grow over time.</p>
+                    <button class="garden-button">Plant a Tree</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</body>
 </html>
