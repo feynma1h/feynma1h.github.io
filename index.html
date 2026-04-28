@@ -203,6 +203,47 @@
         .garden-container p { color: #15803d; }
         .garden-button { background-color: #16a34a; color: #ffffff; border: none; padding: 1rem 2.5rem; font-size: 1.1rem; border-radius: 999px; margin-top: 1.5rem; cursor: pointer; font-weight: 600; transition: all 0.2s; box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);}
         .garden-button:hover { background-color: #15803d; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(22, 163, 74, 0.4);}
+
+        /* ========================================= */
+        /* MOBILE RESPONSIVE ENGINE                  */
+        /* ========================================= */
+        @media (max-width: 768px) {
+            .container { padding: 0 1.5rem; }
+            
+            /* Typography Scaling */
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2rem; }
+            .hero .subtitle { font-size: 1.3rem; }
+            .about-text { font-size: 1.15rem; }
+            
+            /* Stacking the Hero Section */
+            .hero { 
+                flex-direction: column-reverse; /* Puts image above text */
+                align-items: flex-start; 
+                gap: 2rem; 
+                padding: 5rem 0 2rem 0; 
+            }
+            .hero-image-container { 
+                width: 160px; 
+                height: 160px; 
+            }
+            .hero-links { 
+                gap: 1rem; 
+                margin-top: 1.5rem; 
+                flex-wrap: wrap; /* Allows links to wrap to next line if needed */
+            }
+            
+            /* Grid & Spacing Collapse */
+            .bento-grid { grid-template-columns: 1fr; } /* Forces single column */
+            .bento-card { padding: 1.8rem; }
+            section { padding: 3rem 0; }
+            
+            /* Mobile fixes for nested items */
+            .company-header { flex-direction: column; align-items: flex-start; }
+            .honors-list li { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+            .honor-detail { text-align: left; }
+            .garden-container { padding: 3rem 1.5rem; }
+        }
     </style>
 </head>
 <body>
