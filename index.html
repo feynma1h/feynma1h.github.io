@@ -1,401 +1,765 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Utkarsh Singh | Software Engineer</title>
-    <style>
-        :root {
-            --bg-color: #fbfbfd;
-            --card-bg: #ffffff;
-            --text-main: #1d1d1f;
-            --text-muted: #515154;
-            --text-light: #86868b;
-            --border-color: #e5e5ea;
-            --accent: #4f46e5;
-            --accent-hover: #4338ca;
-            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.02);
-            --shadow-md: 0 12px 24px rgba(0, 0, 0, 0.06);
-        }
-        /* :root {
-            --bg-color: #000000;
-            --card-bg: #151516;
-            --text-main: #f5f5f7;
-            --text-muted: #a1a1a6;
-            --text-light: #86868b;
-            --border-color: #333336;
-            --accent: #6366f1;
-            --accent-hover: #818cf8;
-            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.3);
-            --shadow-md: 0 12px 24px rgba(0, 0, 0, 0.5);
-        } */
-
-        /* body {
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        } */
-        body {
-            background-color: #fbfbfd;
-            background-image: 
-                radial-gradient(circle at 0% 0%, rgba(79, 70, 229, 0.06) 0%, transparent 40%),
-                radial-gradient(circle at 100% 0%, rgba(79, 70, 229, 0.04) 0%, transparent 40%);
-            background-attachment: fixed;
-            color: var(--text-main);
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .container { max-width: 1040px; margin: 0 auto; padding: 0 2rem; }
-        
-        a { color: var(--accent); text-decoration: none; font-weight: 500; transition: color 0.2s;}
-        a:hover { color: var(--accent-hover); text-decoration: underline; }
-
-        /* Typography */
-        h1 { font-size: 4.5rem; letter-spacing: -0.05em; font-weight: 700; margin: 0; line-height: 1.2; padding-bottom: 0.1em; }
-        h2 { font-size: 2.5rem; letter-spacing: -0.03em; font-weight: 600; margin: 0 0 2rem 0; }
-        h3 { font-size: 1.25rem; font-weight: 600; margin: 0 0 0.5rem 0; color: var(--text-main); }
-        p { font-size: 1.05rem; color: var(--text-muted); margin-top: 0; }
-
-        /* Upgraded Two-Column Hero */
-        /* .hero { 
-            height: 75vh; 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between;
-            gap: 4rem;
-        } */
-         .hero { 
-            padding: 8rem 0 4rem 0; /* Creates natural, consistent space instead of stretching */
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between;
-            gap: 4rem;
-        }
-        .hero-content { flex: 1; }
-        .hero .subtitle { 
-            font-size: 1.75rem; 
-            color: var(--text-light); 
-            margin-top: 0.5rem; 
-            font-weight: 500; 
-        }
-        
-        /* Gradient Accent */
-        .gradient-text {
-            background: linear-gradient(135deg, var(--text-main) 0%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Profile Image Anchor */
-        .hero-image-container {
-            flex-shrink: 0;
-            width: 280px;
-            height: 280px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #e5e5ea 0%, #f5f5f7 100%);
-            border: 4px solid #ffffff;
-            box-shadow: var(--shadow-md);
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .hero-image-container img { width: 100%; height: 100%; object-fit: cover; }
-
-        .hero-links { margin-top: 2.5rem; display: flex; align-items: center; gap: 2rem; font-size: 1.1rem; }
-        
-        /* Resume Button */
-        /* .resume-btn {
-            background-color: var(--text-main);
-            color: #ffffff !important;
-            padding: 0.6rem 1.5rem;
-            border-radius: 999px;
-            font-weight: 600;
-            transition: all 0.2s;
-            box-shadow: var(--shadow-sm);
-        }
-        .resume-btn:hover { background-color: #333336; transform: translateY(-2px); box-shadow: var(--shadow-md); } */
-        .resume-btn {
-            background-color: var(--accent);
-            color: #ffffff !important;
-            padding: 0.6rem 1.5rem;
-            border-radius: 999px;
-            font-weight: 600;
-            transition: all 0.2s;
-            box-shadow: var(--shadow-sm);
-        }
-        .resume-btn:hover { 
-            background-color: var(--accent-hover); 
-            transform: translateY(-2px); 
-            box-shadow: var(--shadow-md); 
-            text-decoration: none;
-        }
-
-        /* Sections */
-        section { padding: 5rem 0; border-bottom: 1px solid var(--border-color); }
-        section:last-child { border-bottom: none; }
-
-        /* About Text */
-        .about-text { font-size: 1.4rem; color: var(--text-main); font-weight: 500; max-width: 850px; line-height: 1.5; }
-        .highlight { color: var(--accent); }
-
-        /* Experience Header */
-        .company-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
-        .company-logo { width: 56px; height: 56px; background-color: #ffffff; border-radius: 12px; border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 4px; box-shadow: var(--shadow-sm);}
-        .company-logo img { width: 100%; height: 100%; object-fit: contain; }
-        .company-meta h3 { margin: 0; font-size: 1.5rem; }
-        .company-meta p { margin: 0; font-size: 1rem; color: var(--text-light); }
-
-        /* Upgraded Bento Grid */
-        .bento-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
-        .bento-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 2.5rem;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            box-shadow: var(--shadow-sm); /* Permanent depth */
-        }
-        .bento-card:hover {
-            border-color: #d2d2d7;
-            box-shadow: var(--shadow-md);
-            transform: translateY(-4px);
-        }
-        
-        /* Card Icons */
-        .card-icon {
-            width: 32px;
-            height: 32px;
-            color: var(--accent);
-            margin-bottom: 1rem;
-        }
-
-        .project-link { margin-top: auto; padding-top: 1rem; }
-
-        /* Tags */
-        .tag-container { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
-        .tag { background-color: var(--bg-color); color: var(--text-main); padding: 0.4rem 1rem; border-radius: 8px; font-size: 0.9rem; font-weight: 500; border: 1px solid var(--border-color); }
-
-        /* Honors List */
-        .honors-list { list-style: none; padding: 0; margin: 0; }
-        .honors-list li { padding: 1rem 0; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; }
-        .honors-list li:last-child { border-bottom: none; }
-        .honor-title { font-weight: 500; }
-        .honor-detail { color: var(--text-light); font-size: 0.95rem; }
-
-        /* Garden */
-        .garden-container { background-color: #ffffff; border: 1px solid #bbf7d0; border-radius: 24px; padding: 5rem 2rem; text-align: center; margin-top: 2rem; box-shadow: var(--shadow-sm); position: relative; overflow: hidden;}
-        /* Subtle green glow for the garden */
-        .garden-container::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(187,247,208,0.2) 0%, rgba(255,255,255,0) 70%); z-index: 0; pointer-events: none;}
-        .garden-content { position: relative; z-index: 1; }
-        .garden-container h3 { font-size: 2rem; color: #166534; margin-bottom: 0.5rem;}
-        .garden-container p { color: #15803d; }
-        .garden-button { background-color: #16a34a; color: #ffffff; border: none; padding: 1rem 2.5rem; font-size: 1.1rem; border-radius: 999px; margin-top: 1.5rem; cursor: pointer; font-weight: 600; transition: all 0.2s; box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);}
-        .garden-button:hover { background-color: #15803d; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(22, 163, 74, 0.4);}
-
-        /* ========================================= */
-        /* MOBILE RESPONSIVE ENGINE                  */
-        /* ========================================= */
-        @media (max-width: 768px) {
-            .container { padding: 0 1.5rem; }
-            
-            /* Typography Scaling */
-            h1 { font-size: 3rem; }
-            h2 { font-size: 2rem; }
-            .hero .subtitle { font-size: 1.3rem; }
-            .about-text { font-size: 1.15rem; }
-            
-            /* Stacking the Hero Section */
-            .hero { 
-                flex-direction: column-reverse; /* Puts image above text */
-                align-items: flex-start; 
-                gap: 2rem; 
-                padding: 5rem 0 2rem 0; 
-            }
-            .hero-image-container { 
-                width: 160px; 
-                height: 160px; 
-            }
-            .hero-links { 
-                gap: 1rem; 
-                margin-top: 1.5rem; 
-                flex-wrap: wrap; /* Allows links to wrap to next line if needed */
-            }
-            
-            /* Grid & Spacing Collapse */
-            .bento-grid { grid-template-columns: 1fr; } /* Forces single column */
-            .bento-card { padding: 1.8rem; }
-            section { padding: 3rem 0; }
-            
-            /* Mobile fixes for nested items */
-            .company-header { flex-direction: column; align-items: flex-start; }
-            .honors-list li { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
-            .honor-detail { text-align: left; }
-            .garden-container { padding: 3rem 1.5rem; }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Utkarsh Singh — Software Engineer</title>
+<meta name="description" content="Software engineer who drops into any stack and ships the whole thing — ARKit, GPU perception, embeddings, CFD, pen plotters. Selected work, experience and contact.">
+<meta name="author" content="Utkarsh Singh">
+<meta name="theme-color" content="#0A0B0E">
+<link rel="canonical" href="https://feynma1h.github.io/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Utkarsh Singh">
+<meta property="og:url" content="https://feynma1h.github.io/">
+<meta property="og:title" content="Utkarsh Singh — Software Engineer">
+<meta property="og:description" content="I drop into any stack and ship the whole thing. ARKit, GPU perception, embeddings, CFD, pen plotters.">
+<meta property="og:image" content="https://feynma1h.github.io/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Utkarsh Singh — Software Engineer">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Utkarsh Singh — Software Engineer">
+<meta name="twitter:description" content="I drop into any stack and ship the whole thing. ARKit, GPU perception, embeddings, CFD, pen plotters.">
+<meta name="twitter:image" content="https://feynma1h.github.io/og-card.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=JetBrains+Mono:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{margin:0;background:#0A0B0E}
+  img{max-width:100%;display:block}
+  a{color:var(--accent);text-decoration:none;transition:color .2s ease}
+  a:hover{color:var(--fg)}
+  ::selection{background:var(--accent);color:#0A0B0E}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-thumb{background:var(--line);border-radius:0}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+  @keyframes cue{0%{transform:translateY(0);opacity:.35}50%{opacity:1}100%{transform:translateY(9px);opacity:.35}}
+  /* Below this width the section nav is squeezed into a scrolling sliver; the page
+     is a single scroll anyway, so drop it and keep the header clean. */
+  /* !important is required: the markup sets display:flex inline, which otherwise wins. */
+  @media (max-width:760px){ nav[aria-label="Sections"]{display:none!important} }
+  @media (prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important} html{scroll-behavior:auto} }
+</style>
 </head>
 <body>
+<div id="root" style="--bg:#0A0B0E;--bg2:#111318;--panel:#0E1015;--fg:#ECE9E0;--muted:#8A8D97;--line:rgba(236,233,224,0.12);--grid:rgba(236,233,224,0.045);--accent:#FF4A2B;--blue:#6EA0E0; position:relative; min-height:100vh; background:var(--bg); background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px); background-size:48px 48px; color:var(--fg); font-family:'Space Grotesk',system-ui,sans-serif; overflow-x:hidden; transition:background-color .5s ease,color .5s ease;">
 
-    <div class="container">
-        <div class="hero">
-            <div class="hero-content">
-                <h1 class="gradient-text">Utkarsh Singh.</h1>
-                <div class="subtitle">Software Engineer.</div>
-                <div class="hero-links">
-                    <a href="https://linkedin.com/in/feynmath" target="_blank">LinkedIn</a>
-                    <a href="https://github.com/feynma1h">GitHub</a>
-                    <a href="mailto:23singhutkarsh@gmail.com">Email</a>
-                    <a href="resume.pdf" class="resume-btn" target="_blank">View Resume</a>
-                </div>
-            </div>
-            <div class="hero-image-container">
-                <img src="profile.jpeg" alt="Utkarsh Singh" onerror="this.style.display='none'">
-            </div>
+  <header style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0.85rem clamp(1.1rem,4vw,3rem);border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);">
+    <a href="#top" style="display:flex;align-items:center;gap:.6rem;color:var(--fg);">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><rect x="1" y="1" width="20" height="20" stroke="var(--accent)" stroke-width="1"/><path d="M11 1v20M1 11h20" stroke="var(--line)" stroke-width="1"/><circle cx="11" cy="11" r="3.2" stroke="var(--accent)" stroke-width="1.4"/></svg>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;">Utkarsh Singh</span>
+    </a>
+    <nav aria-label="Sections" style="display:flex;align-items:center;gap:clamp(.7rem,2vw,1.6rem);font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;overflow-x:auto;">
+      <a href="#range" style="color:var(--muted);white-space:nowrap;">Range</a>
+      <a href="#work" style="color:var(--muted);white-space:nowrap;">Work</a>
+      <a href="#experience" style="color:var(--muted);white-space:nowrap;">Experience</a>
+      <a href="#background" style="color:var(--muted);white-space:nowrap;">Background</a>
+      <a href="#contact" style="color:var(--muted);white-space:nowrap;">Contact</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:.6rem;flex-shrink:0;">
+      <button type="button" id="themeBtn" aria-label="Toggle screen and paper theme" style="display:inline-flex;align-items:center;gap:.4rem;background:transparent;border:1px solid var(--line);color:var(--fg);font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;padding:.4rem .6rem;cursor:pointer;">
+        <span aria-hidden="true">◐</span><span id="themeLabel">Screen</span>
+      </button>
+      <a href="resume.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.35rem;border:1px solid var(--accent);color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;padding:.4rem .6rem;white-space:nowrap;">Résumé ↗</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section style="position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:6rem clamp(1.1rem,4vw,3rem) 3rem;overflow:hidden;">
+      <canvas id="hero" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0;"></canvas>
+      <div style="position:absolute;top:5rem;left:clamp(1.1rem,4vw,3rem);right:clamp(1.1rem,4vw,3rem);display:flex;justify-content:space-between;gap:1rem;font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);z-index:2;pointer-events:none;">
+        <div style="display:flex;flex-direction:column;gap:.3rem;">
+          <span style="color:var(--accent);"><span id="plotNo">Plot 001</span> — self portrait</span>
+          <span>Pen 0.3mm · ink on screen</span>
+        </div>
+        <div style="text-align:right;display:flex;flex-direction:column;gap:.3rem;">
+          <span>Bangalore, IN · Open to remote</span>
+          <span>12.97°N 77.59°E</span>
+        </div>
+      </div>
+
+      <div style="position:relative;z-index:2;max-width:1180px;margin:0 auto;width:100%;">
+        <p style="animation:fadeUp .7s .05s both;font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin:2.5rem 0 1.4rem;">Software Engineer</p>
+        <h1 style="animation:fadeUp .8s .12s both;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(3.4rem,13.5vw,12rem);line-height:.86;letter-spacing:-.03em;margin:0;text-wrap:balance;">Utkarsh<br>Singh</h1>
+        <div style="animation:fadeUp .8s .28s both;max-width:44ch;margin:2rem 0 0;">
+          <p style="font-size:clamp(1.15rem,2.4vw,1.7rem);line-height:1.35;margin:0;font-weight:400;text-wrap:pretty;">I drop into any stack and ship the whole thing.</p>
+          <p style="font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;letter-spacing:.02em;color:var(--muted);margin:.9rem 0 0;">ARKit · CUDA · embeddings · CFD · pen plotters — an unfamiliar codebase taken all the way to a production-shaped system.</p>
+        </div>
+        <div style="animation:fadeUp .8s .42s both;display:flex;flex-wrap:wrap;gap:.55rem;margin-top:2.2rem;">
+          <a href="mailto:23singhutkarsh@gmail.com" style="border:1px solid var(--line);color:var(--fg);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.08em;padding:.55rem .85rem;">✉ 23singhutkarsh@gmail.com</a>
+          <a href="https://linkedin.com/in/feynmath" target="_blank" rel="noopener" style="border:1px solid var(--line);color:var(--fg);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.08em;padding:.55rem .85rem;">LinkedIn ↗</a>
+          <a href="https://github.com/feynma1h" target="_blank" rel="noopener" style="border:1px solid var(--line);color:var(--fg);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.08em;padding:.55rem .85rem;">GitHub ↗</a>
+          <a href="resume.pdf" target="_blank" rel="noopener" style="border:1px solid var(--line);color:var(--fg);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.08em;padding:.55rem .85rem;">Résumé.pdf ↗</a>
+        </div>
+      </div>
+
+      <div style="position:absolute;bottom:1.6rem;left:clamp(1.1rem,4vw,3rem);right:clamp(1.1rem,4vw,3rem);display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);z-index:2;pointer-events:none;">
+        <span>Plotting · <span id="seg">0</span> segments</span>
+        <span style="display:inline-flex;flex-direction:column;align-items:center;gap:.3rem;animation:cue 1.8s ease-in-out infinite;">Scroll<span aria-hidden="true">↓</span></span>
+      </div>
+    </section>
+
+    <!-- RANGE -->
+    <section id="range" aria-labelledby="h-range" style="padding:clamp(5rem,11vw,10rem) clamp(1.1rem,4vw,3rem);border-top:1px solid var(--line);">
+      <div style="max-width:1180px;margin:0 auto;">
+        <h2 id="h-range" data-reveal style="font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:0 0 2.2rem;font-weight:400;">01 / The Range</h2>
+        <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(1.5rem,4vw,4rem);align-items:end;">
+          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(2.1rem,5vw,4rem);line-height:.98;letter-spacing:-.02em;margin:0;text-wrap:balance;">Range is the whole point.</h3>
+          <p style="font-size:clamp(1rem,1.4vw,1.18rem);line-height:1.6;color:var(--muted);margin:0;text-wrap:pretty;">Automotive firmware. AI search infrastructure. A 3D spatial-computing product. Generative art. Computational-physics pipelines. I take each one from a stack I've never touched to something that actually runs — and the unfamiliar part is the part I like.</p>
         </div>
 
-        <section>
-            <div class="about-text">
-                I thrive on vague requirements and rapid learning. Following an <span class="highlight">intentional career break</span> to master cloud-native architecture, I am now actively exploring remote and flexible software engineering roles. I specialize in dropping into unfamiliar tech stacks and building scalable systems from the ground up.
+        <div data-reveal style="margin-top:clamp(3rem,7vw,6rem);overflow-x:auto;padding-bottom:.5rem;">
+          <div style="display:flex;min-width:820px;gap:0;">
+            <div style="flex:1;border-top:1px solid var(--line);padding-top:1rem;">
+              <div style="width:1px;height:14px;background:var(--accent);margin-bottom:.9rem;"></div>
+              <p style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted);margin:0 0 .4rem;">01</p>
+              <p style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.35rem;font-weight:600;margin:0 0 .3rem;">ARKit</p>
+              <p style="font-size:.9rem;color:var(--muted);margin:0;">Spatial capture</p>
             </div>
-        </section>
-
-        <section>
-            <h2>Experience.</h2>
-            
-            <div class="company-header">
-                <div class="company-logo">
-                    <img src="jlr-logo.svg" alt="JLR Logo">
-                </div>
-                <div class="company-meta">
-                    <h3>Jaguar Land Rover</h3>
-                    <p>Software Engineer | Jul 2022 - Oct 2025</p>
-                </div>
+            <div style="flex:1;border-top:1px solid var(--line);padding-top:1rem;">
+              <div style="width:1px;height:14px;background:var(--accent);margin-bottom:.9rem;"></div>
+              <p style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted);margin:0 0 .4rem;">02</p>
+              <p style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.35rem;font-weight:600;margin:0 0 .3rem;">CUDA</p>
+              <p style="font-size:.9rem;color:var(--muted);margin:0;">GPU perception</p>
             </div>
-
-            <div class="bento-grid">
-                <div class="bento-card">
-                    <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-                    <h3>ARMS: ECU Simulation & Testing Suite</h3>
-                    <p>Architected a unified Python engine powering four distinct PySide6 and Flask interfaces for complete SOME/IP and PDU workflows. Engineered a core desktop simulator parsing ARXML/proto networks, a headless automation API, touch-optimized CarPlay dashboards, and a drag-and-drop GUI builder. Replaced legacy third-party testing solutions, saving ~£500K in licensing costs.</p>
-                </div>
-                <div class="bento-card">
-                    <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
-                    <h3>Data Pipelines & Workflow Automation</h3>
-                    <p>Built robust Jira-to-BigQuery API pipelines, created Selenium utilities for XML data extraction, and engineered automation tools to process massive supplier datasets at scale.</p>
-                </div>
-                <div class="bento-card">
-                    <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                    <h3>Enterprise Analytics Dashboards</h3>
-                    <p>Designed 40+ organization-wide Tableau dashboards driving critical engineering decisions, achieving Rank 1 among all creators across the enterprise.</p>
-                </div>
+            <div style="flex:1;border-top:1px solid var(--line);padding-top:1rem;">
+              <div style="width:1px;height:14px;background:var(--accent);margin-bottom:.9rem;"></div>
+              <p style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted);margin:0 0 .4rem;">03</p>
+              <p style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.35rem;font-weight:600;margin:0 0 .3rem;">Embeddings</p>
+              <p style="font-size:.9rem;color:var(--muted);margin:0;">Semantic search</p>
             </div>
-        </section>
-
-        <section>
-            <h2>Engineering Projects.</h2>
-            <div class="bento-grid">
-                <div class="bento-card">
-                    <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                    <h3>GitHub AI Search Engine</h3>
-                    <p>A natural language search tool for GitHub. Type an English sentence to instantly find codebases using Python, vector databases, and AI embeddings.</p>
-                    <a href="#" class="project-link">View Architecture &rarr;</a>
-                </div>
-                <div class="bento-card">
-                    <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-                    <h3>Crypto Fraud Tracker</h3>
-                    <p>An interactive visualization tool to trace illicit blockchain funds. Fetches heavy transaction data to map and expose complex money-laundering webs.</p>
-                    <a href="#" class="project-link">View Live Graph &rarr;</a>
-                </div>
-                <div class="bento-card">
-                    <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path></svg>
-                    <h3>AI Room Stager</h3>
-                    <p>Upload an empty room, get a furnished layout. Built on a cloud-native architecture that processes heavy AI image generation tasks asynchronously behind the scenes.</p>
-                    <a href="#" class="project-link">Try the Studio &rarr;</a>
-                </div>
-                <div class="bento-card">
-                    <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
-                    <h3>Procedural 3D Geometry</h3>
-                    <p>Automated packed bed geometry generation in Blender via Python and MATLAB. Reduced simulation preprocessing time from 48+ hours to under 2 hours.</p>
-                    <a href="#" class="project-link">View Render &rarr;</a>
-                </div>
+            <div style="flex:1;border-top:1px solid var(--line);padding-top:1rem;">
+              <div style="width:1px;height:14px;background:var(--accent);margin-bottom:.9rem;"></div>
+              <p style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted);margin:0 0 .4rem;">04</p>
+              <p style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.35rem;font-weight:600;margin:0 0 .3rem;">CFD</p>
+              <p style="font-size:.9rem;color:var(--muted);margin:0;">Computational physics</p>
             </div>
-        </section>
-
-        <section>
-            <h2>Foundation.</h2>
-            <div class="bento-grid">
-                <div class="bento-card">
-                    <div class="company-header">
-                        <div class="company-logo">
-                            <img src="iitd-logo.png" alt="IIT Delhi Logo">
-                        </div>
-                        <div class="company-meta">
-                            <h3>IIT Delhi</h3>
-                            <p>B.Tech + M.Tech, Chemical Engineering (CGPA: 8.6)</p>
-                        </div>
-                    </div>
-                    <br>
-                    <h3>Technical Arsenal</h3>
-                    <div class="tag-container">
-                        <span class="tag">Python</span>
-                        <span class="tag">Java</span>
-                        <span class="tag">C++</span>
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">SQL</span>
-                        <span class="tag">GCP</span>
-                        <span class="tag">Flask</span>
-                        <span class="tag">React</span>
-                        <span class="tag">PySide6</span>
-                        <span class="tag">System Design</span>
-                    </div>
-                </div>
-                
-                <div class="bento-card">
-                    <h3>Accolades</h3>
-                    <ul class="honors-list">
-                        <li>
-                            <span class="honor-title">Exceptional Creator Award</span>
-                            <span class="honor-detail">Jaguar Land Rover (2025)</span>
-                        </li>
-                        <li>
-                            <span class="honor-title">Department Rank 1</span>
-                            <span class="honor-detail">Chemical Engineering, IIT Delhi</span>
-                        </li>
-                        <li>
-                            <span class="honor-title">JEE Advanced</span>
-                            <span class="honor-detail">AIR 2525 (Top 1.14%)</span>
-                        </li>
-                        <li>
-                            <span class="honor-title">JEE Main</span>
-                            <span class="honor-detail">AIR 742 (Top 0.06%)</span>
-                        </li>
-                    </ul>
-                </div>
+            <div style="flex:1;border-top:1px solid var(--line);padding-top:1rem;">
+              <div style="width:1px;height:14px;background:var(--accent);margin-bottom:.9rem;"></div>
+              <p style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted);margin:0 0 .4rem;">05</p>
+              <p style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.35rem;font-weight:600;margin:0 0 .3rem;">Pen plotters</p>
+              <p style="font-size:.9rem;color:var(--muted);margin:0;">Generative art</p>
             </div>
-        </section>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <section>
-            <div class="garden-container">
-                <div class="garden-content">
-                    <h3>Leave a trace.</h3>
-                    <p>A digital guestbook. Plant a seed, name it, and watch it grow over time.</p>
-                    <button class="garden-button">Plant a Tree</button>
+    <!-- WORK -->
+    <section id="work" aria-labelledby="h-work" style="padding:clamp(4rem,9vw,8rem) clamp(1.1rem,4vw,3rem) clamp(3rem,7vw,6rem);border-top:1px solid var(--line);">
+      <div style="max-width:1180px;margin:0 auto;">
+        <h2 id="h-work" data-reveal style="font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:0 0 2.5rem;font-weight:400;">02 / Selected Work — 04</h2>
+
+        <!-- ROOMSTUDIO (flagship) -->
+        <article data-reveal style="border:1px solid var(--line);background:color-mix(in srgb,var(--panel) 60%,transparent);padding:clamp(1.4rem,3.5vw,3rem);margin-bottom:clamp(2rem,4vw,3.5rem);">
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:1.4rem;">
+            <span>01 · Flagship</span>
+            <span style="color:var(--accent);">In development · Private · Case study</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(1.6rem,4vw,3.5rem);align-items:start;">
+            <div>
+              <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(2.6rem,6vw,4.6rem);line-height:.9;letter-spacing:-.03em;margin:0 0 1.2rem;">roomstudio</h3>
+              <p style="font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-style:italic;font-size:clamp(1.25rem,2.4vw,1.85rem);line-height:1.25;margin:0 0 1.5rem;color:var(--fg);text-wrap:balance;">"Every home contains a version of itself its owner has never seen."</p>
+              <p style="font-size:1.02rem;line-height:1.62;color:var(--muted);margin:0 0 1rem;text-wrap:pretty;">A spatial-intelligence platform for the home. Scan your space with an iPhone Pro and roomstudio reconstructs both the room and its contents — measured walls, floor, doors and windows with inferred surface materials, and every object placed at its real metric position.</p>
+              <p style="font-size:1.02rem;line-height:1.62;color:var(--muted);margin:0 0 1rem;text-wrap:pretty;">Then it talks about it. A conversational layer answers questions about your actual room, grounded strictly in measured scene facts — the raw geometry never reaches the model. Redesigning the space from that conversation is the next stage.</p>
+              <p style="font-size:1.02rem;line-height:1.62;color:var(--fg);margin:0 0 1.8rem;text-wrap:pretty;">The backend is deployed and has processed real captured rooms end to end. The web surface stays private pending pre-launch hardening.</p>
+              <div style="display:grid;gap:.7rem;">
+                <div style="border-left:2px solid var(--accent);padding:.35rem 0 .35rem .9rem;">
+                  <p style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 .3rem;">01 · Capture</p>
+                  <p style="font-family:'JetBrains Mono',monospace;font-size:.78rem;line-height:1.6;color:var(--muted);margin:0;">iOS · Swift · ARKit + RoomPlan co-run · live on-device floor plan · lock-surviving background upload</p>
                 </div>
+                <div style="border-left:2px solid var(--accent);padding:.35rem 0 .35rem .9rem;">
+                  <p style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 .3rem;">02 · Perceive</p>
+                  <p style="font-family:'JetBrains Mono',monospace;font-size:.78rem;line-height:1.6;color:var(--muted);margin:0;">FastAPI on Cloud Run · NVIDIA L4, scale-to-zero · RoomPlan CapturedRoom · SAM 3 · SAM 3D Objects · Gaussian splats · vision-inferred materials · Firestore · Cloud Tasks · Eventarc</p>
+                </div>
+                <div style="border-left:2px solid var(--accent);padding:.35rem 0 .35rem .9rem;">
+                  <p style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 .3rem;">03 · Render</p>
+                  <p style="font-family:'JetBrains Mono',monospace;font-size:.78rem;line-height:1.6;color:var(--muted);margin:0;">Next.js on Firebase · 3D Gaussian splats via WebGL2 (three.js + Spark) · parametric room surfaces · choreographed assembly reveal</p>
+                </div>
+              </div>
             </div>
-        </section>
-    </div>
+            <div style="display:flex;flex-direction:column;gap:1rem;">
+              <div style="position:relative;border:1px solid var(--line);background:var(--bg);aspect-ratio:16/11;overflow:hidden;">
+                <canvas id="room" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;display:block;"></canvas>
+                <span style="position:absolute;top:.7rem;left:.7rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);">RoomPlan mesh · live</span>
+                <span style="position:absolute;bottom:.7rem;right:.7rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);">Splat preview</span>
+              </div>
+              <div style="border:1px solid var(--line);padding:1.1rem 1.2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:1rem .8rem;">
+                <div><p style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.35rem;font-weight:700;margin:0;">3</p><p style="font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:.15rem 0 0;">languages</p></div>
+                <div><p style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.35rem;font-weight:700;margin:0;">69k</p><p style="font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:.15rem 0 0;">lines</p></div>
+                <div><p style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.35rem;font-weight:700;margin:0;">82</p><p style="font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:.15rem 0 0;">decision records</p></div>
+                <div><p style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.35rem;font-weight:700;margin:0;">4</p><p style="font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:.15rem 0 0;">services</p></div>
+              </div>
+            </div>
+          </div>
+        </article>
 
+        <!-- GITSEARCH -->
+        <article data-reveal style="border:1px solid var(--line);padding:clamp(1.4rem,3.5vw,3rem);margin-bottom:clamp(2rem,4vw,3.5rem);">
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:1.4rem;">
+            <span>02</span><span style="color:var(--accent);">Live · Open source</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(1.6rem,4vw,3rem);align-items:center;">
+            <div style="position:relative;border:1px solid var(--line);background:var(--bg);aspect-ratio:16/10;overflow:hidden;order:2;">
+              <canvas id="scatter" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;display:block;"></canvas>
+              <span style="position:absolute;top:.7rem;left:.7rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);">Embedding space · pgvector</span>
+            </div>
+            <div style="order:1;">
+              <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(2rem,4.5vw,3.2rem);line-height:.92;letter-spacing:-.02em;margin:0 0 1rem;">gitsearch</h3>
+              <p style="font-size:1.02rem;line-height:1.62;color:var(--muted);margin:0 0 1rem;text-wrap:pretty;">Semantic search for GitHub. Ask in plain English; three retrieval lanes — full-text, dense vectors, and fuzzy name matching — are fused with Reciprocal Rank Fusion, then blended with saturating popularity and floored recency. Every result explains its own ranking, and each carries a usage guide an agent writes after reading the repository's actual files.</p>
+              <p style="font-size:1.02rem;line-height:1.62;color:var(--fg);margin:0 0 1.4rem;text-wrap:pretty;">Ranking changes are gated on a 200-query evaluation harness with 9,492 graded judgements — which has vetoed two finished changes for missing their pre-declared threshold.</p>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.9rem;margin-bottom:1.6rem;">
+                <div><p style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.5rem;font-weight:700;margin:0;color:var(--fg);">267K</p><p style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:.2rem 0 0;">repos crawled</p></div>
+                <div><p style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.5rem;font-weight:700;margin:0;color:var(--fg);">244K</p><p style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:.2rem 0 0;">embedded</p></div>
+                <div><p style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.5rem;font-weight:700;margin:0;color:var(--accent);">0.73→0.82</p><p style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:.2rem 0 0;">nDCG@10</p></div>
+                <div><p style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.5rem;font-weight:700;margin:0;color:var(--fg);">~134ms</p><p style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:.2rem 0 0;">warm query</p></div>
+              </div>
+              <p style="font-family:'JetBrains Mono',monospace;font-size:.72rem;line-height:1.6;color:var(--muted);margin:0 0 1.4rem;">4 independent services · Postgres + pgvector · scales to zero, kept warm for $0 · ~$30/mo all-in</p>
+              <div style="display:flex;flex-wrap:wrap;gap:.55rem;">
+                <a href="https://feynma1h.github.io/gitsearch" target="_blank" rel="noopener" style="border:1px solid var(--accent);color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.08em;padding:.55rem .9rem;">Demo ↗</a>
+                <a href="https://github.com/feynma1h/gitsearch" target="_blank" rel="noopener" style="border:1px solid var(--line);color:var(--fg);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.08em;padding:.55rem .9rem;">Code ↗</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- LINEWORK -->
+        <article data-reveal style="border:1px solid var(--line);padding:clamp(1.4rem,3.5vw,3rem);margin-bottom:clamp(2rem,4vw,3.5rem);">
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:1.4rem;">
+            <span>03</span><span style="color:var(--accent);">Live · Open source</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(1.6rem,4vw,3rem);align-items:center;">
+            <div>
+              <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(2rem,4.5vw,3.2rem);line-height:.92;letter-spacing:-.02em;margin:0 0 1rem;">linework</h3>
+              <p style="font-size:1.02rem;line-height:1.62;color:var(--muted);margin:0 0 1rem;text-wrap:pretty;">Generative art from equations, drawn live in the browser with trigonometry and noise — GPU shaders when it moves. Every piece exports as plotter-ready SVG for a real pen plotter. No frameworks, no build.</p>
+              <p style="font-size:.95rem;line-height:1.6;color:var(--fg);margin:0 0 1.6rem;">The hero you scrolled past is this — running.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:.55rem;">
+                <a href="https://feynma1h.github.io/linework" target="_blank" rel="noopener" style="border:1px solid var(--accent);color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.08em;padding:.55rem .9rem;">Gallery ↗</a>
+                <a href="https://github.com/feynma1h/linework" target="_blank" rel="noopener" style="border:1px solid var(--line);color:var(--fg);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.08em;padding:.55rem .9rem;">Code ↗</a>
+              </div>
+            </div>
+            <button type="button" id="lineworkTile" aria-label="Redraw the generative artwork" style="display:block;width:100%;padding:0;position:relative;border:1px solid var(--line);background:var(--bg);aspect-ratio:1/1;overflow:hidden;cursor:crosshair;" title="Click to redraw">
+              <canvas id="linework" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;display:block;"></canvas>
+              <span style="position:absolute;top:.7rem;left:.7rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);pointer-events:none;">trig + noise · plotter-ready</span>
+              <span style="position:absolute;bottom:.7rem;right:.7rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);pointer-events:none;">Click to redraw ↻</span>
+            </button>
+          </div>
+        </article>
+
+        <!-- PACKED BED -->
+        <article data-reveal style="border:1px solid var(--line);padding:clamp(1.4rem,3.5vw,3rem);">
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:1.4rem;">
+            <span>04</span><span style="color:var(--accent);">Research · Open source</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(1.6rem,4vw,3rem);align-items:center;">
+            <div style="position:relative;border:1px solid var(--line);background:var(--bg);aspect-ratio:16/10;overflow:hidden;order:2;">
+              <canvas id="packed" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;display:block;"></canvas>
+              <span style="position:absolute;top:.7rem;left:.7rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);">CFD streamlines · Fluent</span>
+            </div>
+            <div style="order:1;">
+              <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(1.8rem,4vw,2.9rem);line-height:.94;letter-spacing:-.02em;margin:0 0 1rem;">packed-bed-simulations</h3>
+              <p style="font-size:1.02rem;line-height:1.62;color:var(--muted);margin:0 0 1.4rem;text-wrap:pretty;">My IIT Delhi M.Tech thesis. Grow a packed-bed reactor with Blender rigid-body physics, measure porosity from images in MATLAB, then run CFD on foams and packed beds in Ansys Fluent.</p>
+              <p style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.1rem,2vw,1.5rem);font-weight:600;line-height:1.2;margin:0 0 1.6rem;color:var(--fg);">Simulation prep: 2+ days → under 2 hours.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:.55rem;">
+                <a href="https://github.com/feynma1h/packed-bed-simulations" target="_blank" rel="noopener" style="border:1px solid var(--line);color:var(--fg);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.08em;padding:.55rem .9rem;">Code ↗</a>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" aria-labelledby="h-experience" style="padding:clamp(5rem,11vw,10rem) clamp(1.1rem,4vw,3rem);border-top:1px solid var(--line);">
+      <div style="max-width:1180px;margin:0 auto;">
+        <h2 id="h-experience" data-reveal style="font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:0 0 2.2rem;font-weight:400;">03 / Experience</h2>
+        <div data-reveal style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.9rem 1.5rem;margin-bottom:.6rem;">
+          <div style="display:flex;align-items:center;gap:1.1rem;">
+            <span aria-hidden="true" style="flex-shrink:0;width:54px;height:54px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;padding:11px;color:var(--fg);">
+              <svg viewBox="0 0 1206.22 1060.95" fill="currentColor" style="width:100%;height:100%;display:block;">
+                <path d="M49.61,1060.95c74.53-47.23,123.68-132.76,123.68-225.26L173.24,0h-96.12v831.77c0,34.55-8.01,67.28-24.29,94.54-13.76,21.3-31.86,40.71-52.84,55.01l49.61,79.64Z"/>
+                <polygon points="465.45 803.57 465.45 0 369.33 0 369.33 897.13 907.61 897.13 849.94 803.57 465.45 803.57"/>
+                <path d="M1178.03,247.35C1178.03,108.94,1057.56,0,921.7,0h-260.17v93.56h261.45c91,0,156.36,70.49,156.36,153.79s-65.36,157.64-156.36,157.64h-262.73v93.56h194.8l248.63,398.58h102.53l-249.91-401.14c121.75-15.38,221.72-108.94,221.72-248.63Z"/>
+              </svg>
+            </span>
+            <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(2.3rem,5.5vw,4.4rem);line-height:.95;letter-spacing:-.02em;margin:0;">Jaguar Land Rover</h3>
+          </div>
+          <p style="font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0;">Jul 2022 — Oct 2025 · Bangalore</p>
+        </div>
+        <p data-reveal style="font-family:'JetBrains Mono',monospace;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 2.5rem;">Software Engineer</p>
+
+        <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(1.6rem,4vw,3.5rem);">
+          <div>
+            <p style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.35rem,2.6vw,2rem);font-weight:600;line-height:1.15;margin:0 0 1.2rem;text-wrap:balance;">I built the tooling a car company runs on.</p>
+            <p style="font-size:1.02rem;line-height:1.65;color:var(--muted);margin:0 0 1.2rem;text-wrap:pretty;">An in-house Python desktop suite for ECU communication — PDU signals and full SOME/IP workflows — as one unified engine behind several PySide6/Flask interfaces: a desktop simulator parsing ARXML and proto networks, a headless automation API, CarPlay-style dashboards, and a drag-and-drop GUI builder.</p>
+            <p style="font-size:1.02rem;line-height:1.65;color:var(--fg);margin:0;text-wrap:pretty;">It replaced Intrepid, Vector, and dSPACE tooling — saving roughly <strong style="color:var(--accent);font-weight:600;">£500K</strong> in licensing.</p>
+          </div>
+          <div style="display:grid;gap:0;align-content:start;">
+            <div style="border-top:1px solid var(--line);padding:1rem 0;display:flex;gap:1rem;"><span style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--accent);flex-shrink:0;">◦</span><p style="margin:0;font-size:.98rem;line-height:1.55;">Jira ↔ BigQuery data pipelines feeding real-time Tableau dashboards.</p></div>
+            <div style="border-top:1px solid var(--line);padding:1rem 0;display:flex;gap:1rem;"><span style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--accent);flex-shrink:0;">◦</span><p style="margin:0;font-size:.98rem;line-height:1.55;">A Selenium XML-extraction utility across 20+ REST endpoints.</p></div>
+            <div style="border-top:1px solid var(--line);padding:1rem 0;display:flex;gap:1rem;"><span style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--accent);flex-shrink:0;">◦</span><p style="margin:0;font-size:.98rem;line-height:1.55;">A Jira automation tool processing thousand-row supplier Excel files.</p></div>
+            <div style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:1rem 0;display:flex;gap:1rem;"><span style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--accent);flex-shrink:0;">◦</span><p style="margin:0;font-size:.98rem;line-height:1.55;">40+ org-wide Tableau dashboards, built and maintained — <strong style="font-weight:600;">Rank 1</strong> among all creators.</p></div>
+            <div style="margin-top:1.5rem;border:1px solid var(--accent);padding:1rem 1.2rem;">
+              <p style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 .4rem;">Award · 2025</p>
+              <p style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.2rem;font-weight:600;margin:0;">JLR Exceptional Creator Award</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOOLKIT -->
+    <section aria-labelledby="h-toolkit" style="padding:clamp(5rem,11vw,9rem) clamp(1.1rem,4vw,3rem);border-top:1px solid var(--line);">
+      <div style="max-width:1180px;margin:0 auto;">
+        <h2 id="h-toolkit" data-reveal style="font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:0 0 2.5rem;font-weight:400;">04 / Toolkit</h2>
+        <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(1.6rem,4vw,3rem);">
+          <div>
+            <p style="font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:.6rem;margin:0 0 1rem;">Languages</p>
+            <div style="display:flex;flex-wrap:wrap;gap:.45rem;">
+              <span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">Python</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">TypeScript / JS</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">Java</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">C++</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">C</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">SQL</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">Swift</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">MATLAB</span>
+            </div>
+          </div>
+          <div>
+            <p style="font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:.6rem;margin:0 0 1rem;">Backend &amp; Infra</p>
+            <div style="display:flex;flex-wrap:wrap;gap:.45rem;">
+              <span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">FastAPI</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">Flask</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">GCP · Cloud Run/Tasks/Eventarc</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">Cloud Run GPU (NVIDIA L4)</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">Firebase / Firestore</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">Docker</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">CI/CD</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">Postgres + pgvector</span>
+            </div>
+          </div>
+          <div>
+            <p style="font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:.6rem;margin:0 0 1rem;">Frontend &amp; Graphics</p>
+            <div style="display:flex;flex-wrap:wrap;gap:.45rem;">
+              <span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">Next.js</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">React</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">three.js + Spark (WebGL2 3DGS)</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">Canvas / SVG</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">PySide6</span>
+            </div>
+          </div>
+          <div>
+            <p style="font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:.6rem;margin:0 0 1rem;">AI &amp; Data</p>
+            <div style="display:flex;flex-wrap:wrap;gap:.45rem;">
+              <span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">Embeddings &amp; vector search</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">Hybrid retrieval &amp; RRF</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">IR evaluation (nDCG, qrels)</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">SAM 3 / SAM 3D Objects</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">RoomPlan geometry</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">Gaussian splatting</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">LLM apps (streaming, structured, vision)</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">Tableau / BigQuery</span>
+            </div>
+          </div>
+          <div>
+            <p style="font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:.6rem;margin:0 0 1rem;">Domain</p>
+            <div style="display:flex;flex-wrap:wrap;gap:.45rem;">
+              <span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">ARKit / spatial computing</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">CFD · Blender · Ansys Fluent</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BACKGROUND -->
+    <section id="background" aria-labelledby="h-background" style="padding:clamp(5rem,11vw,10rem) clamp(1.1rem,4vw,3rem);border-top:1px solid var(--line);">
+      <div style="max-width:1180px;margin:0 auto;">
+        <h2 id="h-background" data-reveal style="font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:0 0 2.5rem;font-weight:400;">05 / Background</h2>
+        <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(2rem,5vw,4rem);">
+          <div>
+            <p style="font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 1.2rem;">Education</p>
+            <div style="display:flex;align-items:center;gap:1.1rem;margin:0 0 .8rem;">
+              <span aria-hidden="true" style="flex-shrink:0;width:54px;height:54px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;padding:8px;">
+                <img src="iitd-logo.png" alt="" width="38" height="38" style="width:100%;height:100%;object-fit:contain;">
+              </span>
+              <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(1.8rem,4vw,2.8rem);line-height:.95;letter-spacing:-.02em;margin:0;">IIT Delhi</h3>
+            </div>
+            <p style="font-size:1.05rem;line-height:1.5;margin:0 0 .5rem;">B.Tech + M.Tech (Dual Degree), Chemical Engineering</p>
+            <p style="font-family:'JetBrains Mono',monospace;font-size:.82rem;letter-spacing:.06em;color:var(--muted);margin:0;">CGPA 8.6 / 10 · 2017 – 2022</p>
+          </div>
+          <div>
+            <p style="font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 1.2rem;">Honors</p>
+            <div style="display:grid;gap:0;">
+              <div style="border-top:1px solid var(--line);padding:.85rem 0;display:flex;justify-content:space-between;gap:1rem;"><span style="font-size:.98rem;">Department Rank 1 — Chemical Engineering</span></div>
+              <div style="border-top:1px solid var(--line);padding:.85rem 0;display:flex;justify-content:space-between;gap:1rem;"><span style="font-size:.98rem;">Semester Merit Award</span><span style="font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--accent);">×2</span></div>
+              <div style="border-top:1px solid var(--line);padding:.85rem 0;display:flex;justify-content:space-between;gap:1rem;"><span style="font-size:.98rem;">JEE Advanced — AIR 2525</span><span style="font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--muted);">top 1.14%</span></div>
+              <div style="border-top:1px solid var(--line);padding:.85rem 0;display:flex;justify-content:space-between;gap:1rem;"><span style="font-size:.98rem;">JEE Main — AIR 742</span><span style="font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--muted);">top 0.06%</span></div>
+              <div style="border-top:1px solid var(--line);padding:.85rem 0;display:flex;justify-content:space-between;gap:1rem;"><span style="font-size:.98rem;">JLR Exceptional Creator Award</span><span style="font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--muted);">2025</span></div>
+              <div style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:.85rem 0;display:flex;justify-content:space-between;gap:1rem;"><span style="font-size:.98rem;">SOF Int'l Math Olympiad</span><span style="font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--muted);">Zonal Rank 3</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <footer id="contact" aria-labelledby="h-contact" style="position:relative;padding:clamp(5rem,11vw,10rem) clamp(1.1rem,4vw,3rem) 3rem;border-top:1px solid var(--line);background:color-mix(in srgb,var(--panel) 55%,transparent);overflow:hidden;">
+      <div style="max-width:1180px;margin:0 auto;position:relative;z-index:1;">
+        <h2 id="h-contact" data-reveal style="font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:0 0 2rem;font-weight:400;">06 / Contact</h2>
+        <h3 data-reveal style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(2.6rem,8vw,6.5rem);line-height:.9;letter-spacing:-.03em;margin:0 0 1.2rem;text-wrap:balance;">Let's build the whole thing.</h3>
+        <p data-reveal style="font-size:clamp(1.05rem,2vw,1.4rem);line-height:1.4;color:var(--muted);max-width:38ch;margin:0 0 3rem;text-wrap:pretty;">Available for the parts of the stack nobody else wants to own — from the metal to the model.</p>
+
+        <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0;border-top:1px solid var(--line);">
+          <a href="mailto:23singhutkarsh@gmail.com" style="display:flex;flex-direction:column;gap:.4rem;border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:1.3rem 1rem;color:var(--fg);"><span style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);">Email</span><span style="font-size:1rem;word-break:break-all;">23singhutkarsh@gmail.com</span></a>
+          <a href="https://linkedin.com/in/feynmath" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:.4rem;border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:1.3rem 1rem;color:var(--fg);"><span style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);">LinkedIn ↗</span><span style="font-size:1rem;">in/feynmath</span></a>
+          <a href="https://github.com/feynma1h" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:.4rem;border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:1.3rem 1rem;color:var(--fg);"><span style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);">GitHub ↗</span><span style="font-size:1rem;">feynma1h</span></a>
+          <a href="resume.pdf" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:.4rem;border-bottom:1px solid var(--line);padding:1.3rem 1rem;color:var(--fg);"><span style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);">Résumé ↗</span><span style="font-size:1rem;">resume.pdf</span></a>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:1.5rem;margin-top:clamp(3rem,7vw,6rem);">
+          <p style="font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:clamp(2.5rem,10vw,7rem);line-height:.85;letter-spacing:-.02em;margin:0;opacity:.9;">Utkarsh Singh</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:right;line-height:1.8;">
+            <div>Bangalore, India · Open to remote</div>
+            <div>End of sheet · <span id="year"></span></div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+(function(){
+  var root = document.getElementById('root');
+  var pointer = { x:-9999, y:-9999, active:false };
+  var anims = [];
+  var rafId = null, _frameCount = 0, plotNo = 1;
+  var state = { theme:'dark' };
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var pal = {};
+  var THEMES = {
+    dark:  { '--bg':'#0A0B0E','--bg2':'#111318','--panel':'#0E1015','--fg':'#ECE9E0','--muted':'#8A8D97','--line':'rgba(236,233,224,0.12)','--grid':'rgba(236,233,224,0.045)','--blue':'#6EA0E0' },
+    light: { '--bg':'#F2EEE4','--bg2':'#E9E4D7','--panel':'#EDE8DC','--fg':'#17140E','--muted':'#6A6456','--line':'rgba(23,20,14,0.14)','--grid':'rgba(23,20,14,0.05)','--blue':'#3D68A6' }
+  };
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  function hexToRgba(hex, a){
+    hex = (hex||'#000').trim();
+    if (hex.indexOf('rgb')===0) return hex;
+    var h = hex.replace('#','');
+    if (h.length === 3) h = h.split('').map(function(c){return c+c;}).join('');
+    var r=parseInt(h.slice(0,2),16), g=parseInt(h.slice(2,4),16), b=parseInt(h.slice(4,6),16);
+    return 'rgba('+r+','+g+','+b+','+a+')';
+  }
+  function applyTheme(theme){
+    var t = THEMES[theme] || THEMES.dark;
+    Object.keys(t).forEach(function(k){ root.style.setProperty(k, t[k]); });
+    document.body.style.background = t['--bg'];
+  }
+  function refreshPalette(){
+    var cs = getComputedStyle(root); var g = function(n){ return cs.getPropertyValue(n).trim(); };
+    pal = { bg:g('--bg'), fg:g('--fg'), accent:g('--accent'), muted:g('--muted'), blue:g('--blue'), light: state.theme==='light' };
+  }
+
+  var BUILDERS = {};
+
+  function setup(canvas, mode, opts){
+    if (!canvas) return;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var ctx = canvas.getContext('2d');
+    var dim = { w:1, h:1 };
+    function size(){
+      var r = canvas.getBoundingClientRect();
+      dim.w = Math.max(1, r.width); dim.h = Math.max(1, r.height);
+      canvas.width = Math.round(dim.w*dpr); canvas.height = Math.round(dim.h*dpr);
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+    size();
+    var st = BUILDERS[mode](ctx, dim, opts);
+    var anim = {
+      canvas:canvas, ctx:ctx, dim:dim, visible:false, mode:mode, opts:opts,
+      frame:function(t){ st.frame(t); },
+      // Resizing the backing store clears it, so always repaint immediately —
+      // otherwise a panel sits blank until the next observer callback.
+      rebuild:function(){ size(); st = BUILDERS[mode](ctx, dim, opts); try { st.frame(0); } catch(e){} }
+    };
+    anim.ro = new ResizeObserver(function(){ anim.rebuild(); if(reduced) renderStatic(anim); });
+    anim.ro.observe(canvas);
+    anim.io = new IntersectionObserver(function(es){ es.forEach(function(e){ anim.visible = e.isIntersecting; }); }, { threshold:0 });
+    anim.io.observe(canvas);
+    anims.push(anim);
+    // Paint one frame straight away so a panel is never an empty box while we wait
+    // for IntersectionObserver (which is throttled in background/inactive tabs).
+    if (reduced) renderStatic(anim); else { try { anim.frame(0); } catch(e){} }
+  }
+  function renderStatic(anim){ try { for (var i=0;i<160;i++) anim.frame(i*0.06); } catch(e){} }
+  function startLoop(){
+    function loop(){
+      var t = performance.now()/1000;
+      for (var i=0;i<anims.length;i++){ var a=anims[i]; if (a.visible){ try { a.frame(t); } catch(e){} } }
+      _frameCount++;
+      rafId = requestAnimationFrame(loop);
+    }
+    rafId = requestAnimationFrame(loop);
+  }
+
+  // FLOW FIELD (hero + linework)
+  // The plotter draws a sheet, then the sheet is replaced and it starts a new plot.
+  // Without this cycle, alpha-fade leaves permanent 8-bit residue and the frame
+  // silts up into an unreadable hairball after a few minutes.
+  BUILDERS.flow = function(ctx, dim, opts){
+    var A = opts.alpha != null ? opts.alpha : 0.7;
+    var seedOff = (opts.seed || 0) + Math.random()*100;
+    var cols = [ hexToRgba(pal.accent, 0.85*A), hexToRgba(pal.fg, 0.40*A), hexToRgba(pal.blue, 0.55*A) ];
+    var density = opts.dense ? 3400 : 5200;
+    var N = Math.round(Math.min(300, Math.max(60, dim.w*dim.h/density)));
+    var DRAW = opts.drawFor || 24;   // seconds of plotting
+    var LIFT = opts.liftFor || 3.2;  // seconds for the sheet to clear
+    var baseFade = pal.light ? 0.020 : 0.015;
+    var pens = [];
+    function seed(p){ p.x=Math.random()*dim.w; p.y=Math.random()*dim.h; p.life=30+Math.random()*130; p.col=cols[(Math.random()*cols.length)|0]; p.wd=0.5+Math.random()*0.9; }
+    for (var i=0;i<N;i++){ var p={}; seed(p); pens.push(p); }
+    var segEl=document.getElementById('seg'), plotEl=document.getElementById('plotNo');
+    var mode='draw', modeT=null, cycleSegs=0;
+    return { frame:function(t){
+      if(modeT===null){ modeT=t; ctx.fillStyle=pal.bg; ctx.fillRect(0,0,dim.w,dim.h); }
+      var el = t-modeT, fade = baseFade;
+      if(mode==='lift'){
+        var k = Math.min(1, el/LIFT);
+        fade = baseFade + k*k*0.34;   // ramp hard so the sheet actually reaches bare paper
+      }
+      ctx.fillStyle = hexToRgba(pal.bg, fade);
+      ctx.fillRect(0,0,dim.w,dim.h);
+      var s=0.0024, tt=t*0.13+seedOff;
+      var mx=-9999,my=-9999;
+      if(opts.interactive && pointer.active){ var r=ctx.canvas.getBoundingClientRect(); mx=pointer.x-r.left; my=pointer.y-r.top; }
+      for(var k2=0;k2<pens.length;k2++){ var pp=pens[k2];
+        var a = Math.PI*(Math.sin(pp.x*s+tt)+Math.sin(pp.y*s*1.28-tt*0.7)+Math.sin((pp.x+pp.y)*s*0.5+tt*0.35));
+        if(opts.interactive && pointer.active){ var dx=pp.x-mx, dy=pp.y-my, d=Math.hypot(dx,dy); if(d<170){ var sw=Math.atan2(dy,dx)+Math.PI/2; var infl=(1-d/170); a = a*(1-infl)+sw*infl; } }
+        var nx=pp.x+Math.cos(a)*3.4, ny=pp.y+Math.sin(a)*3.4;
+        ctx.strokeStyle=pp.col; ctx.lineWidth=pp.wd;
+        ctx.beginPath(); ctx.moveTo(pp.x,pp.y); ctx.lineTo(nx,ny); ctx.stroke();
+        pp.x=nx;pp.y=ny;pp.life--;
+        if(pp.life<=0||nx<-5||ny<-5||nx>dim.w+5||ny>dim.h+5) seed(pp);
+      }
+      if(opts.counter){
+        cycleSegs += pens.length;
+        if(_frameCount%18===0 && segEl) segEl.textContent = cycleSegs.toLocaleString();
+      }
+      if(mode==='draw'){
+        if(el > DRAW){ mode='lift'; modeT=t; }
+      } else if(el >= LIFT){
+        ctx.fillStyle=pal.bg; ctx.fillRect(0,0,dim.w,dim.h);   // invisible: already at bare paper
+        for(var q=0;q<pens.length;q++) seed(pens[q]);
+        cycleSegs = 0;
+        if(opts.counter && plotEl){
+          plotNo++;
+          plotEl.textContent = 'Plot ' + String(plotNo).padStart(3,'0');
+        }
+        mode='draw'; modeT=t;
+      }
+    }};
+  };
+
+  // ROOM WIREFRAME (roomstudio)
+  BUILDERS.room = function(ctx, dim, opts){
+    function box(cx,cy,cz,w,h,d){
+      var x0=cx-w/2,x1=cx+w/2,y0=cy-h/2,y1=cy+h/2,z0=cz-d/2,z1=cz+d/2;
+      var v=[[x0,y0,z0],[x1,y0,z0],[x1,y1,z0],[x0,y1,z0],[x0,y0,z1],[x1,y0,z1],[x1,y1,z1],[x0,y1,z1]];
+      var e=[[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]];
+      return {v:v,e:e};
+    }
+    var room = box(0,0,0,4.2,2.6,4.2);
+    var sofa = box(-1.0,-0.85,0.9,1.8,0.9,0.8);
+    var table = box(0.9,-1.0,-0.5,1.1,0.6,1.1);
+    var det = box(-1.0,-0.85,0.9,2.0,1.1,1.0);
+    var groups = [ {g:room,hi:false},{g:sofa,hi:false},{g:table,hi:false},{g:det,hi:true} ];
+    var focal = Math.min(dim.w,dim.h)*0.9;
+    var cam = 6.4;
+    var start = null;
+    function proj(p, yaw){
+      var cs=Math.cos(yaw), sn=Math.sin(yaw);
+      var x=p[0]*cs - p[2]*sn;
+      var z=p[0]*sn + p[2]*cs;
+      var y=p[1];
+      var zz = z + cam;
+      var sx = dim.w/2 + (x*focal)/zz;
+      var sy = dim.h/2 - (y*focal)/zz + dim.h*0.06;
+      return [sx,sy];
+    }
+    return { frame:function(t){
+      if(start===null) start=t;
+      var el = t-start;
+      var yaw = Math.sin(t*0.16)*0.4 - 0.15;
+      ctx.fillStyle=pal.bg; ctx.fillRect(0,0,dim.w,dim.h);
+      var reveal = Math.min(1, el/2.4);
+      for(var gi=0;gi<groups.length;gi++){ var G=groups[gi].g, hi=groups[gi].hi;
+        var projected = G.v.map(function(v){ return proj(v,yaw); });
+        ctx.strokeStyle = hi ? hexToRgba(pal.accent,0.9) : hexToRgba(pal.fg,0.42);
+        ctx.lineWidth = hi ? 1.4 : 0.9;
+        G.e.forEach(function(edge,idx){
+          var prog = Math.max(0, Math.min(1, reveal*G.e.length - idx));
+          if(prog<=0) return;
+          var a=projected[edge[0]], b=projected[edge[1]];
+          ctx.beginPath(); ctx.moveTo(a[0],a[1]);
+          ctx.lineTo(a[0]+(b[0]-a[0])*prog, a[1]+(b[1]-a[1])*prog); ctx.stroke();
+        });
+        if(hi && reveal>=1){
+          ctx.fillStyle=hexToRgba(pal.accent,0.9);
+          projected.forEach(function(pt){ ctx.fillRect(pt[0]-2,pt[1]-0.5,4,1); ctx.fillRect(pt[0]-0.5,pt[1]-2,1,4); });
+        }
+      }
+    }};
+  };
+
+  // SCATTER (gitsearch embeddings)
+  // Cluster seeds are laid on a jittered 4x3 lattice in NORMALISED space, so the
+  // field always spans the whole frame (purely random seeds clumped into one
+  // corner) and any resize redistributes correctly without a rebuild.
+  BUILDERS.scatter = function(ctx, dim, opts){
+    var COLS=4, ROWS=3, PAD=0.06;
+    var clusters=[];
+    for(var cy=0;cy<ROWS;cy++) for(var cx=0;cx<COLS;cx++){
+      clusters.push({
+        x: PAD + (cx+0.5+(Math.random()-0.5)*0.55)/COLS*(1-2*PAD),
+        y: PAD + (cy+0.5+(Math.random()-0.5)*0.55)/ROWS*(1-2*PAD)
+      });
+    }
+    var N=Math.round(Math.min(190, Math.max(90, dim.w*dim.h/1100)));
+    var pts=[];
+    for(var j=0;j<N;j++){
+      var c=clusters[j % clusters.length];   // round-robin: every cluster gets points
+      var nx=Math.max(0.03,Math.min(0.97, c.x+(Math.random()-0.5)*0.20));
+      var ny=Math.max(0.04,Math.min(0.96, c.y+(Math.random()-0.5)*0.24));
+      pts.push({nx:nx, ny:ny, ph:Math.random()*6.28, sp:0.4+Math.random()*0.7});
+    }
+    var pairs=[]; var R=0.13;
+    for(var a=0;a<pts.length && pairs.length<300;a++) for(var b=a+1;b<pts.length && pairs.length<300;b++){
+      var ddx=pts[a].nx-pts[b].nx, ddy=pts[a].ny-pts[b].ny;
+      if(ddx*ddx+ddy*ddy<R*R) pairs.push([a,b]);
+    }
+    var anchor=0, qStart=null;
+    return { frame:function(t){
+      ctx.fillStyle=pal.bg; ctx.fillRect(0,0,dim.w,dim.h);
+      var P=pts.map(function(p){ return {x:p.nx*dim.w+Math.sin(t*0.5*p.sp+p.ph)*3.0, y:p.ny*dim.h+Math.cos(t*0.45*p.sp+p.ph)*3.0}; });
+      ctx.strokeStyle=hexToRgba(pal.fg,0.10); ctx.lineWidth=0.7;
+      for(var pi=0;pi<pairs.length;pi++){ var e=pairs[pi]; ctx.beginPath(); ctx.moveTo(P[e[0]].x,P[e[0]].y); ctx.lineTo(P[e[1]].x,P[e[1]].y); ctx.stroke(); }
+      if(qStart===null||t-qStart>3.4){ qStart=t; anchor=(Math.random()*P.length)|0; }
+      var ph=Math.min(1,(t-qStart)/1.5);
+      var near=P.map(function(p,i){ return {i:i,d:Math.hypot(p.x-P[anchor].x,p.y-P[anchor].y)}; }).filter(function(o){return o.i!==anchor;}).sort(function(a,b){return a.d-b.d;}).slice(0,6);
+      ctx.strokeStyle=hexToRgba(pal.accent,0.7); ctx.lineWidth=1;
+      near.forEach(function(o){ var b=P[o.i]; ctx.beginPath(); ctx.moveTo(P[anchor].x,P[anchor].y); ctx.lineTo(P[anchor].x+(b.x-P[anchor].x)*ph, P[anchor].y+(b.y-P[anchor].y)*ph); ctx.stroke(); });
+      P.forEach(function(p,i){
+        var isN=near.some(function(o){return o.i===i;});
+        ctx.fillStyle=(i===anchor)?hexToRgba(pal.accent,0.95):(isN?hexToRgba(pal.accent,0.7):hexToRgba(pal.fg,0.5));
+        var s=(i===anchor)?3:1.4;
+        ctx.fillRect(p.x-s,p.y-0.5,s*2,1); ctx.fillRect(p.x-0.5,p.y-s,1,s*2);
+      });
+    }};
+  };
+
+  // STREAMLINES (packed-bed CFD)
+  // Superposed potential flow past cylinders (doublet field), not naive repulsion.
+  // Naive 1/d^2 repulsion exceeds the free-stream velocity at a particle surface,
+  // so streamlines reverse head-on and stall in the gaps between particles instead
+  // of threading the bed. The doublet field slips around each particle, and a
+  // minimum downstream component guarantees every line reaches the outlet.
+  BUILDERS.streamlines = function(ctx, dim, opts){
+    var r=Math.max(11,Math.min(dim.w,dim.h)/11);
+    var circles=[];
+    var stepX=r*1.85, stepY=r*1.7;
+    // Radii and jitter are bounded so neighbouring particles never intersect: an
+    // overlapping lattice has no percolating void, and no streamline can cross it.
+    for(var y=stepY*0.6,row=0;y<dim.h-r*0.3;y+=stepY,row++){
+      var off=(row%2)? stepX/2:0;
+      for(var x=stepX*0.5+off;x<dim.w+r;x+=stepX){
+        circles.push({x:x+(Math.random()-0.5)*r*0.16, y:y+(Math.random()-0.5)*r*0.16, r:r*(0.52+Math.random()*0.18)});
+      }
+    }
+    var STEP=3.0, MAXSTEP=1600, MINFWD=0.20;
+    var lines=[]; var seeds=Math.max(10,Math.round(dim.h/22));
+    for(var i=0;i<seeds;i++){
+      var sx=-10, sy=(i+0.5)*(dim.h/seeds); var pts=[[sx,sy]];
+      for(var step=0;step<MAXSTEP && sx<dim.w+12;step++){
+        var vx=1, vy=0;
+        for(var ci=0;ci<circles.length;ci++){
+          var c=circles[ci], dx=sx-c.x, dy=sy-c.y, r2=dx*dx+dy*dy, a2=c.r*c.r;
+          if(r2 < a2*12 && r2 > 1e-6){
+            var inv=a2/(r2*r2);
+            vx += -(dx*dx-dy*dy)*inv;
+            vy += -(2*dx*dy)*inv;
+          }
+        }
+        vy += ((dim.h/2)-sy)*0.0006;                 // gentle centring
+        var m=Math.hypot(vx,vy)||1, ux=vx/m, uy=vy/m;
+        if(ux < MINFWD){                              // never stall or run backwards
+          ux = MINFWD;
+          uy = (uy<0?-1:1)*Math.sqrt(1-MINFWD*MINFWD);
+        }
+        sx += ux*STEP; sy += uy*STEP;
+        if(sy < 2){ sy = 2; } else if(sy > dim.h-2){ sy = dim.h-2; }
+        for(var pass=0;pass<3;pass++){               // never cut through a particle
+          for(var cj=0;cj<circles.length;cj++){
+            var cc=circles[cj], ddx=sx-cc.x, ddy=sy-cc.y, dd=Math.hypot(ddx,ddy);
+            var minD=cc.r*1.03;
+            if(dd < minD && dd > 1e-6){ sx=cc.x+ddx/dd*minD; sy=cc.y+ddy/dd*minD; }
+          }
+        }
+        pts.push([sx,sy]);
+      }
+      lines.push(pts);
+    }
+    return { frame:function(t){
+      ctx.fillStyle=pal.bg; ctx.fillRect(0,0,dim.w,dim.h);
+      ctx.strokeStyle=hexToRgba(pal.fg,0.34); ctx.lineWidth=0.9;
+      for(var ci=0;ci<circles.length;ci++){ var c=circles[ci]; ctx.beginPath(); ctx.arc(c.x,c.y,c.r,0,6.2832); ctx.stroke(); }
+      ctx.strokeStyle=hexToRgba(pal.accent,0.75); ctx.lineWidth=1.1;
+      ctx.setLineDash([5,9]); ctx.lineDashOffset=-t*42;
+      for(var li=0;li<lines.length;li++){ var pts=lines[li]; ctx.beginPath(); ctx.moveTo(pts[0][0],pts[0][1]); for(var pi=1;pi<pts.length;pi++) ctx.lineTo(pts[pi][0],pts[pi][1]); ctx.stroke(); }
+      ctx.setLineDash([]);
+    }};
+  };
+
+  function setupReveals(){
+    var els = [].slice.call(root.querySelectorAll('[data-reveal]'));
+    if(reduced || !('IntersectionObserver' in window)){ els.forEach(function(e){ e.style.opacity=1; }); return; }
+    els.forEach(function(e){ e.style.opacity=0; e.style.transform='translateY(22px)'; e.style.transition='opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1)'; });
+    function show(e){ e.style.opacity=1; e.style.transform='none'; }
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ show(en.target); obs.unobserve(en.target); } });
+    },{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(e){ obs.observe(e); });
+    // Safety net: content must never be stranded invisible. A deep link, a restored
+    // scroll position, or a fast fling can carry an element past the viewport without
+    // it ever satisfying the threshold, and it would stay at opacity 0 forever.
+    function sweep(){
+      els.forEach(function(e){
+        if(e.style.opacity === '1') return;
+        var r = e.getBoundingClientRect();
+        if(r.bottom < window.innerHeight*0.9 || r.top < window.innerHeight){ show(e); obs.unobserve(e); }
+      });
+    }
+    window.addEventListener('load', sweep);
+    window.addEventListener('scroll', sweep, { passive:true });
+    setTimeout(sweep, 1200);
+  }
+
+  function toggleTheme(){
+    state.theme = state.theme==='dark' ? 'light' : 'dark';
+    applyTheme(state.theme);
+    document.getElementById('themeLabel').textContent = state.theme==='dark' ? 'Screen' : 'Paper';
+    refreshPalette();
+    anims.forEach(function(a){ if(a.rebuild) a.rebuild(); if(reduced) renderStatic(a); });
+  }
+  function reseedFlow(){
+    var a = anims.filter(function(x){ return x.canvas === document.getElementById('linework'); })[0];
+    if(a && a.rebuild){ a.rebuild(); if(reduced) renderStatic(a); }
+  }
+
+  // boot
+  applyTheme(state.theme);
+  refreshPalette();
+  window.addEventListener('mousemove', function(e){ pointer = { x:e.clientX, y:e.clientY, active:true }; });
+  document.getElementById('themeBtn').addEventListener('click', toggleTheme);
+  document.getElementById('lineworkTile').addEventListener('click', reseedFlow);
+
+  setup(document.getElementById('hero'), 'flow', { alpha:0.5, interactive:true, counter:true, drawFor:24, liftFor:3.2 });
+  setup(document.getElementById('linework'), 'flow', { alpha:0.95, seed:7.3, dense:true, drawFor:16, liftFor:2.4 });
+  setup(document.getElementById('room'), 'room', {});
+  setup(document.getElementById('scatter'), 'scatter', {});
+  setup(document.getElementById('packed'), 'streamlines', {});
+  if(!reduced) startLoop();
+  document.addEventListener('visibilitychange', function(){
+    if(document.hidden){ if(rafId){ cancelAnimationFrame(rafId); rafId=null; } }
+    else if(!reduced && !rafId) startLoop();
+  });
+  setupReveals();
+})();
+</script>
 </body>
 </html>
