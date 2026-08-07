@@ -644,38 +644,68 @@
   };
 
   // STREAMLINES (packed-bed CFD)
-  // Superposed potential flow past cylinders (doublet field), not naive repulsion.
-  // Naive 1/d^2 repulsion exceeds the free-stream velocity at a particle surface,
-  // so streamlines reverse head-on and stall in the gaps between particles instead
-  // of threading the bed. The doublet field slips around each particle, and a
-  // minimum downstream component guarantees every line reaches the outlet.
+  // The bed is a RANDOM packing settled by relaxation, not a lattice — a lattice
+  // reads as a mechanical grid, and a real bed is randomly packed. Radii are
+  // polydisperse and a minimum gap is enforced, so a percolating void always exists.
+  // Flow is superposed potential flow past cylinders (doublet field) rather than
+  // naive repulsion, which would exceed the free-stream velocity at a particle
+  // surface and stall the line head-on. A tracer-dispersion term perturbs each
+  // path independently, so neighbouring paths diverge, converge and cross the way
+  // dye traces do in a real bed instead of running as clean parallel curves.
   BUILDERS.streamlines = function(ctx, dim, opts){
-    var r=Math.max(11,Math.min(dim.w,dim.h)/11);
-    var circles=[];
-    var stepX=r*1.85, stepY=r*1.7;
-    // Radii and jitter are bounded so neighbouring particles never intersect: an
-    // overlapping lattice has no percolating void, and no streamline can cross it.
-    for(var y=stepY*0.6,row=0;y<dim.h-r*0.3;y+=stepY,row++){
-      var off=(row%2)? stepX/2:0;
-      for(var x=stepX*0.5+off;x<dim.w+r;x+=stepX){
-        circles.push({x:x+(Math.random()-0.5)*r*0.16, y:y+(Math.random()-0.5)*r*0.16, r:r*(0.52+Math.random()*0.18)});
+    var rB=Math.max(8,Math.min(dim.w,dim.h)/15);
+    var GAP=rB*0.26;
+    var n=Math.round((dim.w*dim.h)/(Math.PI*rB*rB)*0.55);
+    var circles=[], i, j;
+    for(i=0;i<n;i++) circles.push({
+      x: Math.random()*(dim.w+2*rB)-rB,
+      y: rB+Math.random()*(dim.h-2*rB),
+      r: rB*(0.62+Math.random()*0.53)
+    });
+    for(var pass2=0;pass2<90;pass2++){               // settle: push overlaps apart
+      for(i=0;i<circles.length;i++) for(j=i+1;j<circles.length;j++){
+        var A=circles[i], B=circles[j];
+        var ddx=B.x-A.x, ddy=B.y-A.y, dd=Math.hypot(ddx,ddy)||0.001;
+        var need=A.r+B.r+GAP;
+        if(dd<need){
+          var push=(need-dd)/2, px=ddx/dd, py=ddy/dd;
+          A.x-=px*push; A.y-=py*push; B.x+=px*push; B.y+=py*push;
+        }
+      }
+      for(i=0;i<circles.length;i++){
+        var P=circles[i];
+        if(P.y<P.r+1) P.y=P.r+1;
+        if(P.y>dim.h-P.r-1) P.y=dim.h-P.r-1;
+        if(P.x<P.r-4) P.x=P.r-4;                     // keep clear of the inlet plane
       }
     }
-    var STEP=3.0, MAXSTEP=1600, MINFWD=0.20;
-    var lines=[]; var seeds=Math.max(10,Math.round(dim.h/22));
-    for(var i=0;i<seeds;i++){
-      var sx=-10, sy=(i+0.5)*(dim.h/seeds); var pts=[[sx,sy]];
+
+    function deflect(p){                              // never sit inside a particle
+      for(var k=0;k<7;k++) for(var q=0;q<circles.length;q++){
+        var c=circles[q], dx=p[0]-c.x, dy=p[1]-c.y, d=Math.hypot(dx,dy), md=c.r*1.03;
+        if(d<md && d>1e-6){ p[0]=c.x+dx/d*md; p[1]=c.y+dy/d*md; }
+      }
+      return p;
+    }
+
+    var STEP=2.0, MAXSTEP=2400, MINFWD=0.20, WOBBLE=0.95;
+    var lines=[], seeds=Math.max(10,Math.round(dim.h/20));
+    for(i=0;i<seeds;i++){
+      var sd=i*1.7+0.3;                               // per-path dispersion seed
+      var seedPt=deflect([-10,(i+0.5)*(dim.h/seeds)]);
+      var sx=seedPt[0], sy=seedPt[1], pts=[[sx,sy]];
       for(var step=0;step<MAXSTEP && sx<dim.w+12;step++){
         var vx=1, vy=0;
         for(var ci=0;ci<circles.length;ci++){
-          var c=circles[ci], dx=sx-c.x, dy=sy-c.y, r2=dx*dx+dy*dy, a2=c.r*c.r;
+          var c2=circles[ci], dx2=sx-c2.x, dy2=sy-c2.y, r2=dx2*dx2+dy2*dy2, a2=c2.r*c2.r;
           if(r2 < a2*12 && r2 > 1e-6){
             var inv=a2/(r2*r2);
-            vx += -(dx*dx-dy*dy)*inv;
-            vy += -(2*dx*dy)*inv;
+            vx += -(dx2*dx2-dy2*dy2)*inv;
+            vy += -(2*dx2*dy2)*inv;
           }
         }
-        vy += ((dim.h/2)-sy)*0.0006;                 // gentle centring
+        vy += ((dim.h/2)-sy)*0.0006;                                     // gentle centring
+        vy += WOBBLE*Math.sin(sx*0.035+sd*7.13)*Math.cos(sy*0.028-sd*3.7); // dispersion
         var m=Math.hypot(vx,vy)||1, ux=vx/m, uy=vy/m;
         if(ux < MINFWD){                              // never stall or run backwards
           ux = MINFWD;
@@ -683,24 +713,24 @@
         }
         sx += ux*STEP; sy += uy*STEP;
         if(sy < 2){ sy = 2; } else if(sy > dim.h-2){ sy = dim.h-2; }
-        for(var pass=0;pass<3;pass++){               // never cut through a particle
-          for(var cj=0;cj<circles.length;cj++){
-            var cc=circles[cj], ddx=sx-cc.x, ddy=sy-cc.y, dd=Math.hypot(ddx,ddy);
-            var minD=cc.r*1.03;
-            if(dd < minD && dd > 1e-6){ sx=cc.x+ddx/dd*minD; sy=cc.y+ddy/dd*minD; }
-          }
-        }
+        var np=deflect([sx,sy]); sx=np[0]; sy=np[1];
         pts.push([sx,sy]);
       }
-      lines.push(pts);
+      lines.push({pts:pts, a:0.5+Math.random()*0.38});
     }
     return { frame:function(t){
       ctx.fillStyle=pal.bg; ctx.fillRect(0,0,dim.w,dim.h);
       ctx.strokeStyle=hexToRgba(pal.fg,0.34); ctx.lineWidth=0.9;
       for(var ci=0;ci<circles.length;ci++){ var c=circles[ci]; ctx.beginPath(); ctx.arc(c.x,c.y,c.r,0,6.2832); ctx.stroke(); }
-      ctx.strokeStyle=hexToRgba(pal.accent,0.75); ctx.lineWidth=1.1;
       ctx.setLineDash([5,9]); ctx.lineDashOffset=-t*42;
-      for(var li=0;li<lines.length;li++){ var pts=lines[li]; ctx.beginPath(); ctx.moveTo(pts[0][0],pts[0][1]); for(var pi=1;pi<pts.length;pi++) ctx.lineTo(pts[pi][0],pts[pi][1]); ctx.stroke(); }
+      for(var li=0;li<lines.length;li++){
+        var L=lines[li], pts=L.pts;
+        ctx.strokeStyle=hexToRgba(pal.accent,L.a);   // varied per path, suggesting velocity
+        ctx.lineWidth=0.9+L.a*0.5;
+        ctx.beginPath(); ctx.moveTo(pts[0][0],pts[0][1]);
+        for(var pi=1;pi<pts.length;pi++) ctx.lineTo(pts[pi][0],pts[pi][1]);
+        ctx.stroke();
+      }
       ctx.setLineDash([]);
     }};
   };
