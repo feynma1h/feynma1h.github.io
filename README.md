@@ -4,11 +4,14 @@ Personal portfolio — **https://feynma1h.github.io**
 
 A single self-contained page. No build step, no bundler, no dependencies: one
 `index.html` with inline CSS and vanilla JavaScript, served straight off GitHub
-Pages. The only external request is the webfont stylesheet.
+Pages. The only external requests are the Google webfonts — one stylesheet and
+the font files it loads.
 
-Every image on the page is generated at runtime on a `<canvas>` — the hero flow
-field, the room wireframe, the embedding scatter, the plotter artwork, and the
-packed-bed streamlines are all drawn from code, not loaded as assets.
+Every illustration on the page is generated at runtime on a `<canvas>` — the
+hero flow field, the room wireframe, the PDU bit-layout, the embedding scatter,
+the plotter artwork, and the packed-bed streamlines are all drawn from code,
+not loaded as assets. The only images shipped as files are the IIT Delhi crest
+and the social-preview card.
 
 ## Local preview
 
@@ -25,8 +28,9 @@ index.html      the entire site
 404.html        styled not-found page
 favicon.svg     tab icon
 og-card.png     social preview image (1200×630)
+og-card.html    source for og-card.png; the capture command is a comment at the top
 iitd-logo.png   IIT Delhi crest, Background section
-resume.pdf      linked from the header and the contact grid
+resume.pdf      linked from the header, the hero and the contact grid
 ```
 
 ## Licence

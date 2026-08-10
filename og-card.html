@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!-- Source for og-card.png, the 1200x630 social-preview image. To recapture:
+
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+    --headless=new --disable-gpu --hide-scrollbars \
+    --force-device-scale-factor=1 --window-size=1200,630 \
+    --virtual-time-budget=9000 \
+    --screenshot=og-card.png "file://$PWD/og-card.html"
+
+  The virtual-time budget gives the webfonts time to arrive before the shot. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>OG card — 1200x630</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=JetBrains+Mono:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0}
+  html,body{width:1200px;height:630px;overflow:hidden}
+  body{
+    position:relative;background:#0A0B0E;color:#ECE9E0;
+    background-image:linear-gradient(rgba(236,233,224,0.045) 1px,transparent 1px),linear-gradient(90deg,rgba(236,233,224,0.045) 1px,transparent 1px);
+    background-size:48px 48px;
+    font-family:'Space Grotesk',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  canvas{position:absolute;inset:0;width:1200px;height:630px}
+  .content{position:absolute;inset:0;padding:64px 72px;display:flex;flex-direction:column}
+  .brand{display:flex;align-items:center;gap:16px}
+  .brand span{font-family:'JetBrains Mono',monospace;font-size:20px;letter-spacing:.28em;color:#8A8D97}
+  h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:104px;line-height:.92;letter-spacing:-.03em;margin-top:60px}
+  .rule{width:64px;height:4px;background:#FF4A2B;margin:32px 0 28px}
+  .tag{font-size:31px;font-weight:400;color:#ECE9E0}
+  .mono{font-family:'JetBrains Mono',monospace;font-size:21px;letter-spacing:.04em;color:#8A8D97;margin-top:22px;line-height:1.65}
+  .url{font-family:'JetBrains Mono',monospace;font-size:21px;letter-spacing:.06em;color:#5E616B;margin-top:18px}
+</style>
+</head>
+<body>
+<canvas id="art" width="1200" height="630"></canvas>
+<div class="content">
+  <div class="brand">
+    <svg width="34" height="34" viewBox="0 0 22 22" fill="none"><rect x="1" y="1" width="20" height="20" stroke="#FF4A2B" stroke-width="1"/><path d="M11 1v20M1 11h20" stroke="rgba(236,233,224,0.25)" stroke-width="1"/><circle cx="11" cy="11" r="3.2" stroke="#FF4A2B" stroke-width="1.4"/></svg>
+    <span>UTKARSH&nbsp;&nbsp;SINGH</span>
+  </div>
+  <h1>Software<br>Engineer</h1>
+  <div class="rule"></div>
+  <p class="tag">I drop into any stack and ship the whole thing.</p>
+  <p class="mono">Vehicle networks · ARKit · GPU perception<br>embeddings · CFD · pen plotters</p>
+  <p class="url">feynma1h.github.io</p>
+</div>
+<script>
+  // Same flow field the live hero plots, drawn once, synchronously: pens advance
+  // through a sinusoidal angle field and leave ink. Seeded to the right half so
+  // the type column stays clear.
+  (function(){
+    var ctx = document.getElementById('art').getContext('2d');
+    var W=1200, H=630;
+    function rgba(r,g,b,a){ return 'rgba('+r+','+g+','+b+','+a+')'; }
+    var cols=[ [255,74,43,0.38], [236,233,224,0.17], [110,160,224,0.24] ];
+    var seedOff=41.7, s=0.0024, tt=seedOff;
+    var pens=[];
+    function seed(p){
+      p.x=560+Math.random()*760;         // bleed past the right edge so strokes exit
+      p.y=Math.random()*H;
+      p.life=200+Math.random()*320;
+      var c=cols[(Math.random()*cols.length)|0];
+      p.col=rgba(c[0],c[1],c[2],c[3]);
+      p.wd=0.5+Math.random()*0.8;
+    }
+    for(var i=0;i<130;i++){ var p={}; seed(p); pens.push(p); }
+    for(var step=0;step<300;step++){
+      tt+=0.0022;
+      for(var k=0;k<pens.length;k++){ var pp=pens[k];
+        var a=Math.PI*(Math.sin(pp.x*s+tt)+Math.sin(pp.y*s*1.28-tt*0.7)+Math.sin((pp.x+pp.y)*s*0.5+tt*0.35));
+        var nx=pp.x+Math.cos(a)*3.4, ny=pp.y+Math.sin(a)*3.4;
+        ctx.strokeStyle=pp.col; ctx.lineWidth=pp.wd;
+        ctx.beginPath(); ctx.moveTo(pp.x,pp.y); ctx.lineTo(nx,ny); ctx.stroke();
+        pp.x=nx; pp.y=ny; pp.life--;
+        if(pp.life<=0||nx<520||ny<-5||nx>W+5||ny>H+5) seed(pp);
+      }
+    }
+    // Soften the seam so ink fades out under the type instead of stopping on a
+    // line — erase rather than paint, so the page's grid stays visible beneath.
+    ctx.globalCompositeOperation='destination-out';
+    var g=ctx.createLinearGradient(500,0,780,0);
+    g.addColorStop(0,'rgba(0,0,0,1)'); g.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle=g; ctx.fillRect(0,0,780,H);
+    ctx.globalCompositeOperation='source-over';
+  })();
+</script>
+</body>
+</html>
