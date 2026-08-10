@@ -197,8 +197,8 @@
             <div style="display:flex;flex-direction:column;gap:1rem;">
               <div style="position:relative;border:1px solid var(--line);background:var(--bg);aspect-ratio:1/1;overflow:hidden;">
                 <canvas id="room" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;display:block;"></canvas>
-                <span style="position:absolute;top:.7rem;left:.7rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);">RoomPlan mesh · live</span>
-                <span style="position:absolute;bottom:.7rem;right:.7rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);">Splat preview</span>
+                <span style="position:absolute;top:.7rem;left:.7rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);">Sketch, not the scan</span>
+                <span style="position:absolute;bottom:.7rem;right:.7rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);">Drawn live in code</span>
               </div>
               <div style="border:1px solid var(--line);padding:1.1rem 1.2rem;">
                 <p style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(2.2rem,5vw,3rem);font-weight:700;line-height:1;margin:0;">~93k <span style="font-size:1.05rem;font-weight:600;letter-spacing:.02em;">LOC</span></p>
@@ -216,7 +216,7 @@
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(1.6rem,4vw,3rem);align-items:center;">
             <div style="position:relative;border:1px solid var(--line);background:var(--bg);aspect-ratio:16/10;overflow:hidden;order:2;">
               <canvas id="scatter" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;display:block;"></canvas>
-              <span style="position:absolute;top:.7rem;left:.7rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);">Embedding space · pgvector</span>
+              <span style="position:absolute;top:.7rem;left:.7rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);">Nearest-neighbour sketch</span>
             </div>
             <div style="order:1;">
               <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(2rem,4.5vw,3.2rem);line-height:.92;letter-spacing:-.02em;margin:0 0 1rem;">gitsearch</h3>
@@ -296,7 +296,7 @@
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(1.6rem,4vw,3rem);align-items:center;">
             <div style="position:relative;border:1px solid var(--line);background:var(--bg);aspect-ratio:16/10;overflow:hidden;order:2;">
               <canvas id="packed" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;display:block;"></canvas>
-              <span style="position:absolute;top:.7rem;left:.7rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);">CFD streamlines · Fluent</span>
+              <span style="position:absolute;top:.7rem;left:.7rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);">Potential-flow sketch</span>
             </div>
             <div style="order:1;">
               <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(1.8rem,4vw,2.9rem);line-height:.94;letter-spacing:-.02em;margin:0 0 1rem;">packed-bed-simulations</h3>
@@ -356,8 +356,8 @@
           <div style="display:flex;flex-direction:column;gap:1rem;">
             <div style="position:relative;border:1px solid var(--line);background:var(--bg);aspect-ratio:4/3;overflow:hidden;">
               <canvas id="pdu" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;display:block;"></canvas>
-              <span style="position:absolute;top:.7rem;left:.7rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);">PDU bit layout · derived from ARXML</span>
-              <span style="position:absolute;bottom:.7rem;right:.7rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);">Periodic TX · <span id="txn">0</span> frames</span>
+              <span style="position:absolute;top:.7rem;left:.7rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);">PDU bit layout · sketched</span>
+              <span style="position:absolute;bottom:.7rem;right:.7rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);">Simulated TX · <span id="txn">0</span> frames</span>
             </div>
             <div style="border:1px solid var(--accent);padding:1.1rem 1.2rem;">
               <p style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(2.2rem,5vw,3rem);font-weight:700;line-height:1;margin:0;color:var(--accent);">~£500K</p>
