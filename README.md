@@ -7,11 +7,11 @@ A single self-contained page. No build step, no bundler, no dependencies: one
 Pages. The only external requests are the Google webfonts — one stylesheet and
 the font files it loads.
 
-Every illustration on the page is generated at runtime on a `<canvas>` — the
-hero flow field, the room wireframe, the PDU bit-layout, the embedding scatter,
-the plotter artwork, and the packed-bed streamlines are all drawn from code,
-not loaded as assets. The only images shipped as files are the IIT Delhi crest
-and the social-preview card.
+Every figure on the page is generated at runtime on a `<canvas>` — the
+interference-contour hero, the room wireframe, the embedding scatter, the
+harmonograph, the packed-bed streamlines, and the PDU bit-layout are all drawn
+from code, not loaded as assets. The only images shipped as files are the IIT
+Delhi crest and the social-preview card.
 
 ## Local preview
 
@@ -30,7 +30,7 @@ favicon.svg     tab icon
 og-card.png     social preview image (1200×630)
 og-card.html    source for og-card.png; the capture command is a comment at the top
 iitd-logo.png   IIT Delhi crest, Background section
-resume.pdf      linked from the header, the hero and the contact grid
+resume.pdf      linked from the masthead, the hero and the contact section
 ```
 
 ## Licence

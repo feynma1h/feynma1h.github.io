@@ -5,500 +5,584 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Utkarsh Singh — Software Engineer</title>
 <meta name="description" content="Software engineer who drops into any stack and ships the whole thing — vehicle networks, ARKit, GPU perception, embeddings, CFD, pen plotters. Selected work, experience and contact.">
-<meta name="author" content="Utkarsh Singh">
-<meta name="theme-color" content="#0A0B0E">
 <link rel="canonical" href="https://feynma1h.github.io/">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#F3EFE6">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Utkarsh Singh">
 <meta property="og:url" content="https://feynma1h.github.io/">
 <meta property="og:title" content="Utkarsh Singh — Software Engineer">
 <meta property="og:description" content="I drop into any stack and ship the whole thing. Vehicle networks, ARKit, GPU perception, embeddings, CFD, pen plotters.">
 <meta property="og:image" content="https://feynma1h.github.io/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Utkarsh Singh — Software Engineer">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Utkarsh Singh — Software Engineer">
 <meta name="twitter:description" content="I drop into any stack and ship the whole thing. Vehicle networks, ARKit, GPU perception, embeddings, CFD, pen plotters.">
 <meta name="twitter:image" content="https://feynma1h.github.io/og-card.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=JetBrains+Mono:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fragment+Mono&family=Fraunces:opsz,wght@9..144,300..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&display=swap" rel="stylesheet">
+<script>
+// The graphics kit rebuilds its canvases from a ResizeObserver; on a busy
+// layout frame the browser reports the benign "loop completed" notice as a
+// console error. Silence exactly that notice and nothing else.
+addEventListener('error', function(e){
+  if (e.message && String(e.message).indexOf('ResizeObserver loop') === 0){
+    e.stopImmediatePropagation(); e.preventDefault();
+  }
+}, true);
+</script>
 <style>
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-  body{margin:0;background:#0A0B0E}
-  img{max-width:100%;display:block}
-  a{color:var(--accent);text-decoration:none;transition:color .2s ease}
-  a:hover{color:var(--fg)}
-  ::selection{background:var(--accent);color:#0A0B0E}
-  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
-  ::-webkit-scrollbar{width:10px;height:10px}
-  ::-webkit-scrollbar-thumb{background:var(--line);border-radius:0}
-  @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
-  @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-  @keyframes cue{0%{transform:translateY(0);opacity:.35}50%{opacity:1}100%{transform:translateY(9px);opacity:.35}}
-  /* Below this width the section nav is squeezed into a scrolling sliver; the page
-     is a single scroll anyway, so drop it and keep the header clean. */
-  /* !important is required: the markup sets display:flex inline, which otherwise wins. */
-  @media (max-width:760px){ nav[aria-label="Sections"]{display:none!important} }
-  @media (prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important} html{scroll-behavior:auto} }
+:root{
+  --paper:#F3EFE6; --paper-dim:#E9E3D2; --ink:#211E17; --ink-soft:#4E483A; --mut:#6C6555;
+  --acc:#2440C8; --acc-deep:#1B31A5; --grn:#177E5B; --peri:#B9C2F5; --bone:#F1ECDF;
+  --hair:rgba(33,30,23,.16); --hair2:rgba(33,30,23,.34);
+  --mono:"Fragment Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --disp:"Fraunces",Georgia,"Times New Roman",serif;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:92px}
+@media (prefers-reduced-motion: no-preference){ html{scroll-behavior:smooth} }
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font:400 1.06rem/1.7 var(--serif);
+  overflow-x:clip; -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--acc); color:var(--bone)}
+a{color:var(--lk,var(--acc-deep)); text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:3px; text-decoration-color:color-mix(in srgb,var(--lk,var(--acc-deep)) 45%,transparent)}
+a:hover{text-decoration-thickness:2px; text-decoration-color:var(--lk,var(--acc-deep))}
+:focus-visible{outline:2px solid var(--fo,var(--acc)); outline-offset:3px; border-radius:2px}
+.skip{position:absolute; left:-9999px; top:0; background:var(--ink); color:var(--bone); padding:.6em 1em; z-index:99; font-family:var(--serif); font-size:.95rem}
+.skip:focus{left:12px; top:12px}
+.wrap{max-width:1240px; margin-inline:auto; padding-inline:clamp(20px,4.5vw,56px)}
+
+/* ---------- masthead ---------- */
+header.mast{
+  position:sticky; top:0; z-index:50;
+  background:color-mix(in srgb, var(--paper) 90%, transparent);
+  backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--hair);
+}
+.mast-in{display:flex; align-items:center; justify-content:space-between; gap:1rem; padding-block:.75rem}
+.mast a{text-decoration:none}
+.brand{font:600 1.08rem/1 var(--disp); color:var(--ink); letter-spacing:.01em; display:flex; align-items:center; gap:.55rem}
+.brand svg{display:block}
+nav.site{display:flex; align-items:center; gap:clamp(.9rem,2vw,1.6rem); font-family:var(--serif); font-size:.95rem; font-weight:600}
+nav.site a{color:var(--ink-soft)}
+nav.site a:hover{color:var(--acc-deep); text-decoration:underline}
+.btn{
+  display:inline-block; background:var(--acc); color:var(--bone) !important;
+  font:600 .92rem/1 var(--disp); letter-spacing:.01em; padding:.62em 1.15em; border-radius:999px;
+  text-decoration:none !important;
+}
+.btn:hover{background:var(--acc-deep)}
+.btn.big{font-size:1.02rem; padding:.8em 1.4em}
+
+/* ---------- type ---------- */
+h1,h2,h3,h4{font-family:var(--disp); font-weight:600; line-height:1.08; margin:0; text-wrap:balance; letter-spacing:0}
+h1{font-size:clamp(2.5rem,6.6vw,6rem); line-height:1.04}
+h2{font-size:clamp(1.9rem,3.7vw,3.25rem)}
+h3{font-size:clamp(1.45rem,2.4vw,2.15rem)}
+p{margin:0 0 1.1em; max-width:66ch; text-wrap:pretty}
+.kicker{font:400 .98rem/1.65 var(--serif); color:var(--mut); margin:0 0 1.4rem}
+.kicker b{font-weight:600; color:var(--ink)}
+.eyebrow{font:600 .95rem/1 var(--disp); letter-spacing:.01em; color:var(--acc-deep); margin:0 0 1.3rem}
+.support{font-size:clamp(1.06rem,1.5vw,1.28rem); color:var(--ink-soft); max-width:56ch}
+.tagline{font:italic 400 clamp(1.3rem,2.2vw,1.7rem)/1.45 var(--serif); color:var(--ink); max-width:30ch; margin:0}
+.pull{font:italic 400 1.16rem/1.6 var(--serif); color:var(--ink-soft); border-top:1px solid var(--hair2); padding-top:1rem; max-width:52ch}
+
+/* ---------- sections ---------- */
+section{padding-block:clamp(3.8rem,8vw,7.6rem)}
+.rule-top{border-top:1px solid var(--hair)}
+.sec-head{margin-bottom:clamp(2rem,4vw,3.4rem)}
+
+/* ---------- hero ---------- */
+#top{padding-top:clamp(2.6rem,6vw,5rem); padding-bottom:0}
+.hero-copy{max-width:1020px}
+.hero-copy h1{margin:.4rem 0 1.6rem}
+.contact-row{display:flex; flex-wrap:wrap; gap:.7rem 1.7rem; font-family:var(--serif); font-size:1rem; font-weight:600; margin-top:2rem; padding:0; list-style:none}
+.contact-row a{color:var(--ink)}
+.contact-row a:hover{color:var(--acc-deep)}
+.hero-fig{margin:clamp(2.2rem,5vw,3.8rem) 0 0}
+.hero-cv{position:relative; height:clamp(340px,56vh,640px)}
+.cv{position:relative}
+.cv canvas{position:absolute; inset:0; width:100%; height:100%; display:block}
+figure{margin:0}
+figcaption{font:italic 400 .95rem/1.6 var(--serif); color:var(--mut); padding-top:.8rem; max-width:72ch}
+figcaption .fign{font-style:normal; font-weight:600; color:var(--acc-deep)}
+.hero-fig figcaption{padding-bottom:1.6rem}
+#cursor-hint{display:none}
+
+/* ---------- plates ---------- */
+.ratio-sq{aspect-ratio:1.04/1}
+.ratio-wide{aspect-ratio:16/10}
+.ratio-43{aspect-ratio:4/3}
+.fig-col .cv,.xp-side .cv{max-height:min(72vh,540px)}
+.plate-btn{
+  display:block; width:100%; padding:0; margin:0; border:0; background:none;
+  cursor:pointer; text-align:inherit;
+}
+.plate-btn .cv{pointer-events:none}
+
+/* ---------- range index ---------- */
+.domains{list-style:none; counter-reset:dom; margin:clamp(2rem,4vw,3.2rem) 0 0; padding:0;
+  display:grid; grid-template-columns:repeat(3,1fr); gap:2.2rem clamp(1.6rem,3vw,3rem)}
+.domains li{counter-increment:dom; border-top:1px solid var(--hair2); padding-top:1rem}
+.domains li::before{content:counter(dom,decimal-leading-zero); font:500 .92rem/1 var(--disp); color:var(--mut); display:block; margin-bottom:.65rem}
+.domains .d-name{font:600 1.28rem/1.3 var(--disp); display:block}
+.domains .d-sub{font:italic 400 .95rem/1.5 var(--serif); color:var(--mut)}
+
+/* ---------- work ---------- */
+.proj{margin-top:clamp(3.4rem,7vw,6rem)}
+.proj:first-of-type{margin-top:0}
+.proj-head{display:flex; flex-wrap:wrap; align-items:baseline; gap:.6rem 1.4rem; margin-bottom:1rem}
+.status{font:italic 400 .95rem/1.3 var(--serif); color:var(--mut); display:inline-flex; align-items:center; gap:.5rem}
+.dot{width:7px; height:7px; border-radius:50%; background:var(--acc); display:inline-block}
+@media (prefers-reduced-motion: no-preference){
+  .dot{animation:pulse 2.6s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1} 50%{opacity:.35}}
+}
+.spread{display:grid; grid-template-columns:7fr 5fr; gap:clamp(1.8rem,4vw,4rem); align-items:start; margin-top:clamp(1.6rem,3vw,2.6rem)}
+.spread.flip .fig-col{order:2}
+.spread .txt-col{max-width:60ch}
+.speclist{margin:2.2rem 0 0; }
+.speclist > div{display:grid; grid-template-columns:minmax(118px,150px) 1fr; gap:1.2rem; border-top:1px solid var(--hair); padding:.85rem 0}
+.speclist dt{font:400 .78rem/1.7 var(--mono); color:var(--acc-deep); margin:0}
+.speclist dd{font:400 .8rem/1.7 var(--mono); color:var(--ink-soft); margin:0}
+.stats{display:flex; flex-wrap:wrap; gap:1.4rem 3rem; margin-top:2.2rem; border-top:1px solid var(--hair2); padding-top:1.4rem}
+.stat b{display:block; font:600 clamp(1.5rem,2.4vw,2.1rem)/1.15 var(--disp)}
+.stat span{font:italic 400 .95rem/1.5 var(--serif); color:var(--mut)}
+.stats-note{font:italic 400 .98rem/1.4 var(--serif); color:var(--mut); flex-basis:100%; margin-bottom:-.4rem}
+.linkrow{display:flex; flex-wrap:wrap; gap:.8rem 2rem; margin-top:1.8rem; font-family:var(--serif); font-size:1rem; font-weight:600; align-items:center}
+.minor{display:grid; grid-template-columns:1fr 1fr; gap:clamp(2.4rem,5vw,4rem) clamp(1.8rem,4vw,3.6rem); margin-top:clamp(3rem,6vw,5rem)}
+.card{border-top:1px solid var(--hair2); padding-top:1.5rem}
+.card .proj-head{margin-bottom:.9rem}
+.card h3{font-size:1.3rem}
+.card figure{margin:.4rem 0 1.3rem}
+.card p{font-size:.99rem}
+.lede{font-size:1.05rem}
+
+/* ---------- experience band ---------- */
+.band-ink{background:var(--ink); color:var(--bone); --lk:var(--peri); --fo:var(--bone)}
+.band-ink .eyebrow{color:var(--peri)}
+.band-ink .kicker{color:rgba(241,236,223,.62)}
+.band-ink .kicker b{color:var(--bone)}
+.band-ink p{color:rgba(241,236,223,.88)}
+.band-ink figcaption{color:rgba(241,236,223,.6)}
+.band-ink figcaption .fign{color:var(--peri)}
+.band-ink .speclist > div{border-top-color:rgba(241,236,223,.16)}
+.band-ink .speclist dt{color:var(--peri)}
+.band-ink .speclist dd{color:rgba(241,236,223,.75)}
+.band-ink .stats{border-top-color:rgba(241,236,223,.3)}
+.band-ink .stat span{color:rgba(241,236,223,.6)}
+.band-ink .pull{border-top-color:rgba(241,236,223,.3); color:rgba(241,236,223,.85)}
+.band-ink .status{color:rgba(241,236,223,.6)}
+.xp-grid{display:grid; grid-template-columns:7fr 5fr; gap:clamp(2rem,4.5vw,4.5rem); align-items:start; margin-top:clamp(2rem,4vw,3rem)}
+.xp-side{display:flex; flex-direction:column; gap:1.6rem}
+.award{font:600 .98rem/1.6 var(--serif); color:var(--bone); border-top:1px solid rgba(241,236,223,.3); padding-top:1.2rem}
+.award b{font-weight:600; color:var(--peri)}
+.also-wrap{margin:0}
+.also{list-style:none; margin:1.4rem 0 0; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:1.1rem 2.4rem}
+.also li{border-top:1px solid rgba(241,236,223,.16); padding-top:.9rem; font-size:.94rem; color:rgba(241,236,223,.85)}
+
+/* ---------- toolkit ---------- */
+.kitgrid{display:grid; grid-template-columns:repeat(3,1fr); gap:2.4rem clamp(1.6rem,3vw,3rem); margin-top:2.4rem}
+.kitgrid h3{font-size:1.08rem; font-weight:600; margin-bottom:.9rem}
+.chips{list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:.5rem}
+.chips li{font:400 .78rem/1.35 var(--mono); color:var(--ink-soft); background:var(--paper-dim); padding:.38em .72em; border-radius:6px}
+
+/* ---------- background ---------- */
+.edu{display:flex; gap:1.6rem; align-items:flex-start; margin-top:2.2rem}
+.edu img{width:72px; height:72px; object-fit:contain; flex:none}
+.edu .deg{font:600 1.2rem/1.4 var(--disp)}
+.edu .deg-sub{font:400 .95rem/1.6 var(--serif); color:var(--mut)}
+.honors{margin:2.6rem 0 0; border-top:1px solid var(--hair2); padding-top:1.3rem; max-width:72ch}
+.honors p{font-size:1rem; color:var(--ink-soft); margin:0}
+.honors .hlabel{font:italic 400 .95rem/1 var(--serif); color:var(--mut); display:block; margin-bottom:.7rem}
+
+/* ---------- contact band ---------- */
+.band-acc{background:var(--acc); color:var(--bone); --lk:var(--bone); --fo:var(--bone)}
+.band-acc h2{font-size:clamp(2.3rem,5.6vw,4.6rem); color:var(--bone)}
+.band-acc p{color:rgba(241,236,223,.92); font-size:clamp(1.06rem,1.5vw,1.25rem)}
+.routes{list-style:none; margin:clamp(2.2rem,4vw,3.4rem) 0 0; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:0 clamp(2rem,4vw,4rem)}
+.routes li{border-top:1px solid rgba(241,236,223,.35); padding:1.1rem 0}
+.routes .rlabel{font:italic 400 .92rem/1 var(--serif); color:rgba(241,236,223,.75); display:block; margin-bottom:.4rem}
+.routes a{font:600 1.12rem/1.45 var(--disp); letter-spacing:.01em; color:var(--bone); word-break:break-all}
+footer{border-top:1px solid rgba(241,236,223,.35); margin-top:clamp(2.6rem,5vw,4rem); padding-top:1.4rem;
+  display:flex; flex-wrap:wrap; gap:.6rem 2rem; justify-content:space-between;
+  font:400 .9rem/1.7 var(--serif); color:rgba(241,236,223,.8)}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0; transform:translateY(14px); transition:opacity .7s ease, transform .7s ease}
+.rv.on{opacity:1; transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:980px){
+  .spread,.xp-grid{grid-template-columns:1fr}
+  .spread.flip .fig-col{order:0}
+  .domains{grid-template-columns:repeat(2,1fr)}
+  .kitgrid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:640px){
+  .minor{grid-template-columns:1fr}
+  .also{grid-template-columns:1fr}
+  .routes{grid-template-columns:1fr}
+  .domains{grid-template-columns:1fr 1fr; gap:1.6rem 1.2rem}
+  nav.site .hide-s{display:none}
+  .hero-cv{height:clamp(300px,48vh,420px)}
+  .edu{gap:1.1rem}
+  .edu img{width:56px; height:56px}
+}
+@media (max-width:420px){
+  .domains{grid-template-columns:1fr}
+  nav.site{gap:.9rem}
+}
 </style>
 </head>
 <body>
-<div id="root" style="--bg:#0A0B0E;--bg2:#111318;--panel:#0E1015;--fg:#ECE9E0;--muted:#8A8D97;--line:rgba(236,233,224,0.12);--grid:rgba(236,233,224,0.045);--accent:#FF4A2B;--blue:#6EA0E0; position:relative; min-height:100vh; background:var(--bg); background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px); background-size:48px 48px; color:var(--fg); font-family:'Space Grotesk',system-ui,sans-serif; overflow-x:hidden; transition:background-color .5s ease,color .5s ease;">
+<a class="skip" href="#main">Skip to content</a>
 
-  <header style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0.85rem clamp(1.1rem,4vw,3rem);border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);">
-    <a href="#top" style="display:flex;align-items:center;gap:.6rem;color:var(--fg);">
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><rect x="1" y="1" width="20" height="20" stroke="var(--accent)" stroke-width="1"/><path d="M11 1v20M1 11h20" stroke="var(--line)" stroke-width="1"/><circle cx="11" cy="11" r="3.2" stroke="var(--accent)" stroke-width="1.4"/></svg>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;">Utkarsh Singh</span>
+<header class="mast">
+  <div class="wrap mast-in">
+    <a class="brand" href="#top" aria-label="Utkarsh Singh — home">
+      <svg width="22" height="22" viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="#211E17" stroke-width="4"><circle cx="25" cy="32" r="15"/><circle cx="39" cy="32" r="15"/></g><path d="M32 18.75 A15 15 0 0 1 32 45.25 A15 15 0 0 1 32 18.75 Z" fill="#2440C8"/></svg>
+      Utkarsh Singh
     </a>
-    <nav aria-label="Sections" style="display:flex;align-items:center;gap:clamp(.7rem,2vw,1.6rem);font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;overflow-x:auto;">
-      <a href="#range" style="color:var(--muted);white-space:nowrap;">Range</a>
-      <a href="#work" style="color:var(--muted);white-space:nowrap;">Work</a>
-      <a href="#experience" style="color:var(--muted);white-space:nowrap;">Experience</a>
-      <a href="#background" style="color:var(--muted);white-space:nowrap;">Background</a>
-      <a href="#contact" style="color:var(--muted);white-space:nowrap;">Contact</a>
+    <nav class="site" aria-label="Site">
+      <a href="#work">Work</a>
+      <a href="#experience" class="hide-s">Experience</a>
+      <a href="#toolkit" class="hide-s">Toolkit</a>
+      <a href="#contact">Contact</a>
+      <a class="btn" href="resume.pdf">Résumé</a>
     </nav>
-    <div style="display:flex;align-items:center;gap:.6rem;flex-shrink:0;">
-      <button type="button" id="themeBtn" aria-label="Toggle screen and paper theme" style="display:inline-flex;align-items:center;gap:.4rem;background:transparent;border:1px solid var(--line);color:var(--fg);font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;padding:.4rem .6rem;cursor:pointer;">
-        <span aria-hidden="true">◐</span><span id="themeLabel">Screen</span>
-      </button>
-      <a href="resume.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.35rem;border:1px solid var(--accent);color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;padding:.4rem .6rem;white-space:nowrap;">Résumé ↗</a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ hero ============ -->
+<section id="top">
+  <div class="wrap hero-copy">
+    <p class="kicker"><b>Utkarsh Singh — Software Engineer</b> · Bangalore, India · Remote only</p>
+    <h1>I drop into any stack and ship the whole thing.</h1>
+    <p class="support">Vehicle networks · ARKit · GPU perception · embeddings · CFD · pen plotters — six stacks I hadn’t touched, each taken to something that runs.</p>
+    <ul class="contact-row">
+      <li><a href="mailto:23singhutkarsh@gmail.com">23singhutkarsh@gmail.com</a></li>
+      <li><a href="https://www.linkedin.com/in/feynmath" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><a href="https://github.com/feynma1h" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="resume.pdf">Résumé (PDF)</a></li>
+    </ul>
+  </div>
+  <figure class="hero-fig">
+    <div class="hero-cv cv"><canvas id="cv-hero" role="img" aria-label="Live code drawing: contour lines of six interfering wave sources on one shared field"></canvas></div>
+    <figcaption class="wrap"><span class="fign">Fig. 1</span> — Six wave sources on one shared field, contoured live in canvas every frame. Drawn in code, not data<span id="cursor-hint"> — your cursor is the seventh source</span>.</figcaption>
+  </figure>
+</section>
+
+<!-- ============ range ============ -->
+<section class="rule-top" id="range">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Range is the whole point.</h2>
     </div>
-  </header>
+    <p class="support">Vehicle-network tooling for a car company. AI search infrastructure. A 3D spatial-computing product. Generative art. Computational-physics pipelines. I take each one from a stack I’ve never touched to something that actually runs — and the unfamiliar part is the part I like.</p>
+    <ol class="domains">
+      <li><span class="d-name">ECU networks</span><span class="d-sub">protocol tooling</span></li>
+      <li><span class="d-name">ARKit</span><span class="d-sub">spatial capture</span></li>
+      <li><span class="d-name">GPU inference</span><span class="d-sub">perception at scale</span></li>
+      <li><span class="d-name">Embeddings</span><span class="d-sub">semantic search</span></li>
+      <li><span class="d-name">CFD</span><span class="d-sub">computational physics</span></li>
+      <li><span class="d-name">Pen plotters</span><span class="d-sub">generative art</span></li>
+    </ol>
+  </div>
+</section>
 
-  <main id="top">
+<!-- ============ work ============ -->
+<section class="rule-top" id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Selected work</h2>
+    </div>
 
-    <!-- HERO -->
-    <section style="position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:6rem clamp(1.1rem,4vw,3rem) 3rem;overflow:hidden;">
-      <canvas id="hero" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0;"></canvas>
-      <div style="position:absolute;top:5rem;left:clamp(1.1rem,4vw,3rem);right:clamp(1.1rem,4vw,3rem);display:flex;justify-content:space-between;gap:1rem;font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);z-index:2;pointer-events:none;">
-        <div style="display:flex;flex-direction:column;gap:.3rem;">
-          <span style="color:var(--accent);"><span id="plotNo">Plot 001</span> — self portrait</span>
-          <span>Pen 0.3mm · ink on screen</span>
+    <!-- roomstudio -->
+    <article class="proj" aria-labelledby="p-roomstudio">
+      <div class="proj-head">
+        <h3 id="p-roomstudio">roomstudio</h3>
+        <span class="status"><span class="dot" aria-hidden="true"></span>Live · Private repo · Flagship</span>
+      </div>
+      <p class="tagline">“Every home contains a version of itself its owner has never seen.”</p>
+      <div class="spread">
+        <div class="fig-col">
+          <figure class="plate">
+            <div class="cv ratio-sq"><canvas id="cv-room" role="img" aria-label="Live code drawing: a room wireframe drawing itself in, one detected object highlighted"></canvas></div>
+            <figcaption><span class="fign">Fig. 2</span> — roomstudio’s idea in miniature: a room drawing itself in, one object detected. A live code sketch, not the actual scan.</figcaption>
+          </figure>
         </div>
-        <div style="text-align:right;display:flex;flex-direction:column;gap:.3rem;">
-          <span>Bangalore, IN · Remote only</span>
-          <span>12.97°N 77.59°E</span>
+        <div class="txt-col">
+          <p>A spatial-intelligence platform for the home. Scan your space with an iPhone Pro and roomstudio reconstructs both the room and its contents — measured walls, floor, doors and windows with inferred surface materials, and every object placed at its real metric position.</p>
+          <p>Then it talks about it — and takes requests. Ask about the room and the answers stay grounded in measured scene facts. Ask it to move the furniture and the model only ever states intent: a server-side solver owns the geometry, checks every move against the measured room, and refuses the ones that aren’t real.</p>
+          <p>Live in production: scan on an iPhone Pro, and the room arrives on the web as a choreographed reveal — the measured boundary draws itself, surfaces fade up in place, furniture settles largest-first, and then the room speaks.</p>
+          <div class="linkrow"><a class="btn big" href="https://roomstudio.web.app" target="_blank" rel="noopener">Open the app →</a></div>
         </div>
       </div>
+      <dl class="speclist">
+        <div><dt>01 · Capture</dt><dd>iOS · Swift · ARKit + RoomPlan co-run · live on-device floor plan · lock-surviving background upload</dd></div>
+        <div><dt>02 · Perceive</dt><dd>FastAPI on Cloud Run · NVIDIA L4, scale-to-zero · RoomPlan CapturedRoom · SAM 3 · SAM 3D Objects · Gaussian splats · vision-inferred materials · Firestore · Cloud Tasks · Eventarc</dd></div>
+        <div><dt>03 · Render</dt><dd>Next.js on Firebase · 3D Gaussian splats via WebGL2 (three.js + Spark) · parametric room surfaces · choreographed assembly reveal</dd></div>
+      </dl>
+      <div class="stats">
+        <p class="stats-note">Solo, across three surfaces —</p>
+        <div class="stat"><b>~93k</b><span>LOC</span></div>
+        <div class="stat"><b>~2,160</b><span>automated tests</span></div>
+        <div class="stat"><b>129</b><span>written decision records</span></div>
+      </div>
+    </article>
 
-      <div style="position:relative;z-index:2;max-width:1180px;margin:0 auto;width:100%;">
-        <p style="animation:fadeUp .7s .05s both;font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin:2.5rem 0 1.4rem;">Software Engineer</p>
-        <h1 style="animation:fadeUp .8s .12s both;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(3.4rem,13.5vw,12rem);line-height:.86;letter-spacing:-.03em;margin:0;text-wrap:balance;">Utkarsh<br>Singh</h1>
-        <div style="animation:fadeUp .8s .28s both;max-width:44ch;margin:2rem 0 0;">
-          <p style="font-size:clamp(1.15rem,2.4vw,1.7rem);line-height:1.35;margin:0;font-weight:400;text-wrap:pretty;">I drop into any stack and ship the whole thing.</p>
-          <p style="font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;letter-spacing:.02em;color:var(--muted);margin:.9rem 0 0;">Vehicle networks · ARKit · GPU perception · embeddings · CFD · pen plotters — six stacks I hadn't touched, each taken to something that runs.</p>
+    <!-- gitsearch -->
+    <article class="proj" aria-labelledby="p-gitsearch">
+      <div class="proj-head">
+        <h3 id="p-gitsearch">gitsearch</h3>
+        <span class="status"><span class="dot" aria-hidden="true"></span>Live · Open source</span>
+      </div>
+      <div class="spread flip">
+        <div class="fig-col">
+          <figure class="plate">
+            <div class="cv ratio-wide"><canvas id="cv-scatter" role="img" aria-label="Live code drawing: an embedding point cloud where a query point finds its nearest neighbours"></canvas></div>
+            <figcaption><span class="fign">Fig. 3</span> — a query point finding its neighbours in embedding space. An illustrative sketch drawn live in code — not real data.</figcaption>
+          </figure>
         </div>
-        <div style="animation:fadeUp .8s .42s both;display:flex;flex-wrap:wrap;gap:.55rem;margin-top:2.2rem;">
-          <a href="mailto:23singhutkarsh@gmail.com" style="border:1px solid var(--line);color:var(--fg);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.08em;padding:.55rem .85rem;">✉ 23singhutkarsh@gmail.com</a>
-          <a href="https://linkedin.com/in/feynmath" target="_blank" rel="noopener" style="border:1px solid var(--line);color:var(--fg);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.08em;padding:.55rem .85rem;">LinkedIn ↗</a>
-          <a href="https://github.com/feynma1h" target="_blank" rel="noopener" style="border:1px solid var(--line);color:var(--fg);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.08em;padding:.55rem .85rem;">GitHub ↗</a>
-          <a href="resume.pdf" target="_blank" rel="noopener" style="border:1px solid var(--line);color:var(--fg);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.08em;padding:.55rem .85rem;">Résumé.pdf ↗</a>
+        <div class="txt-col">
+          <p>GitHub finds repositories by what they’re called. If you don’t already know the name, it can’t help you. gitsearch finds them by what they do — describe the thing you want and it goes looking.</p>
+          <p>Three searches run at once — on keywords, on meaning, and on names that are nearly right — and their rankings are fused, then nudged by how popular and how recent each repo is. The keyword search also draws on the awesome-lists sitting inside the corpus: thousands of hours of people hand-sorting repositories into categories, free for the cost of parsing markdown. Every result shows why it ranked where it did, and each comes with a short usage guide an agent wrote after going and reading the repository.</p>
+          <p>To know whether any of that actually helped, I built a graded test set of 200 questions. It has told me yes, and it has told me no — most expensively when I re-embedded the entire corpus, paid the bill, measured it, and found the gain too small to be worth the risk. Those vectors are still in the database, switched off.</p>
+          <div class="linkrow"><a href="https://feynma1h.github.io/gitsearch" target="_blank" rel="noopener">Demo →</a><a href="https://github.com/feynma1h/gitsearch" target="_blank" rel="noopener">Code →</a></div>
         </div>
       </div>
-
-      <div style="position:absolute;bottom:1.6rem;left:clamp(1.1rem,4vw,3rem);right:clamp(1.1rem,4vw,3rem);display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);z-index:2;pointer-events:none;">
-        <span>Plotting · <span id="seg">0</span> segments</span>
-        <span style="display:inline-flex;flex-direction:column;align-items:center;gap:.3rem;animation:cue 1.8s ease-in-out infinite;">Scroll<span aria-hidden="true">↓</span></span>
+      <dl class="speclist">
+        <div><dt>Anatomy</dt><dd>Four independent parts · Postgres + pgvector · 120 ms server-side on a cached query, 1–3 s on a novel one · scales to zero, kept warm for $0</dd></div>
+      </dl>
+      <div class="stats">
+        <div class="stat"><b>244K</b><span>repos indexed</span></div>
+        <div class="stat"><b>120ms–3s</b><span>query latency</span></div>
+        <div class="stat"><b>~$30</b><span>a month to run</span></div>
       </div>
-    </section>
+    </article>
 
-    <!-- RANGE -->
-    <section id="range" aria-labelledby="h-range" style="padding:clamp(5rem,11vw,10rem) clamp(1.1rem,4vw,3rem);border-top:1px solid var(--line);">
-      <div style="max-width:1180px;margin:0 auto;">
-        <h2 id="h-range" data-reveal style="font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:0 0 2.2rem;font-weight:400;">01 / The Range</h2>
-        <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(1.5rem,4vw,4rem);align-items:end;">
-          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(2.1rem,5vw,4rem);line-height:.98;letter-spacing:-.02em;margin:0;text-wrap:balance;">Range is the whole point.</h3>
-          <p style="font-size:clamp(1rem,1.4vw,1.18rem);line-height:1.6;color:var(--muted);margin:0;text-wrap:pretty;">Vehicle-network tooling for a car company. AI search infrastructure. A 3D spatial-computing product. Generative art. Computational-physics pipelines. I take each one from a stack I've never touched to something that actually runs — and the unfamiliar part is the part I like.</p>
+    <!-- supporting cast -->
+    <div class="minor">
+      <article class="card" aria-labelledby="p-linework">
+        <div class="proj-head">
+          <h3 id="p-linework">linework</h3>
+          <span class="status"><span class="dot" aria-hidden="true"></span>Live · Open source</span>
         </div>
+        <figure class="plate">
+          <button class="plate-btn" id="lw-btn" aria-label="Plot a new generative linework piece">
+            <span class="cv ratio-sq" style="display:block"><canvas id="cv-linework" role="img" aria-label="Live code drawing: a damped harmonograph traced in two pens"></canvas></span>
+          </button>
+          <figcaption><span class="fign">Fig. 4</span> — a damped harmonograph, plotted live in code: the kind of line linework exports for the pen. Click it to plot another.</figcaption>
+        </figure>
+        <p>Generative art from equations, drawn live in the browser with trigonometry and noise — GPU shaders when it moves. Every piece exports as plotter-ready SVG for a real pen plotter. No frameworks, no build.</p>
+        <div class="linkrow"><a href="https://feynma1h.github.io/linework" target="_blank" rel="noopener">Gallery →</a><a href="https://github.com/feynma1h/linework" target="_blank" rel="noopener">Code →</a></div>
+      </article>
 
-        <div data-reveal style="margin-top:clamp(3rem,7vw,6rem);overflow-x:auto;padding-bottom:.5rem;">
-          <div style="display:flex;min-width:940px;gap:0;">
-            <div style="flex:1;border-top:1px solid var(--line);padding-top:1rem;">
-              <div style="width:1px;height:14px;background:var(--accent);margin-bottom:.9rem;"></div>
-              <p style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted);margin:0 0 .4rem;">01</p>
-              <p style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.35rem;font-weight:600;margin:0 0 .3rem;">ECU networks</p>
-              <p style="font-size:.9rem;color:var(--muted);margin:0;">Protocol tooling</p>
-            </div>
-            <div style="flex:1;border-top:1px solid var(--line);padding-top:1rem;">
-              <div style="width:1px;height:14px;background:var(--accent);margin-bottom:.9rem;"></div>
-              <p style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted);margin:0 0 .4rem;">02</p>
-              <p style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.35rem;font-weight:600;margin:0 0 .3rem;">ARKit</p>
-              <p style="font-size:.9rem;color:var(--muted);margin:0;">Spatial capture</p>
-            </div>
-            <div style="flex:1;border-top:1px solid var(--line);padding-top:1rem;">
-              <div style="width:1px;height:14px;background:var(--accent);margin-bottom:.9rem;"></div>
-              <p style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted);margin:0 0 .4rem;">03</p>
-              <p style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.35rem;font-weight:600;margin:0 0 .3rem;">GPU inference</p>
-              <p style="font-size:.9rem;color:var(--muted);margin:0;">Perception at scale</p>
-            </div>
-            <div style="flex:1;border-top:1px solid var(--line);padding-top:1rem;">
-              <div style="width:1px;height:14px;background:var(--accent);margin-bottom:.9rem;"></div>
-              <p style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted);margin:0 0 .4rem;">04</p>
-              <p style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.35rem;font-weight:600;margin:0 0 .3rem;">Embeddings</p>
-              <p style="font-size:.9rem;color:var(--muted);margin:0;">Semantic search</p>
-            </div>
-            <div style="flex:1;border-top:1px solid var(--line);padding-top:1rem;">
-              <div style="width:1px;height:14px;background:var(--accent);margin-bottom:.9rem;"></div>
-              <p style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted);margin:0 0 .4rem;">05</p>
-              <p style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.35rem;font-weight:600;margin:0 0 .3rem;">CFD</p>
-              <p style="font-size:.9rem;color:var(--muted);margin:0;">Computational physics</p>
-            </div>
-            <div style="flex:1;border-top:1px solid var(--line);padding-top:1rem;">
-              <div style="width:1px;height:14px;background:var(--accent);margin-bottom:.9rem;"></div>
-              <p style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--muted);margin:0 0 .4rem;">06</p>
-              <p style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.35rem;font-weight:600;margin:0 0 .3rem;">Pen plotters</p>
-              <p style="font-size:.9rem;color:var(--muted);margin:0;">Generative art</p>
-            </div>
-          </div>
+      <article class="card" aria-labelledby="p-packed">
+        <div class="proj-head">
+          <h3 id="p-packed">packed-bed-simulations</h3>
+          <span class="status">Research · Open source</span>
         </div>
+        <figure class="plate">
+          <div class="cv ratio-wide"><canvas id="cv-stream" role="img" aria-label="Live code drawing: potential flow streamlines threading a randomly settled packed bed"></canvas></div>
+          <figcaption><span class="fign">Fig. 5</span> — potential flow threading a settled packing, sketched live in code — not the solver’s output.</figcaption>
+        </figure>
+        <p>My IIT Delhi thesis. To simulate flow through a reactor packed with catalyst pellets, you first need a faithful model of how those pellets actually settled — and the usual way to get one is to build the bed for real and measure it by hand. I poured them into a physics engine instead, let them fall, and read the packing off the result.</p>
+        <p class="pull">Simulation prep: 2+ days → hours.</p>
+        <div class="linkrow"><a href="https://github.com/feynma1h/packed-bed-simulations" target="_blank" rel="noopener">Code →</a></div>
+      </article>
+
+      <article class="card" aria-labelledby="p-shrink">
+        <div class="proj-head">
+          <h3 id="p-shrink">Shrink to Fit</h3>
+          <span class="status"><span class="dot" aria-hidden="true"></span>Live · Open source · One-day build</span>
+        </div>
+        <p class="lede">Upload forms come with a number — maximum size: 500 KB — and your file never agrees with it. This lands any image or PDF at exactly the size you were told, entirely in your browser. Nothing is uploaded, because there is no server to upload to.</p>
+        <p>PDFs keep their selectable text: a WebAssembly build of Ghostscript walks the internal image resolution down, rung by rung, until the document fits. Images binary-search JPEG quality from both ends. Location metadata doesn’t survive the trip.</p>
+        <div class="linkrow"><a href="https://feynma1h.github.io/shrink-to-fit" target="_blank" rel="noopener">Try it →</a><a href="https://github.com/feynma1h/shrink-to-fit" target="_blank" rel="noopener">Code →</a></div>
+      </article>
+
+      <article class="card" aria-labelledby="p-whatsapp">
+        <div class="proj-head">
+          <h3 id="p-whatsapp">WhatsApp Archive Viewer</h3>
+          <span class="status"><span class="dot" aria-hidden="true"></span>Live · Open source · One-day build</span>
+        </div>
+        <p class="lede">Chat exports quietly pile up into tens of gigabytes a phone can’t spare. Park the zips on a computer and read them back here as chats — read-only, zero extraction, zero upload. Unofficial, and says so.</p>
+        <p>Some exports arrive genuinely damaged — the archive’s index declares more files than it holds, and standard tools silently drop the tail: the newest media, and usually the chat itself. The bytes are still there. The viewer walks them raw, finds orphaned entries by signature, and hands them back.</p>
+        <div class="linkrow"><a href="https://feynma1h.github.io/whatsapp-archive-viewer" target="_blank" rel="noopener">Open →</a><a href="https://github.com/feynma1h/whatsapp-archive-viewer" target="_blank" rel="noopener">Code →</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ experience ============ -->
+<section class="band-ink" id="experience">
+  <div class="wrap">
+    <p class="eyebrow">Experience</p>
+    <p class="kicker"><b>Jaguar Land Rover</b> · Software Engineer · Jul 2022 — Oct 2025 · Bangalore</p>
+    <h2>A car is a few dozen computers having a conversation. Nobody had written down what they say.</h2>
+    <div class="xp-grid">
+      <div class="txt-col">
+        <p>It is specified, technically — in a 100,000-line XML file with no map of what lives where, replaced by a new one every quarter. You can re-learn that file four times a year, or you can work out the shape underneath it once. I did the second, and wrote the parser against the shape rather than the file, so each new release just drops in. A later C++ port — part of a full migration for tighter real-time margins — took the parse from ~2–3 seconds to ~0.1.</p>
+        <p>What comes out is the whole map: which computer talks to which, at what address, and where inside each message every value sits — down to the bit, and which way round the bytes are packed.</p>
+        <p>Reading it was the easy half. The other half talks back: hold a message on a timer the tester chooses, steady enough for a ten-millisecond beat; flip a counter or checksum to a deliberately wrong value — a functional-safety feature, there to prove the far side notices — and turn whatever returns from raw bytes into the words a tester actually says out loud. Engine speed — not byte 3, bits 4 through 15.</p>
+        <p>Then I put it in front of people three ways. The third is my favourite: a small touchscreen box you bolt to the test rig and press one button. It boots straight into the dashboard — no laptop, no install, nothing to read first. A tester taps the signal they want and it goes out on the wire.</p>
+        <p class="pull">Every copy quietly reports the machine it’s running on, so adoption was never a guess — 500+ unique machines checked in.</p>
       </div>
-    </section>
-
-    <!-- WORK -->
-    <section id="work" aria-labelledby="h-work" style="padding:clamp(4rem,9vw,8rem) clamp(1.1rem,4vw,3rem) clamp(3rem,7vw,6rem);border-top:1px solid var(--line);">
-      <div style="max-width:1180px;margin:0 auto;">
-        <h2 id="h-work" data-reveal style="font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:0 0 2.5rem;font-weight:400;">02 / Selected Work — 06</h2>
-
-        <!-- ROOMSTUDIO (flagship) -->
-        <article data-reveal style="border:1px solid var(--line);background:color-mix(in srgb,var(--panel) 60%,transparent);padding:clamp(1.4rem,3.5vw,3rem);margin-bottom:clamp(2rem,4vw,3.5rem);">
-          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:1.4rem;">
-            <span>01 · Flagship</span>
-            <span style="color:var(--accent);">Live · Private repo</span>
-          </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(1.6rem,4vw,3.5rem);align-items:start;">
-            <div>
-              <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(2.6rem,6vw,4.6rem);line-height:.9;letter-spacing:-.03em;margin:0 0 1.2rem;">roomstudio</h3>
-              <p style="font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-style:italic;font-size:clamp(1.25rem,2.4vw,1.85rem);line-height:1.25;margin:0 0 1.5rem;color:var(--fg);text-wrap:balance;">"Every home contains a version of itself its owner has never seen."</p>
-              <p style="font-size:1.02rem;line-height:1.62;color:var(--muted);margin:0 0 1rem;text-wrap:pretty;">A spatial-intelligence platform for the home. Scan your space with an iPhone Pro and roomstudio reconstructs both the room and its contents — measured walls, floor, doors and windows with inferred surface materials, and every object placed at its real metric position.</p>
-              <p style="font-size:1.02rem;line-height:1.62;color:var(--muted);margin:0 0 1rem;text-wrap:pretty;">Then it talks about it — and takes requests. Ask about the room and the answers stay grounded in measured scene facts. Ask it to move the furniture and the model only ever states intent: a server-side solver owns the geometry, checks every move against the measured room, and refuses the ones that aren't real.</p>
-              <p style="font-size:1.02rem;line-height:1.62;color:var(--fg);margin:0 0 1.8rem;text-wrap:pretty;">Live in production: scan on an iPhone Pro, and the room arrives on the web as a choreographed reveal — the measured boundary draws itself, surfaces fade up in place, furniture settles largest-first, and then the room speaks.</p>
-              <div style="display:grid;gap:.7rem;">
-                <div style="border-left:2px solid var(--accent);padding:.35rem 0 .35rem .9rem;">
-                  <p style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 .3rem;">01 · Capture</p>
-                  <p style="font-family:'JetBrains Mono',monospace;font-size:.78rem;line-height:1.6;color:var(--muted);margin:0;">iOS · Swift · ARKit + RoomPlan co-run · live on-device floor plan · lock-surviving background upload</p>
-                </div>
-                <div style="border-left:2px solid var(--accent);padding:.35rem 0 .35rem .9rem;">
-                  <p style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 .3rem;">02 · Perceive</p>
-                  <p style="font-family:'JetBrains Mono',monospace;font-size:.78rem;line-height:1.6;color:var(--muted);margin:0;">FastAPI on Cloud Run · NVIDIA L4, scale-to-zero · RoomPlan CapturedRoom · SAM 3 · SAM 3D Objects · Gaussian splats · vision-inferred materials · Firestore · Cloud Tasks · Eventarc</p>
-                </div>
-                <div style="border-left:2px solid var(--accent);padding:.35rem 0 .35rem .9rem;">
-                  <p style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 .3rem;">03 · Render</p>
-                  <p style="font-family:'JetBrains Mono',monospace;font-size:.78rem;line-height:1.6;color:var(--muted);margin:0;">Next.js on Firebase · 3D Gaussian splats via WebGL2 (three.js + Spark) · parametric room surfaces · choreographed assembly reveal</p>
-                </div>
-              </div>
-              <div style="display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.6rem;">
-                <a href="https://roomstudio.web.app" target="_blank" rel="noopener" style="border:1px solid var(--accent);color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.08em;padding:.55rem .9rem;">Open the app ↗</a>
-              </div>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:1rem;">
-              <div style="position:relative;border:1px solid var(--line);background:var(--bg);aspect-ratio:1/1;overflow:hidden;">
-                <canvas id="room" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;display:block;"></canvas>
-                <span style="position:absolute;top:.7rem;left:.7rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);">Sketch, not the scan</span>
-                <span style="position:absolute;bottom:.7rem;right:.7rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);">Drawn live in code</span>
-              </div>
-              <div style="border:1px solid var(--line);padding:1.1rem 1.2rem;">
-                <p style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(2.2rem,5vw,3rem);font-weight:700;line-height:1;margin:0;">~93k <span style="font-size:1.05rem;font-weight:600;letter-spacing:.02em;">LOC</span></p>
-                <p style="font-size:.98rem;line-height:1.5;margin:.5rem 0 0;color:var(--muted);">Solo, across three surfaces — with ~2,160 automated tests and 129 written decision records.</p>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- GITSEARCH -->
-        <article data-reveal style="border:1px solid var(--line);padding:clamp(1.4rem,3.5vw,3rem);margin-bottom:clamp(2rem,4vw,3.5rem);">
-          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:1.4rem;">
-            <span>02</span><span style="color:var(--accent);">Live · Open source</span>
-          </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(1.6rem,4vw,3rem);align-items:center;">
-            <div style="position:relative;border:1px solid var(--line);background:var(--bg);aspect-ratio:16/10;overflow:hidden;order:2;">
-              <canvas id="scatter" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;display:block;"></canvas>
-              <span style="position:absolute;top:.7rem;left:.7rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);">Nearest-neighbour sketch</span>
-            </div>
-            <div style="order:1;">
-              <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(2rem,4.5vw,3.2rem);line-height:.92;letter-spacing:-.02em;margin:0 0 1rem;">gitsearch</h3>
-              <p style="font-size:1.02rem;line-height:1.62;color:var(--muted);margin:0 0 1rem;text-wrap:pretty;">GitHub finds repositories by what they're called. If you don't already know the name, it can't help you. gitsearch finds them by what they do — describe the thing you want and it goes looking.</p>
-              <p style="font-size:1.02rem;line-height:1.62;color:var(--muted);margin:0 0 1rem;text-wrap:pretty;">Three searches run at once — on keywords, on meaning, and on names that are nearly right — and their rankings are fused, then nudged by how popular and how recent each repo is. The keyword search also draws on the awesome-lists sitting inside the corpus: thousands of hours of people hand-sorting repositories into categories, free for the cost of parsing markdown. Every result shows why it ranked where it did, and each comes with a short usage guide an agent wrote after going and reading the repository.</p>
-              <p style="font-size:1.02rem;line-height:1.62;color:var(--fg);margin:0 0 1.4rem;text-wrap:pretty;">To know whether any of that actually helped, I built a graded test set of 200 questions. It has told me yes, and it has told me no — most expensively when I re-embedded the entire corpus, paid the bill, measured it, and found the gain too small to be worth the risk. Those vectors are still in the database, switched off.</p>
-              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1.1rem .9rem;margin-bottom:1.6rem;">
-                <div><p style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.5rem;font-weight:700;margin:0;color:var(--fg);">244K</p><p style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:.2rem 0 0;">repos indexed</p></div>
-                <div><p style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.5rem;font-weight:700;margin:0;color:var(--fg);">120ms–3s</p><p style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:.2rem 0 0;">query latency</p></div>
-                <div><p style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.5rem;font-weight:700;margin:0;color:var(--accent);">~$30</p><p style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:.2rem 0 0;">a month to run</p></div>
-              </div>
-              <p style="font-family:'JetBrains Mono',monospace;font-size:.72rem;line-height:1.6;color:var(--muted);margin:0 0 1.4rem;">Four independent parts · Postgres + pgvector · 120 ms server-side on a cached query, 1–3 s on a novel one · scales to zero, kept warm for $0</p>
-              <div style="display:flex;flex-wrap:wrap;gap:.55rem;">
-                <a href="https://feynma1h.github.io/gitsearch" target="_blank" rel="noopener" style="border:1px solid var(--accent);color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.08em;padding:.55rem .9rem;">Demo ↗</a>
-                <a href="https://github.com/feynma1h/gitsearch" target="_blank" rel="noopener" style="border:1px solid var(--line);color:var(--fg);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.08em;padding:.55rem .9rem;">Code ↗</a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- LINEWORK -->
-        <article data-reveal style="border:1px solid var(--line);padding:clamp(1.4rem,3.5vw,3rem);margin-bottom:clamp(2rem,4vw,3.5rem);">
-          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:1.4rem;">
-            <span>03</span><span style="color:var(--accent);">Live · Open source</span>
-          </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(1.6rem,4vw,3rem);align-items:center;">
-            <div>
-              <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(2rem,4.5vw,3.2rem);line-height:.92;letter-spacing:-.02em;margin:0 0 1rem;">linework</h3>
-              <p style="font-size:1.02rem;line-height:1.62;color:var(--muted);margin:0 0 1rem;text-wrap:pretty;">Generative art from equations, drawn live in the browser with trigonometry and noise — GPU shaders when it moves. Every piece exports as plotter-ready SVG for a real pen plotter. No frameworks, no build.</p>
-              <p style="font-size:.95rem;line-height:1.6;color:var(--fg);margin:0 0 1.6rem;">The hero you scrolled past is this — running.</p>
-              <div style="display:flex;flex-wrap:wrap;gap:.55rem;">
-                <a href="https://feynma1h.github.io/linework" target="_blank" rel="noopener" style="border:1px solid var(--accent);color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.08em;padding:.55rem .9rem;">Gallery ↗</a>
-                <a href="https://github.com/feynma1h/linework" target="_blank" rel="noopener" style="border:1px solid var(--line);color:var(--fg);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.08em;padding:.55rem .9rem;">Code ↗</a>
-              </div>
-            </div>
-            <button type="button" id="lineworkTile" aria-label="Redraw the generative artwork" style="display:block;width:100%;padding:0;position:relative;border:1px solid var(--line);background:var(--bg);aspect-ratio:1/1;overflow:hidden;cursor:crosshair;" title="Click to redraw">
-              <canvas id="linework" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;display:block;"></canvas>
-              <span style="position:absolute;top:.7rem;left:.7rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);pointer-events:none;">trig + noise · plotter-ready</span>
-              <span style="position:absolute;bottom:.7rem;right:.7rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);pointer-events:none;">Click to redraw ↻</span>
-            </button>
-          </div>
-        </article>
-
-        <!-- ONE-DAY BUILDS: SHRINK TO FIT + WHATSAPP ARCHIVE VIEWER -->
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(1.5rem,3vw,2.5rem);margin-bottom:clamp(2rem,4vw,3.5rem);">
-          <article data-reveal style="border:1px solid var(--line);padding:clamp(1.4rem,3.5vw,2.6rem);display:flex;flex-direction:column;">
-            <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:1.4rem;">
-              <span>04</span><span style="color:var(--accent);">Live · Open source · One-day build</span>
-            </div>
-            <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(1.8rem,4vw,2.9rem);line-height:.94;letter-spacing:-.02em;margin:0 0 1rem;">Shrink to Fit</h3>
-            <p style="font-size:1.02rem;line-height:1.62;color:var(--muted);margin:0 0 1rem;text-wrap:pretty;">Upload forms come with a number — <em>maximum size: 500 KB</em> — and your file never agrees with it. This lands any image or PDF at exactly the size you were told, entirely in your browser. Nothing is uploaded, because there is no server to upload to.</p>
-            <p style="font-size:1.02rem;line-height:1.62;color:var(--muted);margin:0 0 1.6rem;text-wrap:pretty;">PDFs keep their selectable text: a WebAssembly build of Ghostscript walks the internal image resolution down, rung by rung, until the document fits. Images binary-search JPEG quality from both ends. Location metadata doesn't survive the trip.</p>
-            <div style="display:flex;flex-wrap:wrap;gap:.55rem;margin-top:auto;">
-              <a href="https://feynma1h.github.io/shrink-to-fit" target="_blank" rel="noopener" style="border:1px solid var(--accent);color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.08em;padding:.55rem .9rem;">Try it ↗</a>
-              <a href="https://github.com/feynma1h/shrink-to-fit" target="_blank" rel="noopener" style="border:1px solid var(--line);color:var(--fg);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.08em;padding:.55rem .9rem;">Code ↗</a>
-            </div>
-          </article>
-          <article data-reveal style="border:1px solid var(--line);padding:clamp(1.4rem,3.5vw,2.6rem);display:flex;flex-direction:column;">
-            <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:1.4rem;">
-              <span>05</span><span style="color:var(--accent);">Live · Open source · One-day build</span>
-            </div>
-            <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(1.8rem,4vw,2.9rem);line-height:.94;letter-spacing:-.02em;margin:0 0 1rem;">WhatsApp Archive Viewer</h3>
-            <p style="font-size:1.02rem;line-height:1.62;color:var(--muted);margin:0 0 1rem;text-wrap:pretty;">Chat exports quietly pile up into tens of gigabytes a phone can't spare. Park the zips on a computer and read them back here as chats — read-only, zero extraction, zero upload. Unofficial, and says so.</p>
-            <p style="font-size:1.02rem;line-height:1.62;color:var(--muted);margin:0 0 1.6rem;text-wrap:pretty;">Some exports arrive genuinely damaged — the archive's index declares more files than it holds, and standard tools silently drop the tail: the newest media, and usually the chat itself. The bytes are still there. The viewer walks them raw, finds orphaned entries by signature, and hands them back.</p>
-            <div style="display:flex;flex-wrap:wrap;gap:.55rem;margin-top:auto;">
-              <a href="https://feynma1h.github.io/whatsapp-archive-viewer" target="_blank" rel="noopener" style="border:1px solid var(--accent);color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.08em;padding:.55rem .9rem;">Open ↗</a>
-              <a href="https://github.com/feynma1h/whatsapp-archive-viewer" target="_blank" rel="noopener" style="border:1px solid var(--line);color:var(--fg);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.08em;padding:.55rem .9rem;">Code ↗</a>
-            </div>
-          </article>
+      <div class="xp-side">
+        <figure class="plate">
+          <div class="cv ratio-43"><canvas id="cv-pdu" role="img" aria-label="Live code drawing: a six-byte PDU bit layout parsing itself signal by signal, then transmitting"></canvas></div>
+          <figcaption><span class="fign">Fig. 6</span> — a 6-byte PDU laying itself out, then transmitting. Simulated in code, counter and all: <span id="tx-count">0</span> frames so far.</figcaption>
+        </figure>
+        <div class="stats">
+          <div class="stat"><b>~£500K</b><span>Third-party licensing replaced — Intrepid, Vector and dSPACE.</span></div>
         </div>
-
-        <!-- PACKED BED -->
-        <article data-reveal style="border:1px solid var(--line);padding:clamp(1.4rem,3.5vw,3rem);">
-          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:1.4rem;">
-            <span>06</span><span style="color:var(--accent);">Research · Open source</span>
-          </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(1.6rem,4vw,3rem);align-items:center;">
-            <div style="position:relative;border:1px solid var(--line);background:var(--bg);aspect-ratio:16/10;overflow:hidden;order:2;">
-              <canvas id="packed" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;display:block;"></canvas>
-              <span style="position:absolute;top:.7rem;left:.7rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);">Potential-flow sketch</span>
-            </div>
-            <div style="order:1;">
-              <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(1.8rem,4vw,2.9rem);line-height:.94;letter-spacing:-.02em;margin:0 0 1rem;">packed-bed-simulations</h3>
-              <p style="font-size:1.02rem;line-height:1.62;color:var(--muted);margin:0 0 1.4rem;text-wrap:pretty;">My IIT Delhi thesis. To simulate flow through a reactor packed with catalyst pellets, you first need a faithful model of how those pellets actually settled — and the usual way to get one is to build the bed for real and measure it by hand. I poured them into a physics engine instead, let them fall, and read the packing off the result.</p>
-              <p style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.1rem,2vw,1.5rem);font-weight:600;line-height:1.2;margin:0 0 1.6rem;color:var(--fg);">Simulation prep: 2+ days → hours.</p>
-              <div style="display:flex;flex-wrap:wrap;gap:.55rem;">
-                <a href="https://github.com/feynma1h/packed-bed-simulations" target="_blank" rel="noopener" style="border:1px solid var(--line);color:var(--fg);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.08em;padding:.55rem .9rem;">Code ↗</a>
-              </div>
-            </div>
-          </div>
-        </article>
+        <p class="award"><b>JLR Exceptional Creator Award · 2025</b></p>
       </div>
-    </section>
+    </div>
+    <dl class="speclist">
+      <div><dt>01 · Desktop</dt><dd>Windows + Linux · PySide6 on Qt · dashboards · a drag-and-drop builder for making your own</dd></div>
+      <div><dt>02 · Headless</dt><dd>The same engine over HTTP, no screen attached · your own test code drives the rig instead of a person</dd></div>
+      <div><dt>03 · On the rig</dt><dd>reTerminal touch hardware · boots into the dashboard, one button, no laptop in the loop</dd></div>
+    </dl>
+    <div class="also-wrap">
+      <p class="kicker" style="margin:2.6rem 0 0"><b>Also at JLR</b></p>
+      <ul class="also">
+        <li>Jira ↔ BigQuery pipelines on scheduled Cloud Functions, feeding self-serve Tableau dashboards.</li>
+        <li>A Selenium XML-extraction utility across 20+ internal REST endpoints.</li>
+        <li>A Jira automation tool processing thousand-row supplier Excel files.</li>
+        <li>40+ org-wide Tableau dashboards, built and maintained — Rank 1 among all creators.</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-    <!-- EXPERIENCE -->
-    <section id="experience" aria-labelledby="h-experience" style="padding:clamp(5rem,11vw,10rem) clamp(1.1rem,4vw,3rem);border-top:1px solid var(--line);">
-      <div style="max-width:1180px;margin:0 auto;">
-        <h2 id="h-experience" data-reveal style="font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:0 0 2.2rem;font-weight:400;">03 / Experience</h2>
-        <div data-reveal style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.9rem 1.5rem;margin-bottom:.6rem;">
-          <div style="display:flex;align-items:center;gap:1.1rem;">
-            <span aria-hidden="true" style="flex-shrink:0;width:54px;height:54px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;padding:11px;color:var(--fg);">
-              <svg viewBox="0 0 1206.22 1060.95" fill="currentColor" style="width:100%;height:100%;display:block;">
-                <path d="M49.61,1060.95c74.53-47.23,123.68-132.76,123.68-225.26L173.24,0h-96.12v831.77c0,34.55-8.01,67.28-24.29,94.54-13.76,21.3-31.86,40.71-52.84,55.01l49.61,79.64Z"/>
-                <polygon points="465.45 803.57 465.45 0 369.33 0 369.33 897.13 907.61 897.13 849.94 803.57 465.45 803.57"/>
-                <path d="M1178.03,247.35C1178.03,108.94,1057.56,0,921.7,0h-260.17v93.56h261.45c91,0,156.36,70.49,156.36,153.79s-65.36,157.64-156.36,157.64h-262.73v93.56h194.8l248.63,398.58h102.53l-249.91-401.14c121.75-15.38,221.72-108.94,221.72-248.63Z"/>
-              </svg>
-            </span>
-            <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(2.3rem,5.5vw,4.4rem);line-height:.95;letter-spacing:-.02em;margin:0;">Jaguar Land Rover</h3>
-          </div>
-          <p style="font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0;">Jul 2022 — Oct 2025 · Bangalore</p>
-        </div>
-        <p data-reveal style="font-family:'JetBrains Mono',monospace;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 2.5rem;">Software Engineer</p>
-
-        <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(1.6rem,4vw,3.5rem);align-items:start;">
-          <div>
-            <p style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.35rem,2.6vw,2.1rem);font-weight:600;line-height:1.15;margin:0 0 1.4rem;text-wrap:balance;">A car is a few dozen computers having a conversation. Nobody had written down what they say.</p>
-            <p style="font-size:1.02rem;line-height:1.65;color:var(--muted);margin:0 0 1.1rem;text-wrap:pretty;">It is specified, technically — in a 100,000-line XML file with no map of what lives where, replaced by a new one every quarter. You can re-learn that file four times a year, or you can work out the shape underneath it once. I did the second, and wrote the parser against the shape rather than the file, so each new release just drops in. A later C++ port — part of a full migration for tighter real-time margins — took the parse from ~2–3 seconds to ~0.1.</p>
-            <p style="font-size:1.02rem;line-height:1.65;color:var(--muted);margin:0 0 1.1rem;text-wrap:pretty;">What comes out is the whole map: which computer talks to which, at what address, and where inside each message every value sits — down to the bit, and which way round the bytes are packed.</p>
-            <p style="font-size:1.02rem;line-height:1.65;color:var(--muted);margin:0 0 1.1rem;text-wrap:pretty;">Reading it was the easy half. The other half talks back: hold a message on a timer the tester chooses, steady enough for a ten-millisecond beat; flip a counter or checksum to a deliberately wrong value — a functional-safety feature, there to prove the far side notices — and turn whatever returns from raw bytes into the words a tester actually says out loud. Engine speed — not byte 3, bits 4 through 15.</p>
-            <p style="font-size:1.02rem;line-height:1.65;color:var(--fg);margin:0 0 1.8rem;text-wrap:pretty;">Then I put it in front of people three ways. The third is my favourite: a small touchscreen box you bolt to the test rig and press one button. It boots straight into the dashboard — no laptop, no install, nothing to read first. A tester taps the signal they want and it goes out on the wire.</p>
-            <div style="display:grid;gap:.7rem;">
-              <div style="border-left:2px solid var(--accent);padding:.35rem 0 .35rem .9rem;">
-                <p style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 .3rem;">01 · Desktop</p>
-                <p style="font-family:'JetBrains Mono',monospace;font-size:.78rem;line-height:1.6;color:var(--muted);margin:0;">Windows + Linux · PySide6 on Qt · dashboards · a drag-and-drop builder for making your own</p>
-              </div>
-              <div style="border-left:2px solid var(--accent);padding:.35rem 0 .35rem .9rem;">
-                <p style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 .3rem;">02 · Headless</p>
-                <p style="font-family:'JetBrains Mono',monospace;font-size:.78rem;line-height:1.6;color:var(--muted);margin:0;">The same engine over HTTP, no screen attached · your own test code drives the rig instead of a person</p>
-              </div>
-              <div style="border-left:2px solid var(--accent);padding:.35rem 0 .35rem .9rem;">
-                <p style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 .3rem;">03 · On the rig</p>
-                <p style="font-family:'JetBrains Mono',monospace;font-size:.78rem;line-height:1.6;color:var(--muted);margin:0;">reTerminal touch hardware · boots into the dashboard, one button, no laptop in the loop</p>
-              </div>
-            </div>
-            <p style="font-size:1.02rem;line-height:1.65;color:var(--muted);margin:1.6rem 0 0;text-wrap:pretty;">Every copy quietly reports the machine it's running on, so adoption was never a guess — 500+ unique machines checked in.</p>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:1rem;">
-            <div style="position:relative;border:1px solid var(--line);background:var(--bg);aspect-ratio:4/3;overflow:hidden;">
-              <canvas id="pdu" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;display:block;"></canvas>
-              <span style="position:absolute;top:.7rem;left:.7rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);">PDU bit layout · sketched</span>
-              <span style="position:absolute;bottom:.7rem;right:.7rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);">Simulated TX · <span id="txn">0</span> frames</span>
-            </div>
-            <div style="border:1px solid var(--accent);padding:1.1rem 1.2rem;">
-              <p style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(2.2rem,5vw,3rem);font-weight:700;line-height:1;margin:0;color:var(--accent);">~£500K</p>
-              <p style="font-size:.98rem;line-height:1.5;margin:.5rem 0 0;">Third-party licensing replaced — Intrepid, Vector and dSPACE.</p>
-            </div>
-            <div style="border:1px solid var(--line);padding:1.1rem 1.2rem;">
-              <p style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 .4rem;">Award · 2025</p>
-              <p style="font-family:'Bricolage Grotesque',sans-serif;font-size:1.2rem;font-weight:600;margin:0;">JLR Exceptional Creator Award</p>
-            </div>
-          </div>
-        </div>
-
-        <div data-reveal style="margin-top:clamp(2.5rem,6vw,4.5rem);">
-          <p style="font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:.7rem;margin:0 0 1.4rem;">Also at JLR</p>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.2rem clamp(1.4rem,3vw,2.6rem);">
-            <p style="margin:0;font-size:.94rem;line-height:1.55;color:var(--muted);">Jira ↔ BigQuery pipelines on scheduled Cloud Functions, feeding self-serve Tableau dashboards.</p>
-            <p style="margin:0;font-size:.94rem;line-height:1.55;color:var(--muted);">A Selenium XML-extraction utility across 20+ internal REST endpoints.</p>
-            <p style="margin:0;font-size:.94rem;line-height:1.55;color:var(--muted);">A Jira automation tool processing thousand-row supplier Excel files.</p>
-            <p style="margin:0;font-size:.94rem;line-height:1.55;color:var(--muted);">40+ org-wide Tableau dashboards, built and maintained — <strong style="color:var(--fg);font-weight:600;">Rank 1</strong> among all creators.</p>
-          </div>
-        </div>
+<!-- ============ toolkit ============ -->
+<section id="toolkit">
+  <div class="wrap">
+    <div class="sec-head"><h2>Toolkit</h2></div>
+    <div class="kitgrid">
+      <div>
+        <h3>Languages</h3>
+        <ul class="chips"><li>Python</li><li>TypeScript / JS</li><li>Java</li><li>C++</li><li>C</li><li>SQL</li><li>Swift</li><li>MATLAB</li></ul>
       </div>
-    </section>
-
-    <!-- TOOLKIT -->
-    <section aria-labelledby="h-toolkit" style="padding:clamp(5rem,11vw,9rem) clamp(1.1rem,4vw,3rem);border-top:1px solid var(--line);">
-      <div style="max-width:1180px;margin:0 auto;">
-        <h2 id="h-toolkit" data-reveal style="font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:0 0 2.5rem;font-weight:400;">04 / Toolkit</h2>
-        <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(1.6rem,4vw,3rem);">
-          <div>
-            <p style="font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:.6rem;margin:0 0 1rem;">Languages</p>
-            <div style="display:flex;flex-wrap:wrap;gap:.45rem;">
-              <span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">Python</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">TypeScript / JS</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">Java</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">C++</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">C</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">SQL</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">Swift</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">MATLAB</span>
-            </div>
-          </div>
-          <div>
-            <p style="font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:.6rem;margin:0 0 1rem;">Backend &amp; Infra</p>
-            <div style="display:flex;flex-wrap:wrap;gap:.45rem;">
-              <span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">FastAPI</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">Flask</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">GCP · Cloud Run/Tasks/Eventarc</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">Cloud Run GPU (NVIDIA L4)</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">Firebase / Firestore</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">Docker</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">CI/CD</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">Postgres + pgvector</span>
-            </div>
-          </div>
-          <div>
-            <p style="font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:.6rem;margin:0 0 1rem;">Frontend &amp; Graphics</p>
-            <div style="display:flex;flex-wrap:wrap;gap:.45rem;">
-              <span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">Next.js</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">React</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">three.js + Spark (WebGL2 3DGS)</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">Canvas / SVG</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">Qt · C++ / PySide6</span>
-            </div>
-          </div>
-          <div>
-            <p style="font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:.6rem;margin:0 0 1rem;">AI &amp; Data</p>
-            <div style="display:flex;flex-wrap:wrap;gap:.45rem;">
-              <span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">Embeddings &amp; vector search</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">Hybrid retrieval &amp; RRF</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">IR evaluation (nDCG, qrels)</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">SAM 3 / SAM 3D Objects</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">RoomPlan geometry</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">Gaussian splatting</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">LLM apps (streaming, structured, vision)</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">Tableau / BigQuery</span>
-            </div>
-          </div>
-          <div>
-            <p style="font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:.6rem;margin:0 0 1rem;">Vehicle Networks &amp; Embedded</p>
-            <div style="display:flex;flex-wrap:wrap;gap:.45rem;">
-              <span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">ARXML · PDU / signal layouts</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">SOME/IP · automotive Ethernet</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">scapy · raw packet I/O</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">Multithreaded real-time I/O</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">Embedded Linux · reTerminal</span>
-            </div>
-          </div>
-          <div>
-            <p style="font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:.6rem;margin:0 0 1rem;">Domain</p>
-            <div style="display:flex;flex-wrap:wrap;gap:.45rem;">
-              <span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">ARKit / spatial computing</span><span style="border:1px solid var(--line);padding:.35rem .65rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;">CFD · Blender · Ansys Fluent</span>
-            </div>
-          </div>
-        </div>
+      <div>
+        <h3>Backend &amp; Infra</h3>
+        <ul class="chips"><li>FastAPI</li><li>Flask</li><li>GCP (Cloud Run / Tasks / Eventarc)</li><li>Cloud Run GPU (NVIDIA L4)</li><li>Firebase / Firestore</li><li>Docker</li><li>CI/CD</li><li>Postgres + pgvector</li></ul>
       </div>
-    </section>
-
-    <!-- BACKGROUND -->
-    <section id="background" aria-labelledby="h-background" style="padding:clamp(5rem,11vw,10rem) clamp(1.1rem,4vw,3rem);border-top:1px solid var(--line);">
-      <div style="max-width:1180px;margin:0 auto;">
-        <h2 id="h-background" data-reveal style="font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:0 0 2.5rem;font-weight:400;">05 / Background</h2>
-        <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(2rem,5vw,4rem);">
-          <div>
-            <p style="font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 1.2rem;">Education</p>
-            <div style="display:flex;align-items:center;gap:1.1rem;margin:0 0 .8rem;">
-              <span aria-hidden="true" style="flex-shrink:0;width:54px;height:54px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;padding:8px;">
-                <img src="iitd-logo.png" alt="" width="38" height="38" style="width:100%;height:100%;object-fit:contain;">
-              </span>
-              <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(1.8rem,4vw,2.8rem);line-height:.95;letter-spacing:-.02em;margin:0;">IIT Delhi</h3>
-            </div>
-            <p style="font-size:1.05rem;line-height:1.5;margin:0 0 .5rem;">B.Tech + M.Tech (Dual Degree), Chemical Engineering</p>
-            <p style="font-family:'JetBrains Mono',monospace;font-size:.82rem;letter-spacing:.06em;color:var(--muted);margin:0;">CGPA 8.6 / 10 · 2017 – 2022</p>
-          </div>
-          <div>
-            <p style="font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 1.2rem;">Honors</p>
-            <div style="display:grid;gap:0;">
-              <div style="border-top:1px solid var(--line);padding:.85rem 0;display:flex;justify-content:space-between;gap:1rem;"><span style="font-size:.98rem;">JLR Exceptional Creator Award</span><span style="font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--accent);">2025</span></div>
-              <div style="border-top:1px solid var(--line);padding:.85rem 0;display:flex;justify-content:space-between;gap:1rem;"><span style="font-size:.98rem;">Department Rank 1 — Chemical Engineering</span></div>
-              <div style="border-top:1px solid var(--line);padding:.85rem 0;display:flex;justify-content:space-between;gap:1rem;"><span style="font-size:.98rem;">Semester Merit Award</span><span style="font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--muted);">×2</span></div>
-              <div style="border-top:1px solid var(--line);padding:.85rem 0;display:flex;justify-content:space-between;gap:1rem;"><span style="font-size:.98rem;">JEE Advanced — AIR 2525</span><span style="font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--muted);">top 1.14%</span></div>
-              <div style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:.85rem 0;display:flex;justify-content:space-between;gap:1rem;"><span style="font-size:.98rem;">JEE Main — AIR 742</span><span style="font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--muted);">top 0.06%</span></div>
-            </div>
-          </div>
-        </div>
+      <div>
+        <h3>Frontend &amp; Graphics</h3>
+        <ul class="chips"><li>Next.js</li><li>React</li><li>three.js + Spark (WebGL2 3DGS)</li><li>Canvas / SVG</li><li>Qt (C++ / PySide6)</li></ul>
       </div>
-    </section>
-
-    <!-- CONTACT -->
-    <footer id="contact" aria-labelledby="h-contact" style="position:relative;padding:clamp(5rem,11vw,10rem) clamp(1.1rem,4vw,3rem) 3rem;border-top:1px solid var(--line);background:color-mix(in srgb,var(--panel) 55%,transparent);overflow:hidden;">
-      <div style="max-width:1180px;margin:0 auto;position:relative;z-index:1;">
-        <h2 id="h-contact" data-reveal style="font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:0 0 2rem;font-weight:400;">06 / Contact</h2>
-        <h3 data-reveal style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:clamp(2.6rem,8vw,6.5rem);line-height:.9;letter-spacing:-.03em;margin:0 0 1.2rem;text-wrap:balance;">Let's build the whole thing.</h3>
-        <p data-reveal style="font-size:clamp(1.05rem,2vw,1.4rem);line-height:1.4;color:var(--muted);max-width:38ch;margin:0 0 3rem;text-wrap:pretty;">Available for the parts of the stack nobody else wants to own — from the metal to the model.</p>
-
-        <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0;border-top:1px solid var(--line);">
-          <a href="mailto:23singhutkarsh@gmail.com" style="display:flex;flex-direction:column;gap:.4rem;border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:1.3rem 1rem;color:var(--fg);"><span style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);">Email</span><span style="font-size:1rem;word-break:break-all;">23singhutkarsh@gmail.com</span></a>
-          <a href="https://linkedin.com/in/feynmath" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:.4rem;border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:1.3rem 1rem;color:var(--fg);"><span style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);">LinkedIn ↗</span><span style="font-size:1rem;">in/feynmath</span></a>
-          <a href="https://github.com/feynma1h" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:.4rem;border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:1.3rem 1rem;color:var(--fg);"><span style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);">GitHub ↗</span><span style="font-size:1rem;">feynma1h</span></a>
-          <a href="resume.pdf" target="_blank" rel="noopener" style="display:flex;flex-direction:column;gap:.4rem;border-bottom:1px solid var(--line);padding:1.3rem 1rem;color:var(--fg);"><span style="font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);">Résumé ↗</span><span style="font-size:1rem;">resume.pdf</span></a>
-        </div>
-
-        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:1.5rem;margin-top:clamp(3rem,7vw,6rem);">
-          <p style="font-family:'Bricolage Grotesque',sans-serif;font-weight:300;font-size:clamp(2.5rem,10vw,7rem);line-height:.85;letter-spacing:-.02em;margin:0;opacity:.9;">Utkarsh Singh</p>
-          <div style="font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:right;line-height:1.8;">
-            <div>Bangalore, India · Remote only</div>
-            <div>End of sheet · <span id="year"></span></div>
-          </div>
-        </div>
+      <div>
+        <h3>AI &amp; Data</h3>
+        <ul class="chips"><li>Embeddings &amp; vector search</li><li>Hybrid retrieval &amp; RRF</li><li>IR evaluation (nDCG, qrels)</li><li>SAM 3 / SAM 3D Objects</li><li>RoomPlan geometry</li><li>Gaussian splatting</li><li>LLM apps (streaming, structured, vision)</li><li>Tableau / BigQuery</li></ul>
       </div>
+      <div>
+        <h3>Vehicle Networks &amp; Embedded</h3>
+        <ul class="chips"><li>ARXML</li><li>PDU / signal layouts</li><li>SOME/IP</li><li>automotive Ethernet</li><li>scapy</li><li>raw packet I/O</li><li>Multithreaded real-time I/O</li><li>Embedded Linux</li><li>reTerminal</li></ul>
+      </div>
+      <div>
+        <h3>Domain</h3>
+        <ul class="chips"><li>ARKit / spatial computing</li><li>CFD</li><li>Blender</li><li>Ansys Fluent</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ background ============ -->
+<section class="rule-top" id="background">
+  <div class="wrap">
+    <div class="sec-head"><h2>Background</h2></div>
+    <div class="edu">
+      <img src="iitd-logo.png" alt="IIT Delhi crest" width="72" height="72">
+      <div>
+        <p class="deg" style="margin:0">IIT Delhi — B.Tech + M.Tech (Dual Degree), Chemical Engineering</p>
+        <p class="deg-sub" style="margin:.3rem 0 0">CGPA 8.6 / 10 · 2017 – 2022</p>
+      </div>
+    </div>
+    <div class="honors">
+      <span class="hlabel">Honours</span>
+      <p>JLR Exceptional Creator Award (2025) · Department Rank 1 — Chemical Engineering · Semester Merit Award ×2 · JEE Advanced — AIR 2525 (top 1.14%) · JEE Main — AIR 742 (top 0.06%)</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ contact ============ -->
+<section class="band-acc" id="contact">
+  <div class="wrap">
+    <h2>Let’s build the whole thing.</h2>
+    <p style="margin-top:1.4rem">Available for the parts of the stack nobody else wants to own — from the metal to the model.</p>
+    <ul class="routes">
+      <li><span class="rlabel">Email</span><a href="mailto:23singhutkarsh@gmail.com">23singhutkarsh@gmail.com</a></li>
+      <li><span class="rlabel">LinkedIn</span><a href="https://www.linkedin.com/in/feynmath" target="_blank" rel="noopener">linkedin.com/in/feynmath</a></li>
+      <li><span class="rlabel">GitHub</span><a href="https://github.com/feynma1h" target="_blank" rel="noopener">github.com/feynma1h</a></li>
+      <li><span class="rlabel">Résumé</span><a href="resume.pdf">resume.pdf</a></li>
+    </ul>
+    <footer>
+      <span>Utkarsh Singh · Bangalore, India · Remote only</span>
+      <span>Every figure on this page is drawn live in code.</span>
     </footer>
+  </div>
+</section>
 
-  </main>
-</div>
+</main>
 
 <script>
-(function(){
-  var root = document.getElementById('root');
+/* ====================================================================
+   Portfolio graphics — every figure on the page is drawn at runtime
+   by this library. No image assets, no dependencies.
+
+   API
+   ---
+   PortfolioGraphics.setPalette({bg, fg, accent, muted, blue, light})
+     Colors as hex ('#RGB'/'#RRGGBB') or 'rgb(…)' strings. `light:true`
+     when the background is light — fade rates differ. Set before
+     mounting; after a palette change, set again and call rebuildAll().
+
+   PortfolioGraphics.config({ monoFont:'…' })
+     Font stack for the text drawn inside the pdu figure.
+
+   PortfolioGraphics.mount(canvasEl, mode, opts) -> handle
+     Attach a figure to a <canvas> that already has CSS layout (e.g.
+     position:absolute; inset:0 inside a sized box). DPR, resize
+     rebuilds, and visibility gating are handled here; a figure only
+     animates while on screen. handle.rebuild() re-seeds it — the
+     linework tile wires that to a click.
+
+     modes: 'room' {} · 'pdu' {onFrames(n)} · 'scatter' {}
+            · 'streamlines' {} · 'contours' {} · 'harmonograph' {}
+
+   PortfolioGraphics.rebuildAll()
+     Re-seed every mounted figure (after a palette change).
+
+   Under prefers-reduced-motion each figure renders once as a finished
+   still instead of animating; the loop pauses while the tab is hidden.
+
+   Each builder below receives (ctx, dim, opts) and returns {frame(t)}.
+   Builders draw only with `pal` colors, derive every size from
+   dim.w/dim.h (a resize rebuilds them from scratch), and repaint the
+   background each frame, so repeated frame() calls always land on a
+   composed image — the reduced-motion still relies on that. Module
+   scope provides pal, hexToRgba, pointer (window mouse position) and
+   cfg.monoFont.
+   ==================================================================== */
+window.PortfolioGraphics = (function(){
   var pointer = { x:-9999, y:-9999, active:false };
   var anims = [];
-  var rafId = null, _frameCount = 0, plotNo = 1;
-  var state = { theme:'dark' };
+  var rafId = null, _frameCount = 0;
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var pal = {};
-  var THEMES = {
-    dark:  { '--bg':'#0A0B0E','--bg2':'#111318','--panel':'#0E1015','--fg':'#ECE9E0','--muted':'#8A8D97','--line':'rgba(236,233,224,0.12)','--grid':'rgba(236,233,224,0.045)','--blue':'#6EA0E0' },
-    light: { '--bg':'#F2EEE4','--bg2':'#E9E4D7','--panel':'#EDE8DC','--fg':'#17140E','--muted':'#6A6456','--line':'rgba(23,20,14,0.14)','--grid':'rgba(23,20,14,0.05)','--blue':'#3D68A6' }
-  };
-
-  document.getElementById('year').textContent = new Date().getFullYear();
+  var pal = { bg:'#111111', fg:'#EEEEEE', accent:'#888888', muted:'#777777', blue:'#999999', light:false };
+  var cfg = { monoFont:'ui-monospace, SFMono-Regular, Menlo, monospace' };
+  var booted = false;
 
   function hexToRgba(hex, a){
     hex = (hex||'#000').trim();
@@ -508,115 +592,8 @@
     var r=parseInt(h.slice(0,2),16), g=parseInt(h.slice(2,4),16), b=parseInt(h.slice(4,6),16);
     return 'rgba('+r+','+g+','+b+','+a+')';
   }
-  function applyTheme(theme){
-    var t = THEMES[theme] || THEMES.dark;
-    Object.keys(t).forEach(function(k){ root.style.setProperty(k, t[k]); });
-    document.body.style.background = t['--bg'];
-  }
-  function refreshPalette(){
-    var cs = getComputedStyle(root); var g = function(n){ return cs.getPropertyValue(n).trim(); };
-    pal = { bg:g('--bg'), fg:g('--fg'), accent:g('--accent'), muted:g('--muted'), blue:g('--blue'), light: state.theme==='light' };
-  }
 
   var BUILDERS = {};
-
-  function setup(canvas, mode, opts){
-    if (!canvas) return;
-    var dpr = Math.min(window.devicePixelRatio || 1, 2);
-    var ctx = canvas.getContext('2d');
-    var dim = { w:1, h:1 };
-    function size(){
-      var r = canvas.getBoundingClientRect();
-      dim.w = Math.max(1, r.width); dim.h = Math.max(1, r.height);
-      canvas.width = Math.round(dim.w*dpr); canvas.height = Math.round(dim.h*dpr);
-      ctx.setTransform(dpr,0,0,dpr,0,0);
-    }
-    size();
-    var st = BUILDERS[mode](ctx, dim, opts);
-    var anim = {
-      canvas:canvas, ctx:ctx, dim:dim, visible:false, mode:mode, opts:opts,
-      frame:function(t){ st.frame(t); },
-      // Resizing the backing store clears it, so always repaint immediately —
-      // otherwise a panel sits blank until the next observer callback.
-      rebuild:function(){ size(); st = BUILDERS[mode](ctx, dim, opts); try { st.frame(0); } catch(e){} }
-    };
-    anim.ro = new ResizeObserver(function(){ anim.rebuild(); if(reduced) renderStatic(anim); });
-    anim.ro.observe(canvas);
-    anim.io = new IntersectionObserver(function(es){ es.forEach(function(e){ anim.visible = e.isIntersecting; }); }, { threshold:0 });
-    anim.io.observe(canvas);
-    anims.push(anim);
-    // Paint one frame straight away so a panel is never an empty box while we wait
-    // for IntersectionObserver (which is throttled in background/inactive tabs).
-    if (reduced) renderStatic(anim); else { try { anim.frame(0); } catch(e){} }
-  }
-  function renderStatic(anim){ try { for (var i=0;i<160;i++) anim.frame(i*0.06); } catch(e){} }
-  function startLoop(){
-    function loop(){
-      var t = performance.now()/1000;
-      for (var i=0;i<anims.length;i++){ var a=anims[i]; if (a.visible){ try { a.frame(t); } catch(e){} } }
-      _frameCount++;
-      rafId = requestAnimationFrame(loop);
-    }
-    rafId = requestAnimationFrame(loop);
-  }
-
-  // FLOW FIELD (hero + linework)
-  // The plotter draws a sheet, then the sheet is replaced and it starts a new plot.
-  // Without this cycle, alpha-fade leaves permanent 8-bit residue and the frame
-  // silts up into an unreadable hairball after a few minutes.
-  BUILDERS.flow = function(ctx, dim, opts){
-    var A = opts.alpha != null ? opts.alpha : 0.7;
-    var seedOff = (opts.seed || 0) + Math.random()*100;
-    var cols = [ hexToRgba(pal.accent, 0.85*A), hexToRgba(pal.fg, 0.40*A), hexToRgba(pal.blue, 0.55*A) ];
-    var density = opts.dense ? 3400 : 5200;
-    var N = Math.round(Math.min(300, Math.max(60, dim.w*dim.h/density)));
-    var DRAW = opts.drawFor || 24;   // seconds of plotting
-    var LIFT = opts.liftFor || 3.2;  // seconds for the sheet to clear
-    var baseFade = pal.light ? 0.020 : 0.015;
-    var pens = [];
-    function seed(p){ p.x=Math.random()*dim.w; p.y=Math.random()*dim.h; p.life=30+Math.random()*130; p.col=cols[(Math.random()*cols.length)|0]; p.wd=0.5+Math.random()*0.9; }
-    for (var i=0;i<N;i++){ var p={}; seed(p); pens.push(p); }
-    var segEl=document.getElementById('seg'), plotEl=document.getElementById('plotNo');
-    var mode='draw', modeT=null, cycleSegs=0;
-    return { frame:function(t){
-      if(modeT===null){ modeT=t; ctx.fillStyle=pal.bg; ctx.fillRect(0,0,dim.w,dim.h); }
-      var el = t-modeT, fade = baseFade;
-      if(mode==='lift'){
-        var k = Math.min(1, el/LIFT);
-        fade = baseFade + k*k*0.34;   // ramp hard so the sheet actually reaches bare paper
-      }
-      ctx.fillStyle = hexToRgba(pal.bg, fade);
-      ctx.fillRect(0,0,dim.w,dim.h);
-      var s=0.0024, tt=t*0.13+seedOff;
-      var mx=-9999,my=-9999;
-      if(opts.interactive && pointer.active){ var r=ctx.canvas.getBoundingClientRect(); mx=pointer.x-r.left; my=pointer.y-r.top; }
-      for(var k2=0;k2<pens.length;k2++){ var pp=pens[k2];
-        var a = Math.PI*(Math.sin(pp.x*s+tt)+Math.sin(pp.y*s*1.28-tt*0.7)+Math.sin((pp.x+pp.y)*s*0.5+tt*0.35));
-        if(opts.interactive && pointer.active){ var dx=pp.x-mx, dy=pp.y-my, d=Math.hypot(dx,dy); if(d<170){ var sw=Math.atan2(dy,dx)+Math.PI/2; var infl=(1-d/170); a = a*(1-infl)+sw*infl; } }
-        var nx=pp.x+Math.cos(a)*3.4, ny=pp.y+Math.sin(a)*3.4;
-        ctx.strokeStyle=pp.col; ctx.lineWidth=pp.wd;
-        ctx.beginPath(); ctx.moveTo(pp.x,pp.y); ctx.lineTo(nx,ny); ctx.stroke();
-        pp.x=nx;pp.y=ny;pp.life--;
-        if(pp.life<=0||nx<-5||ny<-5||nx>dim.w+5||ny>dim.h+5) seed(pp);
-      }
-      if(opts.counter){
-        cycleSegs += pens.length;
-        if(_frameCount%18===0 && segEl) segEl.textContent = cycleSegs.toLocaleString();
-      }
-      if(mode==='draw'){
-        if(el > DRAW){ mode='lift'; modeT=t; }
-      } else if(el >= LIFT){
-        ctx.fillStyle=pal.bg; ctx.fillRect(0,0,dim.w,dim.h);   // invisible: already at bare paper
-        for(var q=0;q<pens.length;q++) seed(pens[q]);
-        cycleSegs = 0;
-        if(opts.counter && plotEl){
-          plotNo++;
-          plotEl.textContent = 'Plot ' + String(plotNo).padStart(3,'0');
-        }
-        mode='draw'; modeT=t;
-      }
-    }};
-  };
 
   // ROOM WIREFRAME (roomstudio)
   BUILDERS.room = function(ctx, dim, opts){
@@ -669,8 +646,8 @@
     }};
   };
 
-  // PDU BIT LAYOUT (Jaguar Land Rover)
-  // What the ARXML parser actually yields: signals packed into a PDU at a start
+  // PDU BIT LAYOUT (vehicle networks)
+  // What an ARXML parser actually yields: signals packed into a PDU at a start
   // position, a size, and a byte order. Signals are laid in one at a time — that
   // is the parse — and once the layout resolves the frame starts transmitting,
   // with the live signal's bits changing between frames the way a periodic send
@@ -695,7 +672,6 @@
 
     var LAY=0.34, TICK=0.5, HOLD=8;     // parse stagger · frame period · frames per signal
     var start=null, lastT=null, lastTick=0, frames=0, live=0;
-    var txEl=document.getElementById('txn');
 
     return { frame:function(t){
       if(start===null){ start=t; lastTick=t; lastT=t; }
@@ -713,7 +689,7 @@
         if(frames%HOLD===0) live=(live+1)%SIGNALS.length;
         var sg=SIGNALS[live];
         for(var b=sg.s;b<sg.s+sg.l&&b<NCELL;b++) bits[b]=Math.random()<0.5?1:0;
-        if(txEl) txEl.textContent=frames.toLocaleString();
+        if(opts.onFrames) opts.onFrames(frames);
       }
 
       var pad=Math.max(8, Math.min(dim.w,dim.h)*0.05);
@@ -721,7 +697,7 @@
       var gut=fs*2.6, topH=fs*1.7;
 
       ctx.fillStyle=pal.bg; ctx.fillRect(0,0,dim.w,dim.h);
-      ctx.font='400 '+fs.toFixed(1)+'px "JetBrains Mono", ui-monospace, monospace';
+      ctx.font='400 '+fs.toFixed(1)+'px '+cfg.monoFont;
       ctx.textBaseline='middle';
 
       // Two legend columns when the labels fit side by side, one when they don't —
@@ -801,7 +777,7 @@
     }};
   };
 
-  // SCATTER (gitsearch embeddings)
+  // SCATTER (embeddings / nearest-neighbour search)
   // Cluster seeds are laid on a jittered 4x3 lattice in NORMALISED space, so the
   // field always spans the whole frame (purely random seeds clumped into one
   // corner) and any resize redistributes correctly without a rebuild.
@@ -939,61 +915,250 @@
     }};
   };
 
-  function setupReveals(){
-    var els = [].slice.call(root.querySelectorAll('[data-reveal]'));
-    if(reduced || !('IntersectionObserver' in window)){ els.forEach(function(e){ e.style.opacity=1; }); return; }
-    els.forEach(function(e){ e.style.opacity=0; e.style.transform='translateY(22px)'; e.style.transition='opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1)'; });
-    function show(e){ e.style.opacity=1; e.style.transform='none'; }
-    var obs=new IntersectionObserver(function(entries){
-      entries.forEach(function(en){ if(en.isIntersecting){ show(en.target); obs.unobserve(en.target); } });
-    },{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
-    els.forEach(function(e){ obs.observe(e); });
-    // Safety net: content must never be stranded invisible. A deep link, a restored
-    // scroll position, or a fast fling can carry an element past the viewport without
-    // it ever satisfying the threshold, and it would stay at opacity 0 forever.
-    function sweep(){
-      els.forEach(function(e){
-        if(e.style.opacity === '1') return;
-        var r = e.getBoundingClientRect();
-        if(r.bottom < window.innerHeight*0.9 || r.top < window.innerHeight){ show(e); obs.unobserve(e); }
+  // INTERFERENCE CONTOURS (hero). Six wave sources — one per domain —
+  // share a single surface; the drawing is that surface's level sets,
+  // traced by marching squares every frame. The cursor joins as a
+  // seventh source. A scalar field read like a printed contour plate:
+  // no particles, no advection, no noise field — nothing persists
+  // between frames except the equations.
+  BUILDERS.contours = function(ctx, dim, opts){
+    function R(a,b){ return a + Math.random()*(b-a); }
+    var TAU = 6.28318, S = 6, srcs = [], i, n;
+    for (i=0;i<S;i++){
+      var an = (i/S)*TAU + R(-0.4,0.4) + 0.5;
+      srcs.push({
+        x: 0.5 + Math.cos(an)*R(0.26,0.46),
+        y: 0.5 + Math.sin(an)*R(0.22,0.40),
+        lam: R(0.24,0.42),
+        sp: R(0.35,0.9)*(Math.random()<0.5?-1:1),
+        ph: R(0,TAU)
       });
     }
-    window.addEventListener('load', sweep);
-    window.addEventListener('scroll', sweep, { passive:true });
-    setTimeout(sweep, 1200);
+    var mind = Math.max(60, Math.min(dim.w, dim.h));
+    var cell = Math.max(7.5, mind/48);
+    var nx = Math.max(20, Math.round(dim.w/cell));
+    var ny = Math.max(12, Math.round(dim.h/cell));
+    var vx = nx+1, vy = ny+1, NV = vx*vy;
+    var f = new Float32Array(NV), px = new Float32Array(NV), py = new Float32Array(NV);
+    for (var yy=0; yy<vy; yy++) for (var xx=0; xx<vx; xx++){
+      var id = yy*vx+xx; px[id] = xx*dim.w/nx; py[id] = yy*dim.h/ny;
+    }
+    var dists = [];
+    for (i=0;i<S;i++){
+      var D = new Float32Array(NV), sx = srcs[i].x*dim.w, sy = srcs[i].y*dim.h;
+      for (n=0;n<NV;n++) D[n] = Math.hypot(px[n]-sx, py[n]-sy)/mind;
+      dists.push(D);
+    }
+    var LEVELS = [-2.2,-1.76,-1.32,-0.88,-0.44,0,0.44,0.88,1.32,1.76,2.2];
+    // segment table by corner mask (TL=8,TR=4,BR=2,BL=1); edges 0 top,
+    // 1 right, 2 bottom, 3 left; flat pairs, two pairs for the saddles
+    var SEGS = [null,[3,2],[1,2],[3,1],[0,1],[0,3,1,2],[0,2],[0,3],
+                [0,3],[0,2],[0,1,2,3],[0,1],[3,1],[1,2],[3,2],null];
+    var A,B,C,D2,X0,X1,Y0,Y1, EP = new Float32Array(4);
+    function ept(edge, k){
+      var tt;
+      if (edge===0){ tt=A/(A-B);  EP[k]=X0+(X1-X0)*tt; EP[k+1]=Y0; }
+      else if (edge===1){ tt=B/(B-C);  EP[k]=X1; EP[k+1]=Y0+(Y1-Y0)*tt; }
+      else if (edge===2){ tt=D2/(D2-C); EP[k]=X0+(X1-X0)*tt; EP[k+1]=Y1; }
+      else { tt=A/(A-D2); EP[k]=X0; EP[k+1]=Y0+(Y1-Y0)*tt; }
+    }
+    function levelStyle(L){
+      var aL = Math.abs(L);
+      if (L>1.7) return { c: hexToRgba(pal.accent, 0.95), w: 1.3 };
+      if (L<-1.7) return { c: hexToRgba(pal.blue, 0.85), w: 1.15 };
+      if (aL<0.01) return { c: hexToRgba(pal.fg, 0.6), w: 1.0 };
+      return { c: hexToRgba(pal.fg, 0.5-aL*0.14), w: 0.85 };
+    }
+    return { frame: function(t){
+      var s2, ptrx=-1, ptry=-1, hasPtr=false;
+      var rect = ctx.canvas.getBoundingClientRect();
+      if (pointer.active){
+        var mx = pointer.x - rect.left, my = pointer.y - rect.top;
+        if (mx>-60 && my>-60 && mx<dim.w+60 && my<dim.h+60){ ptrx=mx; ptry=my; hasPtr=true; }
+      }
+      for (n=0;n<NV;n++){
+        var v = 0;
+        for (s2=0;s2<S;s2++){ var sc = srcs[s2]; v += Math.sin(dists[s2][n]/sc.lam*TAU - t*sc.sp + sc.ph); }
+        if (hasPtr){
+          var dd = Math.hypot(px[n]-ptrx, py[n]-ptry)/mind;
+          v += 1.6*Math.sin(dd/0.26*TAU - t*2.6)*Math.exp(-dd*2.2);
+        }
+        f[n] = v;
+      }
+      ctx.fillStyle = pal.bg; ctx.fillRect(0,0,dim.w,dim.h);
+      for (var li=0; li<LEVELS.length; li++){
+        var L = LEVELS[li], st = levelStyle(L);
+        ctx.strokeStyle = st.c; ctx.lineWidth = st.w;
+        ctx.beginPath();
+        for (var cy=0; cy<ny; cy++){
+          var r0 = cy*vx, r1 = r0+vx;
+          Y0 = py[r0]; Y1 = py[r1];
+          for (var cx=0; cx<nx; cx++){
+            var i0=r0+cx;
+            A=f[i0]-L; B=f[i0+1]-L; C=f[r1+cx+1]-L; D2=f[r1+cx]-L;
+            var m=(A>0?8:0)|(B>0?4:0)|(C>0?2:0)|(D2>0?1:0);
+            var sg=SEGS[m];
+            if (!sg) continue;
+            X0 = px[i0]; X1 = px[i0+1];
+            ept(sg[0],0); ept(sg[1],2);
+            ctx.moveTo(EP[0],EP[1]); ctx.lineTo(EP[2],EP[3]);
+            if (sg.length===4){
+              ept(sg[2],0); ept(sg[3],2);
+              ctx.moveTo(EP[0],EP[1]); ctx.lineTo(EP[2],EP[3]);
+            }
+          }
+        }
+        ctx.stroke();
+      }
+    }};
+  };
+
+  // HARMONOGRAPH (linework tile). What linework makes, made the way
+  // linework makes it: a damped two-pendulum trace per axis plus a slow
+  // circular drift, integrated once per seed and drawn in the way a
+  // plotter draws — one pen in ink, a detuned echo in the accent.
+  // rebuild() replots a fresh seed; the page wires it to a click.
+  BUILDERS.harmonograph = function(ctx, dim, opts){
+    function R(a,b){ return a + Math.random()*(b-a); }
+    function pick(arr){ return arr[(Math.random()*arr.length)|0]; }
+    var TAU = 6.28318, FR = [1,2,3,4,5];
+    var f1=pick(FR)+R(-0.006,0.006), f2=pick(FR)+R(-0.006,0.006);
+    var f3=pick(FR)+R(-0.006,0.006), f4=pick(FR)+R(-0.006,0.006);
+    var fr=pick([1,2,3]);
+    var p1=R(0,TAU), p2=R(0,TAU), p3=R(0,TAU), p4=R(0,TAU), pr=R(0,TAU);
+    var d1=R(0.00075,0.0019), d2=R(0.00075,0.0019), dr=R(0.0009,0.0016);
+    var det=R(0.006,0.022)*(Math.random()<0.5?-1:1);
+    var N=3600, DT=0.021;
+    function trace(detune){
+      var out=new Float32Array(N*2), T=0, n;
+      for (n=0;n<N;n++){
+        T+=DT;
+        var e1=Math.exp(-d1*n), e2=Math.exp(-d2*n), e3=Math.exp(-dr*n);
+        out[n*2]   = Math.sin(T*f1+p1)*e1 + 0.85*Math.sin(T*(f2+detune)+p2)*e2 + 0.5*Math.sin(T*fr+pr)*e3;
+        out[n*2+1] = Math.sin(T*f3+p3)*e2 + 0.85*Math.sin(T*(f4+detune)+p4)*e1 + 0.5*Math.cos(T*fr+pr)*e3;
+      }
+      return out;
+    }
+    var Apts=trace(0), Bpts=trace(det);
+    var minx=1e9,miny=1e9,maxx=-1e9,maxy=-1e9,k;
+    for (k=0;k<N;k++){
+      var xa=Apts[k*2],ya=Apts[k*2+1],xb=Bpts[k*2],yb=Bpts[k*2+1];
+      if(xa<minx)minx=xa; if(xa>maxx)maxx=xa; if(ya<miny)miny=ya; if(ya>maxy)maxy=ya;
+      if(xb<minx)minx=xb; if(xb>maxx)maxx=xb; if(yb<miny)miny=yb; if(yb>maxy)maxy=yb;
+    }
+    var mg=Math.min(dim.w,dim.h)*0.09;
+    var sc2=Math.min((dim.w-2*mg)/Math.max(1e-6,maxx-minx),(dim.h-2*mg)/Math.max(1e-6,maxy-miny));
+    var ox=(dim.w-(maxx-minx)*sc2)/2 - minx*sc2;
+    var oy=(dim.h-(maxy-miny)*sc2)/2 - miny*sc2;
+    var start=null, last=null;
+    function poly(P,n){
+      ctx.beginPath();
+      ctx.moveTo(P[0]*sc2+ox, P[1]*sc2+oy);
+      for (var q=1;q<n;q++) ctx.lineTo(P[q*2]*sc2+ox, P[q*2+1]*sc2+oy);
+      ctx.stroke();
+    }
+    return { frame: function(t){
+      if (start===null){ start=t; last=t; }
+      if (t-last>0.5) start += t-last;   // don't spend the draw-in while off screen
+      last=t;
+      var n = Math.max(2, Math.min(N, Math.floor(N*(t-start)/3.4)));
+      ctx.fillStyle=pal.bg; ctx.fillRect(0,0,dim.w,dim.h);
+      ctx.lineJoin='round';
+      ctx.strokeStyle=hexToRgba(pal.accent,0.55); ctx.lineWidth=0.8; poly(Bpts,n);
+      ctx.strokeStyle=hexToRgba(pal.fg,0.8); ctx.lineWidth=1.05; poly(Apts,n);
+    }};
+  };
+
+  function renderStatic(anim){ try { for (var i=0;i<160;i++) anim.frame(i*0.06); } catch(e){} }
+  function startLoop(){
+    function loop(){
+      var t = performance.now()/1000;
+      for (var i=0;i<anims.length;i++){ var a=anims[i]; if (a.visible){ try { a.frame(t); } catch(e){} } }
+      _frameCount++;
+      rafId = requestAnimationFrame(loop);
+    }
+    rafId = requestAnimationFrame(loop);
+  }
+  function boot(){
+    if (booted) return;
+    booted = true;
+    window.addEventListener('mousemove', function(e){ pointer = { x:e.clientX, y:e.clientY, active:true }; });
+    document.addEventListener('visibilitychange', function(){
+      if(document.hidden){ if(rafId){ cancelAnimationFrame(rafId); rafId=null; } }
+      else if(!reduced && !rafId && anims.length) startLoop();
+    });
+    if(!reduced) startLoop();
   }
 
-  function toggleTheme(){
-    state.theme = state.theme==='dark' ? 'light' : 'dark';
-    applyTheme(state.theme);
-    document.getElementById('themeLabel').textContent = state.theme==='dark' ? 'Screen' : 'Paper';
-    refreshPalette();
-    anims.forEach(function(a){ if(a.rebuild) a.rebuild(); if(reduced) renderStatic(a); });
-  }
-  function reseedFlow(){
-    var a = anims.filter(function(x){ return x.canvas === document.getElementById('linework'); })[0];
-    if(a && a.rebuild){ a.rebuild(); if(reduced) renderStatic(a); }
+  function mount(canvas, mode, opts){
+    if (!canvas || !BUILDERS[mode]) return null;
+    opts = opts || {};
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var ctx = canvas.getContext('2d');
+    var dim = { w:1, h:1 };
+    function size(){
+      var r = canvas.getBoundingClientRect();
+      dim.w = Math.max(1, r.width); dim.h = Math.max(1, r.height);
+      canvas.width = Math.round(dim.w*dpr); canvas.height = Math.round(dim.h*dpr);
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+    size();
+    var st = BUILDERS[mode](ctx, dim, opts);
+    var anim = {
+      canvas:canvas, ctx:ctx, dim:dim, visible:false, mode:mode, opts:opts,
+      frame:function(t){ st.frame(t); },
+      // Resizing the backing store clears it, so always repaint immediately —
+      // otherwise a panel sits blank until the next observer callback.
+      rebuild:function(){ size(); st = BUILDERS[mode](ctx, dim, opts); try { st.frame(0); } catch(e){} if (reduced) renderStatic(anim); }
+    };
+    anim.ro = new ResizeObserver(function(){ anim.rebuild(); });
+    anim.ro.observe(canvas);
+    anim.io = new IntersectionObserver(function(es){ es.forEach(function(e){ anim.visible = e.isIntersecting; }); }, { threshold:0 });
+    anim.io.observe(canvas);
+    anims.push(anim);
+    // Paint one frame straight away so a panel is never an empty box while we wait
+    // for IntersectionObserver (which is throttled in background/inactive tabs).
+    if (reduced) renderStatic(anim); else { try { anim.frame(0); } catch(e){} }
+    boot();
+    return { rebuild: anim.rebuild, canvas: canvas };
   }
 
-  // boot
-  applyTheme(state.theme);
-  refreshPalette();
-  window.addEventListener('mousemove', function(e){ pointer = { x:e.clientX, y:e.clientY, active:true }; });
-  document.getElementById('themeBtn').addEventListener('click', toggleTheme);
-  document.getElementById('lineworkTile').addEventListener('click', reseedFlow);
-
-  setup(document.getElementById('hero'), 'flow', { alpha:0.5, interactive:true, counter:true, drawFor:24, liftFor:3.2 });
-  setup(document.getElementById('linework'), 'flow', { alpha:0.95, seed:7.3, dense:true, drawFor:16, liftFor:2.4 });
-  setup(document.getElementById('room'), 'room', {});
-  setup(document.getElementById('pdu'), 'pdu', {});
-  setup(document.getElementById('scatter'), 'scatter', {});
-  setup(document.getElementById('packed'), 'streamlines', {});
-  if(!reduced) startLoop();
-  document.addEventListener('visibilitychange', function(){
-    if(document.hidden){ if(rafId){ cancelAnimationFrame(rafId); rafId=null; } }
-    else if(!reduced && !rafId) startLoop();
-  });
-  setupReveals();
+  return {
+    setPalette: function(p){ for (var k in p) if (Object.prototype.hasOwnProperty.call(p,k)) pal[k]=p[k]; },
+    config: function(c){ for (var k in c) if (Object.prototype.hasOwnProperty.call(c,k)) cfg[k]=c[k]; },
+    mount: mount,
+    rebuildAll: function(){ anims.forEach(function(a){ a.rebuild(); }); },
+    reducedMotion: function(){ return reduced; }
+  };
+})();
+</script>
+<script>
+(function(){
+  var PG = window.PortfolioGraphics;
+  PG.setPalette({ bg:'#F3EFE6', fg:'#211E17', accent:'#2440C8', muted:'#6C6555', blue:'#177E5B', light:true });
+  PG.config({ monoFont:'"Fragment Mono", ui-monospace, SFMono-Regular, Menlo, monospace' });
+  function $(id){ return document.getElementById(id); }
+  PG.mount($('cv-hero'), 'contours', {});
+  PG.mount($('cv-room'), 'room', {});
+  PG.mount($('cv-scatter'), 'scatter', {});
+  PG.mount($('cv-stream'), 'streamlines', {});
+  var pdu = PG.mount($('cv-pdu'), 'pdu', { onFrames:function(n){ var e=$('tx-count'); if(e) e.textContent = n.toLocaleString('en-GB'); } });
+  var lw = PG.mount($('cv-linework'), 'harmonograph', {});
+  var lwBtn = $('lw-btn');
+  if (lwBtn && lw) lwBtn.addEventListener('click', function(){ lw.rebuild(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ if (pdu) pdu.rebuild(); });
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduced){
+    var hint = $('cursor-hint');
+    if (hint && window.matchMedia('(pointer: fine)').matches) hint.style.display = 'inline';
+  }
+  if (!reduced && 'IntersectionObserver' in window){
+    var els = document.querySelectorAll('.proj, .card, .sec-head, .plate, .domains li, .xp-grid, .kitgrid > div');
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add('on'); io.unobserve(en.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
+    els.forEach(function(el){ el.classList.add('rv'); io.observe(el); });
+  }
 })();
 </script>
 </body>
