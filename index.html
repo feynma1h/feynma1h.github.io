@@ -305,25 +305,25 @@ footer{border-top:1px solid rgba(241,236,223,.35); margin-top:clamp(2.6rem,5vw,4
       <h2>Selected work</h2>
     </div>
 
-    <!-- roomstudio -->
-    <article class="proj" aria-labelledby="p-roomstudio">
+    <!-- the good guest -->
+    <article class="proj" aria-labelledby="p-thegoodguest">
       <div class="proj-head">
-        <h3 id="p-roomstudio">roomstudio</h3>
-        <span class="status"><span class="dot" aria-hidden="true"></span>Live · Private repo · Flagship</span>
+        <h3 id="p-thegoodguest">The Good Guest</h3>
+        <span class="status"><span class="dot" aria-hidden="true"></span>In development · Public repo · Flagship</span>
       </div>
       <p class="tagline">“Every home contains a version of itself its owner has never seen.”</p>
       <div class="spread">
         <div class="fig-col">
           <figure class="plate">
             <div class="cv ratio-sq"><canvas id="cv-room" role="img" aria-label="Live code drawing: a room wireframe drawing itself in, one detected object highlighted"></canvas></div>
-            <figcaption><span class="fign">Fig. 2</span> — roomstudio’s idea in miniature: a room drawing itself in, one object detected. A live code sketch, not the actual scan.</figcaption>
+            <figcaption><span class="fign">Fig. 2</span> — The Good Guest’s idea in miniature: a room drawing itself in, one object detected. A live code sketch, not the actual scan.</figcaption>
           </figure>
         </div>
         <div class="txt-col">
-          <p>A spatial-intelligence platform for the home. Scan your space with an iPhone Pro and roomstudio reconstructs both the room and its contents — measured walls, floor, doors and windows with inferred surface materials, and every object placed at its real metric position.</p>
-          <p>Then it talks about it — and takes requests. Ask about the room and the answers stay grounded in measured scene facts. Ask it to move the furniture and the model only ever states intent: a server-side solver owns the geometry, checks every move against the measured room, and refuses the ones that aren’t real.</p>
-          <p>Live in production: scan on an iPhone Pro, and the room arrives on the web as a choreographed reveal — the measured boundary draws itself, surfaces fade up in place, furniture settles largest-first, and then the room speaks.</p>
-          <div class="linkrow"><a class="btn big" href="https://roomstudio.web.app" target="_blank" rel="noopener">Open the app →</a></div>
+          <p>A spatial-intelligence platform for the home, built solo across three surfaces. Scan your space with an iPhone Pro and The Good Guest reconstructs both the room and its contents — measured walls, floor, doors and windows with inferred surface materials, and every object placed at its real metric position.</p>
+          <p>Then the guest talks about it — and takes requests. Ask about the room and the answers stay grounded in measured scene facts. Ask it to move the furniture and the model only ever states intent: a server-side solver owns the geometry, checks every move against the measured room, and refuses the ones that aren’t real.</p>
+          <p>The whole path runs end to end: scan on an iPhone Pro, and the room arrives on the web as a choreographed reveal — the measured boundary draws itself, surfaces fade up in place, furniture settles largest-first, and then the room speaks.</p>
+          <div class="linkrow"><a class="btn big" href="https://thegoodguest.web.app" target="_blank" rel="noopener">Open the site →</a><a href="https://github.com/feynma1h/thegoodguest" target="_blank" rel="noopener">Code →</a></div>
         </div>
       </div>
       <dl class="speclist">
@@ -331,12 +331,7 @@ footer{border-top:1px solid rgba(241,236,223,.35); margin-top:clamp(2.6rem,5vw,4
         <div><dt>02 · Perceive</dt><dd>FastAPI on Cloud Run · NVIDIA L4, scale-to-zero · RoomPlan CapturedRoom · SAM 3 · SAM 3D Objects · Gaussian splats · vision-inferred materials · Firestore · Cloud Tasks · Eventarc</dd></div>
         <div><dt>03 · Render</dt><dd>Next.js on Firebase · 3D Gaussian splats via WebGL2 (three.js + Spark) · parametric room surfaces · choreographed assembly reveal</dd></div>
       </dl>
-      <div class="stats">
-        <p class="stats-note">Solo, across three surfaces —</p>
-        <div class="stat"><b>~93k</b><span>LOC</span></div>
-        <div class="stat"><b>~2,160</b><span>automated tests</span></div>
-        <div class="stat"><b>129</b><span>written decision records</span></div>
-      </div>
+      <p class="pull">The guest has hands, but not coordinates: it can ask for a change, never specify one. The geometry belongs to the room.</p>
     </article>
 
     <!-- gitsearch -->
@@ -595,7 +590,7 @@ window.PortfolioGraphics = (function(){
 
   var BUILDERS = {};
 
-  // ROOM WIREFRAME (roomstudio)
+  // ROOM WIREFRAME (the good guest)
   BUILDERS.room = function(ctx, dim, opts){
     function box(cx,cy,cz,w,h,d){
       var x0=cx-w/2,x1=cx+w/2,y0=cy-h/2,y1=cy+h/2,z0=cz-d/2,z1=cz+d/2;
