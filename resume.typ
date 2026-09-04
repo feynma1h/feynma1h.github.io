@@ -1,7 +1,8 @@
 // CV — Utkarsh Singh
-// Compile: typst compile resume.typ resume.pdf
+// Compile: typst compile --font-path . resume.typ resume.pdf
 // Fonts (free, install both): Newsreader (display) — https://fonts.google.com/specimen/Newsreader
 //                             Source Sans 3 (text)  — https://fonts.google.com/specimen/Source+Sans+3
+// The emphasis face ships with the repo as resume-emph.ttf, hence --font-path.
 // Design: oxblood accent, serif for name / section titles / sub-block titles / skill labels, sans for facts.
 // Sizes are ported from the approved HTML (1px = 0.75pt). If a bullet wraps on your machine,
 // nudge `body-size` down by 0.1pt or the side margins down by 0.3mm — never the words.
@@ -20,6 +21,10 @@
 #set document(title: "Utkarsh Singh — CV", author: "Utkarsh Singh")
 #set page(paper: "a4", margin: (x: 10.6mm, y: 9.5mm))
 #set text(font: sans, size: body-size, fill: ink)
+// Emphasis = Source Sans 3 SemiBold (weight 600), shipped as resume-emph.ttf under
+// the family name ResumeEmph — the OFL reserves "Source" for Adobe's own releases,
+// so a renamed copy may not carry it. Delete this line to fall back to full Bold.
+#show strong: set text(font: "ResumeEmph", weight: "regular")
 #set par(justify: false, leading: 0.42em, spacing: 0.778em)
 #show link: underline.with(stroke: 0.5pt + ulrule, offset: 1.5pt)
 

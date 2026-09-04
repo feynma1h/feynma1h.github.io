@@ -32,8 +32,11 @@ og-card.html    source for og-card.png; the capture command is a comment at the 
 iitd-logo.png   IIT Delhi crest, Background section
 resume.pdf      linked from the masthead, the hero and the contact section
 resume.typ      source for resume.pdf; the compile command is a comment at the top
+resume-emph.ttf the résumé's semibold emphasis face, bundled so the source compiles
+OFL.txt         the font's licence, and a note on why it is renamed
 ```
 
 ## Licence
 
 Code is [MIT](LICENSE). Written content, résumé, and third-party marks are not.
+`resume-emph.ttf` is Adobe's Source Sans 3 under the [SIL Open Font License](OFL.txt).
