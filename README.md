@@ -31,6 +31,7 @@ og-card.png     social preview image (1200×630)
 og-card.html    source for og-card.png; the capture command is a comment at the top
 iitd-logo.png   IIT Delhi crest, Background section
 resume.pdf      linked from the masthead, the hero and the contact section
+resume.typ      source for resume.pdf; the compile command is a comment at the top
 ```
 
 ## Licence
