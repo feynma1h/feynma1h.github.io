@@ -148,11 +148,11 @@
   column-gutter: 9pt,
   row-gutter: 0.926em,
   align: bottom,
-  sk("AI engineering"), [AI Agents, Tool Use, Anthropic API, Gemini API, Embeddings, pgvector, Hybrid Search, LLM Evals, Gaussian Splatting],
-  sk("Backend"), [Python, C++, FastAPI, Flask, PostgreSQL, SQL, Protobuf, scapy, Multithreading, Docker, GitHub Actions],
-  sk("Frontend & mobile"), [Swift, SwiftUI, ARKit, RoomPlan, Next.js, React, TypeScript, JavaScript, three.js, WebGL, GLSL, PySide6, Qt],
-  sk("Cloud"), [GCP, Cloud Run, Cloud Functions, Cloud Scheduler, BigQuery, Firestore, Firebase, Supabase, Embedded Linux],
-  sk("Data"), [BigQuery, Tableau, pandas, Selenium, Jira],
+  sk("AI engineering"), [AI Agents #sym.bar.v Tool Use #sym.bar.v Anthropic API #sym.bar.v Gemini API #sym.bar.v Embeddings #sym.bar.v pgvector #sym.bar.v Hybrid Search #sym.bar.v LLM Evals #sym.bar.v Gaussian Splatting],
+  sk("Backend"), [Python #sym.bar.v C++ #sym.bar.v FastAPI #sym.bar.v Flask #sym.bar.v PostgreSQL #sym.bar.v SQL #sym.bar.v Protobuf #sym.bar.v scapy #sym.bar.v Multithreading #sym.bar.v Docker #sym.bar.v GitHub Actions],
+  sk("Frontend & mobile"), [Swift #sym.bar.v SwiftUI #sym.bar.v ARKit #sym.bar.v RoomPlan #sym.bar.v Next.js #sym.bar.v React #sym.bar.v TypeScript #sym.bar.v JavaScript #sym.bar.v three.js #sym.bar.v WebGL #sym.bar.v GLSL #sym.bar.v PySide6 #sym.bar.v Qt],
+  sk("Cloud"), [GCP #sym.bar.v Cloud Run #sym.bar.v Cloud Functions #sym.bar.v Cloud Scheduler #sym.bar.v BigQuery #sym.bar.v Firestore #sym.bar.v Firebase #sym.bar.v Supabase #sym.bar.v Embedded Linux],
+  sk("Data"), [BigQuery #sym.bar.v Tableau #sym.bar.v pandas #sym.bar.v Selenium #sym.bar.v Jira],
 )
 
 // ---------- Honors ----------
