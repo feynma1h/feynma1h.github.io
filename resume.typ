@@ -158,8 +158,8 @@
 // ---------- Honors ----------
 #sect("Honors & awards")
 
-- Exceptional Creator Award, Jaguar Land Rover, 2025
-- Department Rank 1, Chemical Engineering Dual Degree batch, IIT Delhi, 2022
+- *Exceptional Creator Award*, Jaguar Land Rover, 2025
+- *Department Rank 1*, Chemical Engineering Dual Degree batch, IIT Delhi, 2022
 - Semester Merit Award ×2, IIT Delhi
-- JEE Advanced AIR 2525 (top 1.14%), JEE Main AIR 742 (top 0.06%), 2017
-- SOF Mathematics Olympiad, Zonal Rank 3 (finals); Rank 3, inter-school mathematics exam, awarded by the Governor of Uttar Pradesh
+- JEE Advanced AIR 2525 (*top 1.14%*), JEE Main AIR 742 (*top 0.06%*), 2017
+- SOF Mathematics Olympiad, Zonal Rank 3 (finals); Rank 3, inter-school mathematics exam, awarded by the *Governor of Uttar Pradesh*
