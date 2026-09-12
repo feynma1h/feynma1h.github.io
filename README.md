@@ -36,6 +36,9 @@ resume-emph.ttf the résumé's semibold emphasis face, bundled so the source com
 OFL.txt         the font's licence, and a note on why it is renamed
 ```
 
+`.github/workflows/deploy.yml` publishes `index.html`, `404.html`, `favicon.svg`,
+`og-card.png`, `iitd-logo.png` and `resume.pdf`. Everything else stays in the repo.
+
 ## Licence
 
 Code is [MIT](LICENSE). Written content, résumé, and third-party marks are not.
